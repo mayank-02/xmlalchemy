@@ -1,0 +1,10 @@
+doc("j_caesar.xml")//PERSONA
+doc("j_caesar.xml")//SCENE[SPEECH/SPEAKER/text() = "CAESAR"]
+doc("j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR" and SPEECH/SPEAKER/text() = "BRUTUS"]]
+doc("j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR"][SPEECH/SPEAKER/text() = "BRUTUS"]]
+doc("j_caesar.xml")//ACT[not .//SPEAKER/text() = "CAESAR"]
+doc("example.xml")//ELEMENT[EQUALITY_OPERATOR/SUBELEMENT1 = "value1" and EQUALITY_OPERATOR/SUBELEMENT2 = "value2"]
+doc("example.xml")//ELEMENT[EQUALITY_OPERATOR/SUBELEMENT1 = "value1" and (EQUALITY_OPERATOR/SUBELEMENT2 = "value2" or EQUALITY_OPERATOR/SUBELEMENT3 = "value3")]
+doc("example.xml")//ELEMENT[not .//SOME_ELEMENT/ATTRIBUTE = "someValue"]
+doc("example.xml")//ELEMENT[(SOME_ELEMENT/ELEMENT1 = "value1" and SOME_ELEMENT/ELEMENT2 = "value2") or (SOME_ELEMENT/ELEMENT3 = "value3")]
+doc("example.xml")//((ELEMENT1/ELEMENT2[text() = "value1" and @attribute = "attributeValue"]/ ELEMENT3[.//ELEMENT4 = "value2"])/(.//ELEMENT5[@attributeTwo = "value3"]))
