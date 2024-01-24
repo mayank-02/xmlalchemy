@@ -22,6 +22,6 @@ TEXT: 'text()';
 ATTRIBUTE: '@' [a-zA-Z_][a-zA-Z_1-9]*;
 TAG_NAME: [a-zA-Z_][a-zA-Z_0-9]*;
 STRING_LITERAL: '"' [a-zA-Z_][a-zA-Z_0-9]* '"';
-FILENAME: '"' [a-zA-Z_][a-zA-Z_0-9.]*'"';
+FILENAME: '"' [a-zA-Z_0-9./]*'"';
 WHITESPACE: (' ' | '\t' | '\r' | '\n') -> skip;
 ANY: . ;
