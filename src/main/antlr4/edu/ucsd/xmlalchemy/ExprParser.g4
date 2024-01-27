@@ -3,23 +3,18 @@ options {
 	tokenVocab = ExprLexer;
 }
 
-query
-    : absolutePath EOF	# queryAbsolutePath
-	| relativePath EOF	# queryRelativePath
-    ;
-
 absolutePath
-    : DOCUMENT LEFT_PAREN FILENAME RIGHT_PAREN SLASH relativePath			# absolutePathChild
+    : documentName SLASH relativePath			                            # absolutePathChild
 	| DOCUMENT LEFT_PAREN FILENAME RIGHT_PAREN DOUBLE_SLASH relativePath	# absolutePathDescendant
     ;
 
 relativePath
-    : TAG_NAME															# tagName
+    : tagName = STRING													# tagName
 	| WILDCARD															# wildcard
 	| SINGLE_DOT														# current
 	| DOUBLE_DOT														# parent
 	| TEXT																# text
-	| ATTRIBUTE															# attribute
+	| AT_SYMBOL attributeName = STRING									# attributeName
 	| LEFT_PAREN relativePath RIGHT_PAREN								# relativePathParenthesized
 	| left = relativePath SLASH right = relativePath					# relativePathChild
 	| left = relativePath DOUBLE_SLASH right = relativePath				# relativePathDescendant
@@ -38,4 +33,8 @@ pathFilter
 	| left = pathFilter LOGICAL_AND right = pathFilter		                # pathFilterAnd
 	| left = pathFilter LOGICAL_OR right = pathFilter		                # pathFilterOr
 	| LOGICAL_NOT pathFilter								                # pathFilterNot
+    ;
+
+documentName
+    : DOCUMENT LEFT_PAREN FILENAME RIGHT_PAREN
     ;

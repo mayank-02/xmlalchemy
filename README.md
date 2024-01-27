@@ -11,10 +11,13 @@ Use `maven`
 mvn compile
 ```
 
-2. Have `antlr-4.13.1-complete.jar` in the project directory
+2. Have `antlr-4.13.1-complete.jar` in the project **directory**
 
 3. To run
 
 ```
 java -cp target/classes:antlr-4.13.1-complete.jar edu.ucsd.xmlalchemy/Main query.txt
 ```
+
+1. all visit methods return list of XML nodes
+2. 
