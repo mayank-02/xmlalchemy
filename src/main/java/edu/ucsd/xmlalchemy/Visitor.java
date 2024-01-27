@@ -1,22 +1,7 @@
 package edu.ucsd.xmlalchemy;
 
-import edu.ucsd.xmlalchemy.ExprParser.AbsolutePathChildContext;
-import edu.ucsd.xmlalchemy.ExprParser.AttributeNameContext;
-import edu.ucsd.xmlalchemy.ExprParser.CurrentContext;
-import edu.ucsd.xmlalchemy.ExprParser.ParentContext;
-import edu.ucsd.xmlalchemy.ExprParser.RelativePathChildContext;
-import edu.ucsd.xmlalchemy.ExprParser.TagNameContext;
-import edu.ucsd.xmlalchemy.ExprParser.TextContext;
-import edu.ucsd.xmlalchemy.ExprParser.WildcardContext;
-import edu.ucsd.xmlalchemy.xpath.TagName;
-import edu.ucsd.xmlalchemy.xpath.Text;
-import edu.ucsd.xmlalchemy.xpath.Wildcard;
-import edu.ucsd.xmlalchemy.xpath.AbsolutePath;
-import edu.ucsd.xmlalchemy.xpath.Attribute;
-import edu.ucsd.xmlalchemy.xpath.Current;
-import edu.ucsd.xmlalchemy.xpath.Expression;
-import edu.ucsd.xmlalchemy.xpath.Parent;
-import edu.ucsd.xmlalchemy.xpath.RelativePathChild;
+import edu.ucsd.xmlalchemy.ExprParser.*;
+import edu.ucsd.xmlalchemy.xpath.*;
 
 public class Visitor extends ExprParserBaseVisitor<Expression> {
 
@@ -62,4 +47,85 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
         Expression rightExpression = visit(ctx.right);
         return new RelativePathChild(leftExpression, rightExpression);
     }
+
+    @Override
+    public Expression visitRelativePathConcatenation(RelativePathConcatenationContext ctx) {
+        Expression leftExpression = visit(ctx.left);
+        Expression rightExpression = visit(ctx.right);
+        return new RelativePathConcatenation(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitRelativePathParenthesized(RelativePathParenthesizedContext ctx) {
+        return visit(ctx.relativePath());
+    }
+
+    @Override
+    public Expression visitRelativePathWithPathFilter(RelativePathWithPathFilterContext ctx) {
+        var relativePath = visit(ctx.relativePath());
+        var pathFilter = visit(ctx.pathFilter());
+        return new RelativePathWithPathFilter(relativePath, pathFilter);
+    }
+
+    @Override
+    public Expression visitPathFilterRelativePath(PathFilterRelativePathContext ctx) {
+        var relativePath = visit(ctx.relativePath());
+        return new PathFilterRelativePath(relativePath);
+    }
+
+    @Override
+    public Expression visitPathFilterValueEqualKeyword(PathFilterValueEqualKeywordContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterValueEqual(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterValueEqualOperator(PathFilterValueEqualOperatorContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterValueEqual(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterIdentityEqualKeyword(
+            PathFilterIdentityEqualKeywordContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterIdentityEqual(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterIdentityEqualOperator(
+            PathFilterIdentityEqualOperatorContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterIdentityEqual(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterAnd(PathFilterAndContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterAnd(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterNot(PathFilterNotContext ctx) {
+        var expression = visit(ctx.pathFilter());
+        return new PathFilterNot(expression);
+    }
+
+    @Override
+    public Expression visitPathFilterOr(PathFilterOrContext ctx) {
+        var leftExpression = visit(ctx.left);
+        var rightExpression = visit(ctx.right);
+        return new PathFilterOr(leftExpression, rightExpression);
+    }
+
+    @Override
+    public Expression visitPathFilterParenthesized(PathFilterParenthesizedContext ctx) {
+        return visit(ctx.pathFilter());
+    }
+
 }

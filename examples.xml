@@ -8,3 +8,9 @@ doc("example.xml")//ELEMENT[EQUALITY_OPERATOR/SUBELEMENT1 = "value1" and (EQUALI
 doc("example.xml")//ELEMENT[not .//SOME_ELEMENT/ATTRIBUTE = "someValue"]
 doc("example.xml")//ELEMENT[(SOME_ELEMENT/ELEMENT1 = "value1" and SOME_ELEMENT/ELEMENT2 = "value2") or (SOME_ELEMENT/ELEMENT3 = "value3")]
 doc("example.xml")//((ELEMENT1/ELEMENT2[text() = "value1" and @attribute = "attributeValue"]/ ELEMENT3[.//ELEMENT4 = "value2"])/(.//ELEMENT5[@attributeTwo = "value3"]))
+doc("src/main/resources/test.xml")/ROOT/A/text()
+doc("src/main/resources/test.xml")/ROOT/A/B
+doc("src/main/resources/test.xml")/ROOT/A/@x
+doc("src/main/resources/test.xml")/ROOT/A/*
+doc("src/main/resources/test.xml")/ROOT/A/*
+doc("src/main/resources/Test2.xml")/ROOT/(A,B)

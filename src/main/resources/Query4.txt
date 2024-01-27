@@ -1,0 +1,1 @@
+doc("src/main/resources/Test4.xml")/START/ROOT[A[X] == A[Y]]

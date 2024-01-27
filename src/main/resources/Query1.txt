@@ -1,0 +1,5 @@
+doc("src/main/resources/Test1.xml")/ROOT/A/text()
+doc("src/main/resources/Test1.xml")/ROOT/A/B 
+doc("src/main/resources/Test1.xml")/ROOT/A/@x
+doc("src/main/resources/Test1.xml")/ROOT/A/*
+doc("src/main/resources/Test1.xml")/ROOT/A/*

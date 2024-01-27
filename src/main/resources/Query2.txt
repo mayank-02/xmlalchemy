@@ -1,0 +1,1 @@
+doc("src/main/resources/Test2.xml")/ROOT/A[X]
