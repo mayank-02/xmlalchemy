@@ -22,6 +22,7 @@ import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 public class Main {
@@ -46,7 +47,7 @@ public class Main {
             List<Node> inputNodes = new ArrayList<>();
             inputNodes.add(document);
 
-            transform(absolutePath.evaluate(inputNodes));
+            output(absolutePath.evaluate(inputNodes));
             return;
         } catch (IOException | ParserConfigurationException | SAXException e) {
             e.printStackTrace();
@@ -56,19 +57,26 @@ public class Main {
         }
     }
 
-    public static void transform(List<Node> result) {
+    public static void output(List<Node> result) {
         try {
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.newDocument();
+
+            Element parentElement = doc.createElement("result");
+            for (Node node : result) {
+                Node importedNode = doc.importNode(node, true); // true for deep cloning
+                parentElement.appendChild(importedNode);
+            }
+            doc.appendChild(parentElement);
+
             TransformerFactory tfFactory = TransformerFactory.newInstance();
             Transformer tf = tfFactory.newTransformer();
             tf.setOutputProperty(OutputKeys.INDENT, "yes");
+            DOMSource source = new DOMSource(doc);
 
-            for (Node n : result) {
-                if (n instanceof Attr || n instanceof Text) {
-                    System.out.println(n.getTextContent());
-                } else {
-                    tf.transform(new DOMSource(n), new StreamResult(System.out));
-                }
-            }
+            StreamResult consoleResult = new StreamResult(System.out);
+            tf.transform(source, consoleResult);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
