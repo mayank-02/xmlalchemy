@@ -34,7 +34,6 @@ public class Main {
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             ExprParser parser = new ExprParser(tokens);
             ParseTree tree = parser.absolutePath();
-            System.out.printf("Query: %s\n\n", tree.getText());
 
             Visitor visitor = new Visitor();
             AbsolutePath absolutePath = (AbsolutePath) visitor.visit(tree);
