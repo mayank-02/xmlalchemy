@@ -5,9 +5,8 @@ import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import edu.ucsd.xmlalchemy.xpath.AbsolutePath;
-import java.io.File;
-import java.io.IOException;
-import java.io.PrintStream;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
@@ -27,9 +26,10 @@ import org.xml.sax.SAXException;
 
 public class Main {
     public static void main(String[] args) {
-        String filename = args[0];
+        String inputFilename = args[0];
+        String outputFilename = args[1];
         try {
-            CharStream charStream = CharStreams.fromFileName(filename);
+            CharStream charStream = CharStreams.fromFileName(inputFilename);
             ExprLexer lexer = new ExprLexer(charStream);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             ExprParser parser = new ExprParser(tokens);
@@ -46,7 +46,7 @@ public class Main {
             List<Node> inputNodes = new ArrayList<>();
             inputNodes.add(document);
 
-            output(absolutePath.evaluate(inputNodes));
+            output(absolutePath.evaluate(inputNodes), outputFilename);
             return;
         } catch (IOException | ParserConfigurationException | SAXException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class Main {
         }
     }
 
-    public static void output(List<Node> result) {
+    public static void output(List<Node> result, String outputFilename) {
         try {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -72,10 +72,17 @@ public class Main {
             TransformerFactory tfFactory = TransformerFactory.newInstance();
             Transformer tf = tfFactory.newTransformer();
             tf.setOutputProperty(OutputKeys.INDENT, "yes");
+            tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+
             DOMSource source = new DOMSource(doc);
+
 
             StreamResult consoleResult = new StreamResult(System.out);
             tf.transform(source, consoleResult);
+
+            OutputStream fileOutputStream = new FileOutputStream(outputFilename);
+            StreamResult fileResult = new StreamResult(fileOutputStream);
+            tf.transform(source, fileResult);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
