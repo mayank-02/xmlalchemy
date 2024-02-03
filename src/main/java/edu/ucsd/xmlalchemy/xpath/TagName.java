@@ -6,10 +6,10 @@ import org.w3c.dom.Node;
 
 public class TagName implements Expression {
 
-    final private String tagName;
+    private final String tag;
 
-    public TagName(String tagName) {
-        this.tagName = tagName;
+    public TagName(String tag) {
+        this.tag = tag;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class TagName implements Expression {
             var children = node.getChildNodes();
             for (int i = 0; i < children.getLength(); i++) {
                 var child = children.item(i);
-                if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals(tagName)) {
+                if (child.getNodeType() == Node.ELEMENT_NODE && child.getNodeName().equals(tag)) {
                     result.add(child);
                 }
             }

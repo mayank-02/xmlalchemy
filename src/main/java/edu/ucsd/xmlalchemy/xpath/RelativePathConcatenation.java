@@ -5,8 +5,8 @@ import org.w3c.dom.Node;
 
 public class RelativePathConcatenation implements Expression {
 
-    final private Expression leftExpression;
-    final private Expression rightExpression;
+    private final Expression leftExpression;
+    private final Expression rightExpression;
 
     public RelativePathConcatenation(Expression leftExpression, Expression rightExpression) {
         this.leftExpression = leftExpression;

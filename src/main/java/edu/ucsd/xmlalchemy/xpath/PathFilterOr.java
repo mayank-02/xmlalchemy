@@ -6,8 +6,8 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class PathFilterOr implements Expression {
-    final private Expression leftExpression;
-    final private Expression rightExpression;
+    private final Expression leftExpression;
+    private final Expression rightExpression;
 
     public PathFilterOr(Expression leftExpression, Expression rightExpression) {
         this.leftExpression = leftExpression;

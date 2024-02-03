@@ -1,1 +1,1 @@
-doc("src/main/resources/j_caesar.xml")/PLAY/PERSONAE/PERSONA
+doc("src/test/resources/milestone1/document/j_caesar.xml")/PLAY/PERSONAE/PERSONA

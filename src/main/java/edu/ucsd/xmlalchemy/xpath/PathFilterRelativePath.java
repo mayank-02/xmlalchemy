@@ -5,7 +5,7 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class PathFilterRelativePath implements Expression {
-    final private Expression relativePath;
+    private final Expression relativePath;
 
     public PathFilterRelativePath(Expression relativePath) {
         this.relativePath = relativePath;

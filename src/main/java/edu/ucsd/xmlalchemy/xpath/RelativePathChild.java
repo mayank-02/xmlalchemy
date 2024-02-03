@@ -7,8 +7,8 @@ import org.w3c.dom.Node;
 
 public class RelativePathChild implements Expression {
 
-    final private Expression leftExpression;
-    final private Expression rightExpression;
+    private final Expression leftExpression;
+    private final Expression rightExpression;
 
     public RelativePathChild(Expression leftExpression, Expression rightExpression) {
         this.leftExpression = leftExpression;

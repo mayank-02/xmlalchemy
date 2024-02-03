@@ -5,8 +5,8 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class PathFilterIdentityEqual implements Expression {
-    final private Expression leftExpression;
-    final private Expression rightExpression;
+    private final Expression leftExpression;
+    private final Expression rightExpression;
 
     public PathFilterIdentityEqual(Expression leftExpression, Expression rightExpression) {
         this.leftExpression = leftExpression;
@@ -19,11 +19,17 @@ public class PathFilterIdentityEqual implements Expression {
         for (Node node : nodes) {
             var leftNodes = leftExpression.evaluate(List.of(node));
             var rightNodes = rightExpression.evaluate(List.of(node));
-            for (Node leftNode : leftNodes) {
-                for (Node rightNode : rightNodes) {
+            var foundEqualNode = false;
+            for (var leftNode : leftNodes) {
+                for (var rightNode : rightNodes) {
                     if (leftNode.isSameNode(rightNode)) {
-                        result.add(node);
+                        foundEqualNode = true;
+                        break;
                     }
+                }
+                if (foundEqualNode) {
+                    result.add(node);
+                    break;
                 }
             }
         }

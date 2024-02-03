@@ -1,8 +1,8 @@
-doc("j_caesar.xml")//PERSONA
-doc("j_caesar.xml")//SCENE[SPEECH/SPEAKER/text() = "CAESAR"]
-doc("j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR" and SPEECH/SPEAKER/text() = "BRUTUS"]]
-doc("j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR"][SPEECH/SPEAKER/text() = "BRUTUS"]]
-doc("j_caesar.xml")//ACT[not .//SPEAKER/text() = "CAESAR"]
+doc("src/main/resources/j_caesar.xml")//PERSONA
+doc("src/main/resources/j_caesar.xml")//SCENE[SPEECH/SPEAKER/text() = "CAESAR"]
+doc("src/main/resources/j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR" and SPEECH/SPEAKER/text() = "BRUTUS"]]
+doc("src/main/resources/j_caesar.xml")//ACT[SCENE [SPEECH/SPEAKER/text() = "CAESAR"][SPEECH/SPEAKER/text() = "BRUTUS"]]
+doc("src/main/resources/j_caesar.xml")//ACT[not .//SPEAKER/text() = "CAESAR"]
 doc("example.xml")//ELEMENT[EQUALITY_OPERATOR/SUBELEMENT1 = "value1" and EQUALITY_OPERATOR/SUBELEMENT2 = "value2"]
 doc("example.xml")//ELEMENT[EQUALITY_OPERATOR/SUBELEMENT1 = "value1" and (EQUALITY_OPERATOR/SUBELEMENT2 = "value2" or EQUALITY_OPERATOR/SUBELEMENT3 = "value3")]
 doc("example.xml")//ELEMENT[not .//SOME_ELEMENT/ATTRIBUTE = "someValue"]

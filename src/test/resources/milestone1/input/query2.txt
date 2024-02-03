@@ -1,1 +1,1 @@
-doc("j_caesar.xml")//SCENE[SPEECH/SPEAKER/text() = "CAESAR"]
+doc("src/test/resources/milestone1/document/j_caesar.xml")//SCENE[SPEECH/SPEAKER/text() = "CAESAR"]

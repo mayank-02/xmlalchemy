@@ -5,13 +5,10 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class Wildcard implements Expression {
-
-    public Wildcard() {}
-
     @Override
     public List<Node> evaluate(List<Node> nodes) throws Exception {
         // FIXME: Similar to TagName.java
-        List<Node> result = new ArrayList<>();
+        var result = new ArrayList<Node>();
         for (Node node : nodes) {
             var children = node.getChildNodes();
             for (int i = 0; i < children.getLength(); i++) {

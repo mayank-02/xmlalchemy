@@ -4,8 +4,8 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class PathFilterAnd implements Expression {
-    final private Expression leftExpression;
-    final private Expression rightExpression;
+    private final Expression leftExpression;
+    private final Expression rightExpression;
 
     public PathFilterAnd(Expression leftExpression, Expression rightExpression) {
         this.leftExpression = leftExpression;

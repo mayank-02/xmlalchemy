@@ -4,25 +4,20 @@ import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
-import edu.ucsd.xmlalchemy.xpath.AbsolutePath;
-
+import edu.ucsd.xmlalchemy.xpath.AbsolutePathChild;
+import edu.ucsd.xmlalchemy.xpath.AbsolutePathDescendant;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.w3c.dom.Attr;
+import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.w3c.dom.Text;
-import org.w3c.dom.Element;
-import org.xml.sax.SAXException;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,9 +31,18 @@ public class Main {
             ParseTree tree = parser.absolutePath();
 
             Visitor visitor = new Visitor();
-            AbsolutePath absolutePath = (AbsolutePath) visitor.visit(tree);
+            File file;
+            var absolutePathExpr = visitor.visit(tree);
+            if (absolutePathExpr instanceof AbsolutePathChild) {
+                var absolutePath = ((AbsolutePathChild) absolutePathExpr);
+                file = new File(absolutePath.getFileName().replace("\"", ""));
+            } else if (absolutePathExpr instanceof AbsolutePathDescendant) {
+                var absolutePath = ((AbsolutePathDescendant) absolutePathExpr);
+                file = new File(absolutePath.getFileName().replace("\"", ""));
+            } else {
+                throw new Exception("Invalid absolute path expression");
+            }
 
-            File file = new File(absolutePath.getFileName().replace("\"", ""));
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(file);
@@ -46,42 +50,36 @@ public class Main {
             List<Node> inputNodes = new ArrayList<>();
             inputNodes.add(document);
 
-            output(absolutePath.evaluate(inputNodes), outputFilename);
-            return;
-        } catch (IOException | ParserConfigurationException | SAXException e) {
-            e.printStackTrace();
+            output(absolutePathExpr.evaluate(inputNodes), outputFilename);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
     public static void output(List<Node> result, String outputFilename) {
         try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.newDocument();
+            var dbFactory = DocumentBuilderFactory.newInstance();
+            var dBuilder = dbFactory.newDocumentBuilder();
+            var doc = dBuilder.newDocument();
 
-            Element parentElement = doc.createElement("result");
-            for (Node node : result) {
-                Node importedNode = doc.importNode(node, true); // true for deep cloning
+            var parentElement = doc.createElement("result");
+            for (var node : result) {
+                var importedNode = doc.importNode(node, true); // true for deep cloning
                 parentElement.appendChild(importedNode);
             }
             doc.appendChild(parentElement);
 
-            TransformerFactory tfFactory = TransformerFactory.newInstance();
-            Transformer tf = tfFactory.newTransformer();
-            tf.setOutputProperty(OutputKeys.INDENT, "yes");
+            final var tfFactory = TransformerFactory.newInstance();
+            var tf = tfFactory.newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
+            tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-
-            DOMSource source = new DOMSource(doc);
-
-
-            StreamResult consoleResult = new StreamResult(System.out);
+            
+            var source = new DOMSource(doc);
+            var consoleResult = new StreamResult(System.out);
             tf.transform(source, consoleResult);
 
-            OutputStream fileOutputStream = new FileOutputStream(outputFilename);
-            StreamResult fileResult = new StreamResult(fileOutputStream);
+            var fileOutputStream = new FileOutputStream(outputFilename);
+            var fileResult = new StreamResult(fileOutputStream);
             tf.transform(source, fileResult);
         } catch (Exception e) {
             // TODO Auto-generated catch block

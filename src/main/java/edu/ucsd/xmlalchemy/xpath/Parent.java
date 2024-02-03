@@ -5,8 +5,6 @@ import java.util.List;
 import org.w3c.dom.Node;
 
 public class Parent implements Expression {
-    public Parent() {};
-
     @Override
     public List<Node> evaluate(List<Node> nodes) throws Exception {
         List<Node> result = new ArrayList<>();

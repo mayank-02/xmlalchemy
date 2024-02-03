@@ -3,13 +3,13 @@ package edu.ucsd.xmlalchemy.xpath;
 import org.w3c.dom.Node;
 import java.util.List;
 
-public class AbsolutePath implements Expression {
-    final private Expression expression;
-    final private String fileName;
+public class AbsolutePathChild implements Expression {
+    private final String fileName;
+    private final Expression expression;
 
-    public AbsolutePath(String fileName, Expression expression) {
-        this.expression = expression;
+    public AbsolutePathChild(String fileName, Expression expression) {
         this.fileName = fileName;
+        this.expression = expression;
     }
 
     @Override

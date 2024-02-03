@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import org.w3c.dom.Node;
 
 public class PathFilterNot implements Expression {
-    final private Expression expression;
+    private final Expression expression;
 
     public PathFilterNot(Expression expression) {
         this.expression = expression;
