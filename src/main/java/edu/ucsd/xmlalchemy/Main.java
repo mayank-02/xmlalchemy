@@ -20,6 +20,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class Main {
     public static void main(String[] args) {
@@ -56,6 +57,8 @@ public class Main {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
             Document document = db.parse(file);
+            document.normalize();
+            trimTextNodes(document.getDocumentElement());
 
             List<Node> inputNodes = new ArrayList<>();
             inputNodes.add(document);
@@ -64,6 +67,17 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<Node>();
+        }
+    }
+
+    public static void trimTextNodes(Node node) {
+        if (node.getNodeType() == Node.TEXT_NODE) {
+            node.setTextContent(node.getTextContent().trim());
+        }
+        
+        NodeList childNodes = node.getChildNodes();
+        for (int i = 0; i < childNodes.getLength(); i++) {
+            trimTextNodes(childNodes.item(i));
         }
     }
 

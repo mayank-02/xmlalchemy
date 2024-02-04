@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,6 +37,8 @@ public class MainIntegrationTest {
                     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
                     DocumentBuilder db = dbf.newDocumentBuilder();
                     Document expectedDocument = db.parse(expectedOutputFile);
+                    expectedDocument.normalize();
+                    Main.trimTextNodes(expectedDocument.getDocumentElement());
                     assertResult(baseName, expectedDocument, actualNodes);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
