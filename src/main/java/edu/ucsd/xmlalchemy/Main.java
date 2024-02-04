@@ -9,6 +9,8 @@ import edu.ucsd.xmlalchemy.xpath.AbsolutePathDescendant;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -21,10 +23,18 @@ import org.w3c.dom.Node;
 
 public class Main {
     public static void main(String[] args) {
-        String inputFilename = args[0];
-        String outputFilename = args[1];
+        String filename = args[0];
         try {
-            CharStream charStream = CharStreams.fromFileName(inputFilename);
+            var nodes = query(filename);
+            output(nodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Node> query(String filename) {
+        try {
+            CharStream charStream = CharStreams.fromFileName(filename);
             ExprLexer lexer = new ExprLexer(charStream);
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             ExprParser parser = new ExprParser(tokens);
@@ -50,13 +60,14 @@ public class Main {
             List<Node> inputNodes = new ArrayList<>();
             inputNodes.add(document);
 
-            output(absolutePathExpr.evaluate(inputNodes), outputFilename);
+            return absolutePathExpr.evaluate(inputNodes);
         } catch (Exception e) {
             e.printStackTrace();
+            return new ArrayList<Node>();
         }
     }
 
-    public static void output(List<Node> result, String outputFilename) {
+    public static void output(List<Node> result) {
         try {
             var dbFactory = DocumentBuilderFactory.newInstance();
             var dBuilder = dbFactory.newDocumentBuilder();
@@ -77,10 +88,6 @@ public class Main {
             var source = new DOMSource(doc);
             var consoleResult = new StreamResult(System.out);
             tf.transform(source, consoleResult);
-
-            var fileOutputStream = new FileOutputStream(outputFilename);
-            var fileResult = new StreamResult(fileOutputStream);
-            tf.transform(source, fileResult);
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
