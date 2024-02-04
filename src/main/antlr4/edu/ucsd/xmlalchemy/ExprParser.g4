@@ -9,12 +9,12 @@ absolutePath
     ;
 
 relativePath
-    : tagName = STRING													# tagName
+    : tagName = NAME													# tagName
 	| WILDCARD															# wildcard
 	| SINGLE_DOT														# current
 	| DOUBLE_DOT														# parent
 	| TEXT																# text
-	| AT_SYMBOL attributeName = STRING									# attributeName
+	| AT_SYMBOL attributeName = NAME									# attributeName
 	| LEFT_PAREN relativePath RIGHT_PAREN								# relativePathParenthesized
 	| left = relativePath SLASH right = relativePath					# relativePathChild
 	| left = relativePath DOUBLE_SLASH right = relativePath				# relativePathDescendant
@@ -28,7 +28,7 @@ pathFilter
 	| left = relativePath VALUE_EQUALITY_KEYWORD right = relativePath		# pathFilterValueEqualKeyword
 	| left = relativePath IDENTITY_EQUALITY_OPERATOR right = relativePath	# pathFilterIdentityEqualOperator
 	| left = relativePath IDENTITY_EQUALITY_KEYWORD right = relativePath    # pathFilterIdentityEqualKeyword
-	| relativePath VALUE_EQUALITY_OPERATOR STRING_LITERAL	                # pathFilterEqualStringLiteral
+	| relativePath VALUE_EQUALITY_OPERATOR stringLiteral = STRING	        # pathFilterEqualStringLiteral
 	| LEFT_PAREN pathFilter RIGHT_PAREN						                # pathFilterParenthesized
 	| left = pathFilter LOGICAL_AND right = pathFilter		                # pathFilterAnd
 	| left = pathFilter LOGICAL_OR right = pathFilter		                # pathFilterOr
@@ -36,5 +36,5 @@ pathFilter
     ;
 
 documentName
-    : DOCUMENT LEFT_PAREN FILENAME RIGHT_PAREN
+    : DOCUMENT LEFT_PAREN filename = STRING RIGHT_PAREN
     ;

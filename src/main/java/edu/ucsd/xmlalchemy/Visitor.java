@@ -8,7 +8,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     @Override
     public Expression visitAbsolutePathChild(AbsolutePathChildContext ctx) {
         Expression relativePath = visit(ctx.relativePath());
-        return new AbsolutePathChild(ctx.documentName().FILENAME().getText(), relativePath);
+        return new AbsolutePathChild(ctx.documentName().filename.getText(), relativePath);
     }
 
     @Override
@@ -131,7 +131,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     @Override
     public Expression visitAbsolutePathDescendant(AbsolutePathDescendantContext ctx) {
         Expression relativePath = visit(ctx.relativePath());
-        return new AbsolutePathDescendant(ctx.documentName().FILENAME().getText(), relativePath);
+        return new AbsolutePathDescendant(ctx.documentName().filename.getText(), relativePath);
     }
 
     @Override
@@ -144,6 +144,6 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     @Override
     public Expression visitPathFilterEqualStringLiteral(PathFilterEqualStringLiteralContext ctx) {
         var leftExpression = visit(ctx.relativePath());
-        return new PathFilterEqualStringLiteral(leftExpression, ctx.STRING_LITERAL().getText());
+        return new PathFilterEqualStringLiteral(leftExpression, ctx.stringLiteral.getText());
     }
 }
