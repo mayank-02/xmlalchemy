@@ -2,9 +2,9 @@
     <SCENE>
         <TITLE>SCENE II.  A public place.</TITLE>
         <STAGEDIR>Flourish. Enter CAESAR; ANTONY, for the course;
-            CALPURNIA, PORTIA, DECIUS BRUTUS, CICERO, BRUTUS,
-            CASSIUS, and CASCA; a great crowd following, among
-            them a Soothsayer</STAGEDIR>
+CALPURNIA, PORTIA, DECIUS BRUTUS, CICERO, BRUTUS,
+CASSIUS, and CASCA; a great crowd following, among
+them a Soothsayer</STAGEDIR>
         <SPEECH>
             <SPEAKER>CAESAR</SPEAKER>
             <LINE>Calpurnia!</LINE>
@@ -608,7 +608,7 @@
     <SCENE>
         <TITLE>SCENE II.  CAESAR's house.</TITLE>
         <STAGEDIR>Thunder and lightning. Enter CAESAR, in his
-            night-gown</STAGEDIR>
+night-gown</STAGEDIR>
         <SPEECH>
             <SPEAKER>CAESAR</SPEAKER>
             <LINE>Nor heaven nor earth have been at peace to-night:</LINE>
@@ -797,7 +797,7 @@
             <LINE>I am ashamed I did yield to them.</LINE>
             <LINE>Give me my robe, for I will go.</LINE>
             <STAGEDIR>Enter PUBLIUS, BRUTUS, LIGARIUS, METELLUS, CASCA,
-                TREBONIUS, and CINNA</STAGEDIR>
+TREBONIUS, and CINNA</STAGEDIR>
             <LINE>And look where Publius is come to fetch me.</LINE>
         </SPEECH>
         <SPEECH>
@@ -861,10 +861,10 @@
     <SCENE>
         <TITLE>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</TITLE>
         <STAGEDIR>A crowd of people; among them ARTEMIDORUS and the
-            Soothsayer. Flourish. Enter CAESAR, BRUTUS,
-            CASSIUS, CASCA, DECIUS BRUTUS, METELLUS CIMBER,
-            TREBONIUS, CINNA, ANTONY, LEPIDUS, POPILIUS,
-            PUBLIUS, and others</STAGEDIR>
+Soothsayer. Flourish. Enter CAESAR, BRUTUS,
+CASSIUS, CASCA, DECIUS BRUTUS, METELLUS CIMBER,
+TREBONIUS, CINNA, ANTONY, LEPIDUS, POPILIUS,
+PUBLIUS, and others</STAGEDIR>
         <SPEECH>
             <SPEAKER>CAESAR</SPEAKER>
             <LINE>
@@ -911,7 +911,7 @@
             <LINE>Come to the Capitol.</LINE>
         </SPEECH>
         <STAGEDIR>CAESAR goes up to the Senate-House, the rest
-            following</STAGEDIR>
+following</STAGEDIR>
         <SPEECH>
             <SPEAKER>POPILIUS</SPEAKER>
             <LINE>I wish your enterprise to-day may thrive.</LINE>
@@ -1061,7 +1061,7 @@
             <LINE>Speak, hands for me!</LINE>
         </SPEECH>
         <STAGEDIR>CASCA first, then the other Conspirators and
-            BRUTUS stab CAESAR</STAGEDIR>
+BRUTUS stab CAESAR</STAGEDIR>
         <SPEECH>
             <SPEAKER>CAESAR</SPEAKER>
             <LINE>Et tu, Brute! Then fall, Caesar.</LINE>

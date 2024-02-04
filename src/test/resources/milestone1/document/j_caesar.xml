@@ -206,9 +206,9 @@
         <SCENE>
             <TITLE>SCENE II.  A public place.</TITLE>
             <STAGEDIR>Flourish. Enter CAESAR; ANTONY, for the course;
-                CALPURNIA, PORTIA, DECIUS BRUTUS, CICERO, BRUTUS,
-                CASSIUS, and CASCA; a great crowd following, among
-                them a Soothsayer</STAGEDIR>
+CALPURNIA, PORTIA, DECIUS BRUTUS, CICERO, BRUTUS,
+CASSIUS, and CASCA; a great crowd following, among
+them a Soothsayer</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CAESAR</SPEAKER>
                 <LINE>Calpurnia!</LINE>
@@ -812,7 +812,7 @@
         <SCENE>
             <TITLE>SCENE III.  The same. A street.</TITLE>
             <STAGEDIR>Thunder and lightning. Enter from opposite sides,
-                CASCA, with his sword drawn, and CICERO</STAGEDIR>
+CASCA, with his sword drawn, and CICERO</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CICERO</SPEAKER>
                 <LINE>Good even, Casca: brought you Caesar home?</LINE>
@@ -1265,7 +1265,7 @@
                 <LINE>To hide thee from prevention.</LINE>
             </SPEECH>
             <STAGEDIR>Enter the conspirators, CASSIUS, CASCA, DECIUS
-                BRUTUS, CINNA, METELLUS CIMBER, and TREBONIUS</STAGEDIR>
+BRUTUS, CINNA, METELLUS CIMBER, and TREBONIUS</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CASSIUS</SPEAKER>
                 <LINE>I think we are too bold upon your rest:</LINE>
@@ -1735,7 +1735,7 @@
         <SCENE>
             <TITLE>SCENE II.  CAESAR's house.</TITLE>
             <STAGEDIR>Thunder and lightning. Enter CAESAR, in his
-                night-gown</STAGEDIR>
+night-gown</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CAESAR</SPEAKER>
                 <LINE>Nor heaven nor earth have been at peace to-night:</LINE>
@@ -1924,7 +1924,7 @@
                 <LINE>I am ashamed I did yield to them.</LINE>
                 <LINE>Give me my robe, for I will go.</LINE>
                 <STAGEDIR>Enter PUBLIUS, BRUTUS, LIGARIUS, METELLUS, CASCA,
-                    TREBONIUS, and CINNA</STAGEDIR>
+TREBONIUS, and CINNA</STAGEDIR>
                 <LINE>And look where Publius is come to fetch me.</LINE>
             </SPEECH>
             <SPEECH>
@@ -2128,10 +2128,10 @@
         <SCENE>
             <TITLE>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</TITLE>
             <STAGEDIR>A crowd of people; among them ARTEMIDORUS and the
-                Soothsayer. Flourish. Enter CAESAR, BRUTUS,
-                CASSIUS, CASCA, DECIUS BRUTUS, METELLUS CIMBER,
-                TREBONIUS, CINNA, ANTONY, LEPIDUS, POPILIUS,
-                PUBLIUS, and others</STAGEDIR>
+Soothsayer. Flourish. Enter CAESAR, BRUTUS,
+CASSIUS, CASCA, DECIUS BRUTUS, METELLUS CIMBER,
+TREBONIUS, CINNA, ANTONY, LEPIDUS, POPILIUS,
+PUBLIUS, and others</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CAESAR</SPEAKER>
                 <LINE>
@@ -2178,7 +2178,7 @@
                 <LINE>Come to the Capitol.</LINE>
             </SPEECH>
             <STAGEDIR>CAESAR goes up to the Senate-House, the rest
-                following</STAGEDIR>
+following</STAGEDIR>
             <SPEECH>
                 <SPEAKER>POPILIUS</SPEAKER>
                 <LINE>I wish your enterprise to-day may thrive.</LINE>
@@ -2328,7 +2328,7 @@
                 <LINE>Speak, hands for me!</LINE>
             </SPEECH>
             <STAGEDIR>CASCA first, then the other Conspirators and
-                BRUTUS stab CAESAR</STAGEDIR>
+BRUTUS stab CAESAR</STAGEDIR>
             <SPEECH>
                 <SPEAKER>CAESAR</SPEAKER>
                 <LINE>Et tu, Brute! Then fall, Caesar.</LINE>
@@ -2763,7 +2763,7 @@
                 <LINE>When severally we hear them rendered.</LINE>
             </SPEECH>
             <STAGEDIR>Exit CASSIUS, with some of the Citizens. BRUTUS
-                goes into the pulpit</STAGEDIR>
+goes into the pulpit</STAGEDIR>
             <SPEECH>
                 <SPEAKER>Third Citizen</SPEAKER>
                 <LINE>The noble Brutus is ascended: silence!</LINE>
@@ -3530,7 +3530,7 @@
         <SCENE>
             <TITLE>SCENE II.  Camp near Sardis. Before BRUTUS's tent.</TITLE>
             <STAGEDIR>Drum. Enter BRUTUS, LUCILIUS, LUCIUS, and
-                Soldiers; TITINIUS and PINDARUS meeting them</STAGEDIR>
+Soldiers; TITINIUS and PINDARUS meeting them</STAGEDIR>
             <SPEECH>
                 <SPEAKER>BRUTUS</SPEAKER>
                 <LINE>Stand, ho!</LINE>
@@ -4534,7 +4534,7 @@
             </SPEECH>
             <STAGEDIR>March</STAGEDIR>
             <STAGEDIR>Drum. Enter BRUTUS, CASSIUS, and their Army;
-                LUCILIUS, TITINIUS, MESSALA, and others</STAGEDIR>
+LUCILIUS, TITINIUS, MESSALA, and others</STAGEDIR>
             <SPEECH>
                 <SPEAKER>BRUTUS</SPEAKER>
                 <LINE>They stand, and would have parley.</LINE>
@@ -4970,7 +4970,7 @@
             </SPEECH>
             <STAGEDIR>Kills himself</STAGEDIR>
             <STAGEDIR>Alarum. Re-enter MESSALA, with BRUTUS, CATO,
-                STRATO, VOLUMNIUS, and LUCILIUS</STAGEDIR>
+STRATO, VOLUMNIUS, and LUCILIUS</STAGEDIR>
             <SPEECH>
                 <SPEAKER>BRUTUS</SPEAKER>
                 <LINE>Where, where, Messala, doth his body lie?</LINE>
@@ -5020,7 +5020,7 @@
         <SCENE>
             <TITLE>SCENE IV.  Another part of the field.</TITLE>
             <STAGEDIR>Alarum. Enter fighting, Soldiers of both armies;
-                then BRUTUS, CATO, LUCILIUS, and others</STAGEDIR>
+then BRUTUS, CATO, LUCILIUS, and others</STAGEDIR>
             <SPEECH>
                 <SPEAKER>BRUTUS</SPEAKER>
                 <LINE>Yet, countrymen, O, yet hold up your heads!</LINE>
@@ -5098,7 +5098,7 @@
         <SCENE>
             <TITLE>SCENE V.  Another part of the field.</TITLE>
             <STAGEDIR>Enter BRUTUS, DARDANIUS, CLITUS, STRATO, and
-                VOLUMNIUS</STAGEDIR>
+VOLUMNIUS</STAGEDIR>
             <SPEECH>
                 <SPEAKER>BRUTUS</SPEAKER>
                 <LINE>Come, poor remains of friends, rest on this rock.</LINE>
@@ -5240,7 +5240,7 @@
             </SPEECH>
             <STAGEDIR>Dies</STAGEDIR>
             <STAGEDIR>Alarum. Retreat. Enter OCTAVIUS, ANTONY, MESSALA,
-                LUCILIUS, and the army</STAGEDIR>
+LUCILIUS, and the army</STAGEDIR>
             <SPEECH>
                 <SPEAKER>OCTAVIUS</SPEAKER>
                 <LINE>What man is that?</LINE>
