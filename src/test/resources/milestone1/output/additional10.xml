@@ -1,0 +1,19 @@
+<result>
+    <apple>
+        <banana>
+            <orange>value1</orange>
+            <mango>value2</mango>
+            <grape>value3</grape>
+        </banana>
+        <kiwi>
+            <pear>someValue</pear>
+        </kiwi>
+        <pear>
+            <apple>value1</apple>
+            <banana attribute="attributeValue">value2</banana>
+            <orange>
+                <banana>value2</banana>
+            </orange>
+        </pear>
+    </apple>
+</result>

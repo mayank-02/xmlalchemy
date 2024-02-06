@@ -1,1 +1,0 @@
-doc("src/main/resources/Test3.xml")/ROOT/A[X/Y or Y]

@@ -1,0 +1,1 @@
+doc("src/test/resources/milestone1/document/additional5.xml")/ROOT/A[X/Y or Y]

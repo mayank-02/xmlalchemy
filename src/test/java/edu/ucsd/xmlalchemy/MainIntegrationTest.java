@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.io.IOException;
 
 class MainIntegrationTest {
 
@@ -18,7 +17,7 @@ class MainIntegrationTest {
     private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/milestone1/output";
 
     @Test
-    void testAppWithMultipleInputFiles() throws IOException {
+    void testAppWithMultipleInputFiles() throws Exception {
         var testDataDir = new File(TEST_DATA_DIR);
         var inputFiles = testDataDir.listFiles();
 
@@ -42,6 +41,7 @@ class MainIntegrationTest {
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
+                    throw e;
                 }
 
             }

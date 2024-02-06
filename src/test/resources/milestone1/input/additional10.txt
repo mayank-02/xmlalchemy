@@ -1,0 +1,1 @@
+doc("src/test/resources/milestone1/document/fruitbasket.xml")//apple[banana/orange = "value1" and (banana/mango = "value0" or banana/grape = "value3")]
