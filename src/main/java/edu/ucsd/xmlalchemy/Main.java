@@ -1,26 +1,19 @@
 package edu.ucsd.xmlalchemy;
 
-import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.antlr.v4.runtime.tree.ParseTree;
 import edu.ucsd.xmlalchemy.xpath.AbsolutePathChild;
 import edu.ucsd.xmlalchemy.xpath.AbsolutePathDescendant;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,15 +28,16 @@ public class Main {
 
     public static List<Node> query(String filename) {
         try {
-            CharStream charStream = CharStreams.fromFileName(filename);
-            ExprLexer lexer = new ExprLexer(charStream);
-            CommonTokenStream tokens = new CommonTokenStream(lexer);
-            ExprParser parser = new ExprParser(tokens);
-            ParseTree tree = parser.absolutePath();
+            var charStream = CharStreams.fromFileName(filename);
+            var lexer = new ExprLexer(charStream);
+            var tokens = new CommonTokenStream(lexer);
+            var parser = new ExprParser(tokens);
+            var tree = parser.absolutePath();
 
-            Visitor visitor = new Visitor();
-            File file;
+            var visitor = new Visitor();
             var absolutePathExpr = visitor.visit(tree);
+            
+            File file;
             if (absolutePathExpr instanceof AbsolutePathChild) {
                 var absolutePath = ((AbsolutePathChild) absolutePathExpr);
                 file = new File(absolutePath.getFileName().replace("\"", ""));
@@ -54,19 +48,19 @@ public class Main {
                 throw new Exception("Invalid absolute path expression");
             }
 
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse(file);
+            var dbf = DocumentBuilderFactory.newInstance();
+            var db = dbf.newDocumentBuilder();
+            var document = db.parse(file);
             document.normalize();
             trimTextNodes(document.getDocumentElement());
 
-            List<Node> inputNodes = new ArrayList<>();
+            var inputNodes = new ArrayList<Node>();
             inputNodes.add(document);
 
             return absolutePathExpr.evaluate(inputNodes);
         } catch (Exception e) {
             e.printStackTrace();
-            return new ArrayList<Node>();
+            return new ArrayList<>();
         }
     }
 
@@ -74,8 +68,8 @@ public class Main {
         if (node.getNodeType() == Node.TEXT_NODE) {
             node.setTextContent(node.getTextContent().trim());
         }
-        
-        NodeList childNodes = node.getChildNodes();
+
+        var childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             trimTextNodes(childNodes.item(i));
         }
@@ -95,10 +89,11 @@ public class Main {
             doc.appendChild(parentElement);
 
             final var tfFactory = TransformerFactory.newInstance();
-            var tf = tfFactory.newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
+            var tf = tfFactory
+                    .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
             tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-            
+
             var source = new DOMSource(doc);
             var consoleResult = new StreamResult(System.out);
             tf.transform(source, consoleResult);
