@@ -1,1 +1,1 @@
-doc("src/test/resources/milestone1/document/fruitbasket.xml")//apple[not (.//kiwi/pear = "someValue")]
+doc("src/test/resources/milestone1/document/fruitbasket.xml")//apple[not (.//kiwi/pear/text() = "someValue")]
