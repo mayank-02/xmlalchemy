@@ -1,0 +1,1 @@
+doc("src/test/resources/milestone1/document/j_caesar.xml")//SPEECH[STAGEDIR][SPEAKER/text() = "CAESAR"]

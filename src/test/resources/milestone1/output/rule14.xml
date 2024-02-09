@@ -1,0 +1,36 @@
+<result>
+    <SPEECH>
+        <SPEAKER>CAESAR</SPEAKER>
+        <LINE>Cowards die many times before their deaths;</LINE>
+        <LINE>The valiant never taste of death but once.</LINE>
+        <LINE>Of all the wonders that I yet have heard.</LINE>
+        <LINE>It seems to me most strange that men should fear;</LINE>
+        <LINE>Seeing that death, a necessary end,</LINE>
+        <LINE>Will come when it will come.</LINE>
+        <STAGEDIR>Re-enter Servant</STAGEDIR>
+        <LINE>What say the augurers?</LINE>
+    </SPEECH>
+    <SPEECH>
+        <SPEAKER>CAESAR</SPEAKER>
+        <LINE>Mark Antony shall say I am not well,</LINE>
+        <LINE>And, for thy humour, I will stay at home.</LINE>
+        <STAGEDIR>Enter DECIUS BRUTUS</STAGEDIR>
+        <LINE>Here's Decius Brutus, he shall tell them so.</LINE>
+    </SPEECH>
+    <SPEECH>
+        <SPEAKER>CAESAR</SPEAKER>
+        <LINE>How foolish do your fears seem now, Calpurnia!</LINE>
+        <LINE>I am ashamed I did yield to them.</LINE>
+        <LINE>Give me my robe, for I will go.</LINE>
+        <STAGEDIR>Enter PUBLIUS, BRUTUS, LIGARIUS, METELLUS, CASCA,
+TREBONIUS, and CINNA</STAGEDIR>
+        <LINE>And look where Publius is come to fetch me.</LINE>
+    </SPEECH>
+    <SPEECH>
+        <SPEAKER>CAESAR</SPEAKER>
+        <LINE>I thank you for your pains and courtesy.</LINE>
+        <STAGEDIR>Enter ANTONY</STAGEDIR>
+        <LINE>See! Antony, that revels long o' nights,</LINE>
+        <LINE>Is notwithstanding up. Good morrow, Antony.</LINE>
+    </SPEECH>
+</result>

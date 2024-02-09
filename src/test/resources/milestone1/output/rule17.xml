@@ -1,0 +1,1184 @@
+<result>
+    <SCENE>
+        <TITLE>SCENE I.  Rome. Before the Capitol; the Senate sitting above.</TITLE>
+        <STAGEDIR>A crowd of people; among them ARTEMIDORUS and the
+Soothsayer. Flourish. Enter CAESAR, BRUTUS,
+CASSIUS, CASCA, DECIUS BRUTUS, METELLUS CIMBER,
+TREBONIUS, CINNA, ANTONY, LEPIDUS, POPILIUS,
+PUBLIUS, and others</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>
+                <STAGEDIR>To the Soothsayer</STAGEDIR>  The ides of March are come.
+                
+            </LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Soothsayer</SPEAKER>
+            <LINE>Ay, Caesar; but not gone.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ARTEMIDORUS</SPEAKER>
+            <LINE>Hail, Caesar! read this schedule.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>DECIUS BRUTUS</SPEAKER>
+            <LINE>Trebonius doth desire you to o'erread,</LINE>
+            <LINE>At your best leisure, this his humble suit.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ARTEMIDORUS</SPEAKER>
+            <LINE>O Caesar, read mine first; for mine's a suit</LINE>
+            <LINE>That touches Caesar nearer: read it, great Caesar.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>What touches us ourself shall be last served.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ARTEMIDORUS</SPEAKER>
+            <LINE>Delay not, Caesar; read it instantly.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>What, is the fellow mad?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>PUBLIUS</SPEAKER>
+            <LINE>Sirrah, give place.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>What, urge you your petitions in the street?</LINE>
+            <LINE>Come to the Capitol.</LINE>
+        </SPEECH>
+        <STAGEDIR>CAESAR goes up to the Senate-House, the rest
+following</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>POPILIUS</SPEAKER>
+            <LINE>I wish your enterprise to-day may thrive.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>What enterprise, Popilius?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>POPILIUS</SPEAKER>
+            <LINE>Fare you well.</LINE>
+        </SPEECH>
+        <STAGEDIR>Advances to CAESAR</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>What said Popilius Lena?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>He wish'd to-day our enterprise might thrive.</LINE>
+            <LINE>I fear our purpose is discovered.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Look, how he makes to Caesar; mark him.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Casca, be sudden, for we fear prevention.</LINE>
+            <LINE>Brutus, what shall be done? If this be known,</LINE>
+            <LINE>Cassius or Caesar never shall turn back,</LINE>
+            <LINE>For I will slay myself.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Cassius, be constant:</LINE>
+            <LINE>Popilius Lena speaks not of our purposes;</LINE>
+            <LINE>For, look, he smiles, and Caesar doth not change.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Trebonius knows his time; for, look you, Brutus.</LINE>
+            <LINE>He draws Mark Antony out of the way.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt ANTONY and TREBONIUS</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>DECIUS BRUTUS</SPEAKER>
+            <LINE>Where is Metellus Cimber? Let him go,</LINE>
+            <LINE>And presently prefer his suit to Caesar.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>He is address'd: press near and second him.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CINNA</SPEAKER>
+            <LINE>Casca, you are the first that rears your hand.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>Are we all ready? What is now amiss</LINE>
+            <LINE>That Caesar and his senate must redress?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>METELLUS CIMBER</SPEAKER>
+            <LINE>Most high, most mighty, and most puissant Caesar,</LINE>
+            <LINE>Metellus Cimber throws before thy seat</LINE>
+            <LINE>An humble heart,--</LINE>
+        </SPEECH>
+        <STAGEDIR>Kneeling</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>I must prevent thee, Cimber.</LINE>
+            <LINE>These couchings and these lowly courtesies</LINE>
+            <LINE>Might fire the blood of ordinary men,</LINE>
+            <LINE>And turn pre-ordinance and first decree</LINE>
+            <LINE>Into the law of children. Be not fond,</LINE>
+            <LINE>To think that Caesar bears such rebel blood</LINE>
+            <LINE>That will be thaw'd from the true quality</LINE>
+            <LINE>With that which melteth fools; I mean, sweet words,</LINE>
+            <LINE>Low-crooked court'sies and base spaniel-fawning.</LINE>
+            <LINE>Thy brother by decree is banished:</LINE>
+            <LINE>If thou dost bend and pray and fawn for him,</LINE>
+            <LINE>I spurn thee like a cur out of my way.</LINE>
+            <LINE>Know, Caesar doth not wrong, nor without cause</LINE>
+            <LINE>Will he be satisfied.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>METELLUS CIMBER</SPEAKER>
+            <LINE>Is there no voice more worthy than my own</LINE>
+            <LINE>To sound more sweetly in great Caesar's ear</LINE>
+            <LINE>For the repealing of my banish'd brother?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>I kiss thy hand, but not in flattery, Caesar;</LINE>
+            <LINE>Desiring thee that Publius Cimber may</LINE>
+            <LINE>Have an immediate freedom of repeal.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>What, Brutus!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Pardon, Caesar; Caesar, pardon:</LINE>
+            <LINE>As low as to thy foot doth Cassius fall,</LINE>
+            <LINE>To beg enfranchisement for Publius Cimber.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>I could be well moved, if I were as you:</LINE>
+            <LINE>If I could pray to move, prayers would move me:</LINE>
+            <LINE>But I am constant as the northern star,</LINE>
+            <LINE>Of whose true-fix'd and resting quality</LINE>
+            <LINE>There is no fellow in the firmament.</LINE>
+            <LINE>The skies are painted with unnumber'd sparks,</LINE>
+            <LINE>They are all fire and every one doth shine,</LINE>
+            <LINE>But there's but one in all doth hold his place:</LINE>
+            <LINE>So in the world; 'tis furnish'd well with men,</LINE>
+            <LINE>And men are flesh and blood, and apprehensive;</LINE>
+            <LINE>Yet in the number I do know but one</LINE>
+            <LINE>That unassailable holds on his rank,</LINE>
+            <LINE>Unshaked of motion: and that I am he,</LINE>
+            <LINE>Let me a little show it, even in this;</LINE>
+            <LINE>That I was constant Cimber should be banish'd,</LINE>
+            <LINE>And constant do remain to keep him so.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CINNA</SPEAKER>
+            <LINE>O Caesar,--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>Hence! wilt thou lift up Olympus?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>DECIUS BRUTUS</SPEAKER>
+            <LINE>Great Caesar,--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>Doth not Brutus bootless kneel?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASCA</SPEAKER>
+            <LINE>Speak, hands for me!</LINE>
+        </SPEECH>
+        <STAGEDIR>CASCA first, then the other Conspirators and
+BRUTUS stab CAESAR</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>CAESAR</SPEAKER>
+            <LINE>Et tu, Brute! Then fall, Caesar.</LINE>
+        </SPEECH>
+        <STAGEDIR>Dies</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>CINNA</SPEAKER>
+            <LINE>Liberty! Freedom! Tyranny is dead!</LINE>
+            <LINE>Run hence, proclaim, cry it about the streets.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Some to the common pulpits, and cry out</LINE>
+            <LINE>'Liberty, freedom, and enfranchisement!'</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>People and senators, be not affrighted;</LINE>
+            <LINE>Fly not; stand stiff: ambition's debt is paid.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASCA</SPEAKER>
+            <LINE>Go to the pulpit, Brutus.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>DECIUS BRUTUS</SPEAKER>
+            <LINE>And Cassius too.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Where's Publius?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CINNA</SPEAKER>
+            <LINE>Here, quite confounded with this mutiny.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>METELLUS CIMBER</SPEAKER>
+            <LINE>Stand fast together, lest some friend of Caesar's</LINE>
+            <LINE>Should chance--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Talk not of standing. Publius, good cheer;</LINE>
+            <LINE>There is no harm intended to your person,</LINE>
+            <LINE>Nor to no Roman else: so tell them, Publius.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>And leave us, Publius; lest that the people,</LINE>
+            <LINE>Rushing on us, should do your age some mischief.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Do so: and let no man abide this deed,</LINE>
+            <LINE>But we the doers.</LINE>
+        </SPEECH>
+        <STAGEDIR>Re-enter TREBONIUS</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Where is Antony?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>TREBONIUS</SPEAKER>
+            <LINE>Fled to his house amazed:</LINE>
+            <LINE>Men, wives and children stare, cry out and run</LINE>
+            <LINE>As it were doomsday.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Fates, we will know your pleasures:</LINE>
+            <LINE>That we shall die, we know; 'tis but the time</LINE>
+            <LINE>And drawing days out, that men stand upon.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Why, he that cuts off twenty years of life</LINE>
+            <LINE>Cuts off so many years of fearing death.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Grant that, and then is death a benefit:</LINE>
+            <LINE>So are we Caesar's friends, that have abridged</LINE>
+            <LINE>His time of fearing death. Stoop, Romans, stoop,</LINE>
+            <LINE>And let us bathe our hands in Caesar's blood</LINE>
+            <LINE>Up to the elbows, and besmear our swords:</LINE>
+            <LINE>Then walk we forth, even to the market-place,</LINE>
+            <LINE>And, waving our red weapons o'er our heads,</LINE>
+            <LINE>Let's all cry 'Peace, freedom and liberty!'</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Stoop, then, and wash. How many ages hence</LINE>
+            <LINE>Shall this our lofty scene be acted over</LINE>
+            <LINE>In states unborn and accents yet unknown!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>How many times shall Caesar bleed in sport,</LINE>
+            <LINE>That now on Pompey's basis lies along</LINE>
+            <LINE>No worthier than the dust!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>So oft as that shall be,</LINE>
+            <LINE>So often shall the knot of us be call'd</LINE>
+            <LINE>The men that gave their country liberty.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>DECIUS BRUTUS</SPEAKER>
+            <LINE>What, shall we forth?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Ay, every man away:</LINE>
+            <LINE>Brutus shall lead; and we will grace his heels</LINE>
+            <LINE>With the most boldest and best hearts of Rome.</LINE>
+        </SPEECH>
+        <STAGEDIR>Enter a Servant</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Soft! who comes here? A friend of Antony's.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>Thus, Brutus, did my master bid me kneel:</LINE>
+            <LINE>Thus did Mark Antony bid me fall down;</LINE>
+            <LINE>And, being prostrate, thus he bade me say:</LINE>
+            <LINE>Brutus is noble, wise, valiant, and honest;</LINE>
+            <LINE>Caesar was mighty, bold, royal, and loving:</LINE>
+            <LINE>Say I love Brutus, and I honour him;</LINE>
+            <LINE>Say I fear'd Caesar, honour'd him and loved him.</LINE>
+            <LINE>If Brutus will vouchsafe that Antony</LINE>
+            <LINE>May safely come to him, and be resolved</LINE>
+            <LINE>How Caesar hath deserved to lie in death,</LINE>
+            <LINE>Mark Antony shall not love Caesar dead</LINE>
+            <LINE>So well as Brutus living; but will follow</LINE>
+            <LINE>The fortunes and affairs of noble Brutus</LINE>
+            <LINE>Thorough the hazards of this untrod state</LINE>
+            <LINE>With all true faith. So says my master Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Thy master is a wise and valiant Roman;</LINE>
+            <LINE>I never thought him worse.</LINE>
+            <LINE>Tell him, so please him come unto this place,</LINE>
+            <LINE>He shall be satisfied; and, by my honour,</LINE>
+            <LINE>Depart untouch'd.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>I'll fetch him presently.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exit</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>I know that we shall have him well to friend.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>I wish we may: but yet have I a mind</LINE>
+            <LINE>That fears him much; and my misgiving still</LINE>
+            <LINE>Falls shrewdly to the purpose.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>But here comes Antony.</LINE>
+            <STAGEDIR>Re-enter ANTONY</STAGEDIR>
+            <LINE>Welcome, Mark Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>O mighty Caesar! dost thou lie so low?</LINE>
+            <LINE>Are all thy conquests, glories, triumphs, spoils,</LINE>
+            <LINE>Shrunk to this little measure? Fare thee well.</LINE>
+            <LINE>I know not, gentlemen, what you intend,</LINE>
+            <LINE>Who else must be let blood, who else is rank:</LINE>
+            <LINE>If I myself, there is no hour so fit</LINE>
+            <LINE>As Caesar's death hour, nor no instrument</LINE>
+            <LINE>Of half that worth as those your swords, made rich</LINE>
+            <LINE>With the most noble blood of all this world.</LINE>
+            <LINE>I do beseech ye, if you bear me hard,</LINE>
+            <LINE>Now, whilst your purpled hands do reek and smoke,</LINE>
+            <LINE>Fulfil your pleasure. Live a thousand years,</LINE>
+            <LINE>I shall not find myself so apt to die:</LINE>
+            <LINE>No place will please me so, no mean of death,</LINE>
+            <LINE>As here by Caesar, and by you cut off,</LINE>
+            <LINE>The choice and master spirits of this age.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>O Antony, beg not your death of us.</LINE>
+            <LINE>Though now we must appear bloody and cruel,</LINE>
+            <LINE>As, by our hands and this our present act,</LINE>
+            <LINE>You see we do, yet see you but our hands</LINE>
+            <LINE>And this the bleeding business they have done:</LINE>
+            <LINE>Our hearts you see not; they are pitiful;</LINE>
+            <LINE>And pity to the general wrong of Rome--</LINE>
+            <LINE>As fire drives out fire, so pity pity--</LINE>
+            <LINE>Hath done this deed on Caesar. For your part,</LINE>
+            <LINE>To you our swords have leaden points, Mark Antony:</LINE>
+            <LINE>Our arms, in strength of malice, and our hearts</LINE>
+            <LINE>Of brothers' temper, do receive you in</LINE>
+            <LINE>With all kind love, good thoughts, and reverence.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Your voice shall be as strong as any man's</LINE>
+            <LINE>In the disposing of new dignities.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Only be patient till we have appeased</LINE>
+            <LINE>The multitude, beside themselves with fear,</LINE>
+            <LINE>And then we will deliver you the cause,</LINE>
+            <LINE>Why I, that did love Caesar when I struck him,</LINE>
+            <LINE>Have thus proceeded.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>I doubt not of your wisdom.</LINE>
+            <LINE>Let each man render me his bloody hand:</LINE>
+            <LINE>First, Marcus Brutus, will I shake with you;</LINE>
+            <LINE>Next, Caius Cassius, do I take your hand;</LINE>
+            <LINE>Now, Decius Brutus, yours: now yours, Metellus;</LINE>
+            <LINE>Yours, Cinna; and, my valiant Casca, yours;</LINE>
+            <LINE>Though last, not last in love, yours, good Trebonius.</LINE>
+            <LINE>Gentlemen all,--alas, what shall I say?</LINE>
+            <LINE>My credit now stands on such slippery ground,</LINE>
+            <LINE>That one of two bad ways you must conceit me,</LINE>
+            <LINE>Either a coward or a flatterer.</LINE>
+            <LINE>That I did love thee, Caesar, O, 'tis true:</LINE>
+            <LINE>If then thy spirit look upon us now,</LINE>
+            <LINE>Shall it not grieve thee dearer than thy death,</LINE>
+            <LINE>To see thy thy Anthony making his peace,</LINE>
+            <LINE>Shaking the bloody fingers of thy foes,</LINE>
+            <LINE>Most noble! in the presence of thy corse?</LINE>
+            <LINE>Had I as many eyes as thou hast wounds,</LINE>
+            <LINE>Weeping as fast as they stream forth thy blood,</LINE>
+            <LINE>It would become me better than to close</LINE>
+            <LINE>In terms of friendship with thine enemies.</LINE>
+            <LINE>Pardon me, Julius! Here wast thou bay'd, brave hart;</LINE>
+            <LINE>Here didst thou fall; and here thy hunters stand,</LINE>
+            <LINE>Sign'd in thy spoil, and crimson'd in thy lethe.</LINE>
+            <LINE>O world, thou wast the forest to this hart;</LINE>
+            <LINE>And this, indeed, O world, the heart of thee.</LINE>
+            <LINE>How like a deer, strucken by many princes,</LINE>
+            <LINE>Dost thou here lie!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Mark Antony,--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Pardon me, Caius Cassius:</LINE>
+            <LINE>The enemies of Caesar shall say this;</LINE>
+            <LINE>Then, in a friend, it is cold modesty.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>I blame you not for praising Caesar so;</LINE>
+            <LINE>But what compact mean you to have with us?</LINE>
+            <LINE>Will you be prick'd in number of our friends;</LINE>
+            <LINE>Or shall we on, and not depend on you?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Therefore I took your hands, but was, indeed,</LINE>
+            <LINE>Sway'd from the point, by looking down on Caesar.</LINE>
+            <LINE>Friends am I with you all and love you all,</LINE>
+            <LINE>Upon this hope, that you shall give me reasons</LINE>
+            <LINE>Why and wherein Caesar was dangerous.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Or else were this a savage spectacle:</LINE>
+            <LINE>Our reasons are so full of good regard</LINE>
+            <LINE>That were you, Antony, the son of Caesar,</LINE>
+            <LINE>You should be satisfied.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>That's all I seek:</LINE>
+            <LINE>And am moreover suitor that I may</LINE>
+            <LINE>Produce his body to the market-place;</LINE>
+            <LINE>And in the pulpit, as becomes a friend,</LINE>
+            <LINE>Speak in the order of his funeral.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>You shall, Mark Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>Brutus, a word with you.</LINE>
+            <STAGEDIR>Aside to BRUTUS</STAGEDIR>
+            <LINE>You know not what you do: do not consent</LINE>
+            <LINE>That Antony speak in his funeral:</LINE>
+            <LINE>Know you how much the people may be moved</LINE>
+            <LINE>By that which he will utter?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>By your pardon;</LINE>
+            <LINE>I will myself into the pulpit first,</LINE>
+            <LINE>And show the reason of our Caesar's death:</LINE>
+            <LINE>What Antony shall speak, I will protest</LINE>
+            <LINE>He speaks by leave and by permission,</LINE>
+            <LINE>And that we are contented Caesar shall</LINE>
+            <LINE>Have all true rites and lawful ceremonies.</LINE>
+            <LINE>It shall advantage more than do us wrong.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>CASSIUS</SPEAKER>
+            <LINE>I know not what may fall; I like it not.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Mark Antony, here, take you Caesar's body.</LINE>
+            <LINE>You shall not in your funeral speech blame us,</LINE>
+            <LINE>But speak all good you can devise of Caesar,</LINE>
+            <LINE>And say you do't by our permission;</LINE>
+            <LINE>Else shall you not have any hand at all</LINE>
+            <LINE>About his funeral: and you shall speak</LINE>
+            <LINE>In the same pulpit whereto I am going,</LINE>
+            <LINE>After my speech is ended.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Be it so.</LINE>
+            <LINE>I do desire no more.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Prepare the body then, and follow us.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt all but ANTONY</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>O, pardon me, thou bleeding piece of earth,</LINE>
+            <LINE>That I am meek and gentle with these butchers!</LINE>
+            <LINE>Thou art the ruins of the noblest man</LINE>
+            <LINE>That ever lived in the tide of times.</LINE>
+            <LINE>Woe to the hand that shed this costly blood!</LINE>
+            <LINE>Over thy wounds now do I prophesy,--</LINE>
+            <LINE>Which, like dumb mouths, do ope their ruby lips,</LINE>
+            <LINE>To beg the voice and utterance of my tongue--</LINE>
+            <LINE>A curse shall light upon the limbs of men;</LINE>
+            <LINE>Domestic fury and fierce civil strife</LINE>
+            <LINE>Shall cumber all the parts of Italy;</LINE>
+            <LINE>Blood and destruction shall be so in use</LINE>
+            <LINE>And dreadful objects so familiar</LINE>
+            <LINE>That mothers shall but smile when they behold</LINE>
+            <LINE>Their infants quarter'd with the hands of war;</LINE>
+            <LINE>All pity choked with custom of fell deeds:</LINE>
+            <LINE>And Caesar's spirit, ranging for revenge,</LINE>
+            <LINE>With Ate by his side come hot from hell,</LINE>
+            <LINE>Shall in these confines with a monarch's voice</LINE>
+            <LINE>Cry  'Havoc,' and let slip the dogs of war;</LINE>
+            <LINE>That this foul deed shall smell above the earth</LINE>
+            <LINE>With carrion men, groaning for burial.</LINE>
+            <STAGEDIR>Enter a Servant</STAGEDIR>
+            <LINE>You serve Octavius Caesar, do you not?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>I do, Mark Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Caesar did write for him to come to Rome.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>He did receive his letters, and is coming;</LINE>
+            <LINE>And bid me say to you by word of mouth--</LINE>
+            <LINE>O Caesar!--</LINE>
+        </SPEECH>
+        <STAGEDIR>Seeing the body</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Thy heart is big, get thee apart and weep.</LINE>
+            <LINE>Passion, I see, is catching; for mine eyes,</LINE>
+            <LINE>Seeing those beads of sorrow stand in thine,</LINE>
+            <LINE>Began to water. Is thy master coming?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>He lies to-night within seven leagues of Rome.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Post back with speed, and tell him what hath chanced:</LINE>
+            <LINE>Here is a mourning Rome, a dangerous Rome,</LINE>
+            <LINE>No Rome of safety for Octavius yet;</LINE>
+            <LINE>Hie hence, and tell him so. Yet, stay awhile;</LINE>
+            <LINE>Thou shalt not back till I have borne this corse</LINE>
+            <LINE>Into the market-place: there shall I try</LINE>
+            <LINE>In my oration, how the people take</LINE>
+            <LINE>The cruel issue of these bloody men;</LINE>
+            <LINE>According to the which, thou shalt discourse</LINE>
+            <LINE>To young Octavius of the state of things.</LINE>
+            <LINE>Lend me your hand.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt with CAESAR's body</STAGEDIR>
+    </SCENE>
+    <SCENE>
+        <TITLE>SCENE II.  The Forum.</TITLE>
+        <STAGEDIR>Enter BRUTUS and CASSIUS, and a throng of Citizens</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>Citizens</SPEAKER>
+            <LINE>We will be satisfied; let us be satisfied.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Then follow me, and give me audience, friends.</LINE>
+            <LINE>Cassius, go you into the other street,</LINE>
+            <LINE>And part the numbers.</LINE>
+            <LINE>Those that will hear me speak, let 'em stay here;</LINE>
+            <LINE>Those that will follow Cassius, go with him;</LINE>
+            <LINE>And public reasons shall be rendered</LINE>
+            <LINE>Of Caesar's death.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>I will hear Brutus speak.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>I will hear Cassius; and compare their reasons,</LINE>
+            <LINE>When severally we hear them rendered.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exit CASSIUS, with some of the Citizens. BRUTUS
+goes into the pulpit</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>The noble Brutus is ascended: silence!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Be patient till the last.</LINE>
+            <LINE>Romans, countrymen, and lovers! hear me for my</LINE>
+            <LINE>cause, and be silent, that you may hear: believe me</LINE>
+            <LINE>for mine honour, and have respect to mine honour, that</LINE>
+            <LINE>you may believe: censure me in your wisdom, and</LINE>
+            <LINE>awake your senses, that you may the better judge.</LINE>
+            <LINE>If there be any in this assembly, any dear friend of</LINE>
+            <LINE>Caesar's, to him I say, that Brutus' love to Caesar</LINE>
+            <LINE>was no less than his. If then that friend demand</LINE>
+            <LINE>why Brutus rose against Caesar, this is my answer:</LINE>
+            <LINE>--Not that I loved Caesar less, but that I loved</LINE>
+            <LINE>Rome more. Had you rather Caesar were living and</LINE>
+            <LINE>die all slaves, than that Caesar were dead, to live</LINE>
+            <LINE>all free men? As Caesar loved me, I weep for him;</LINE>
+            <LINE>as he was fortunate, I rejoice at it; as he was</LINE>
+            <LINE>valiant, I honour him: but, as he was ambitious, I</LINE>
+            <LINE>slew him. There is tears for his love; joy for his</LINE>
+            <LINE>fortune; honour for his valour; and death for his</LINE>
+            <LINE>ambition. Who is here so base that would be a</LINE>
+            <LINE>bondman? If any, speak; for him have I offended.</LINE>
+            <LINE>Who is here so rude that would not be a Roman? If</LINE>
+            <LINE>any, speak; for him have I offended. Who is here so</LINE>
+            <LINE>vile that will not love his country? If any, speak;</LINE>
+            <LINE>for him have I offended. I pause for a reply.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>None, Brutus, none.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Then none have I offended. I have done no more to</LINE>
+            <LINE>Caesar than you shall do to Brutus. The question of</LINE>
+            <LINE>his death is enrolled in the Capitol; his glory not</LINE>
+            <LINE>extenuated, wherein he was worthy, nor his offences</LINE>
+            <LINE>enforced, for which he suffered death.</LINE>
+            <STAGEDIR>Enter ANTONY and others, with CAESAR's body</STAGEDIR>
+            <LINE>Here comes his body, mourned by Mark Antony: who,</LINE>
+            <LINE>though he had no hand in his death, shall receive</LINE>
+            <LINE>the benefit of his dying, a place in the</LINE>
+            <LINE>commonwealth; as which of you shall not? With this</LINE>
+            <LINE>I depart,--that, as I slew my best lover for the</LINE>
+            <LINE>good of Rome, I have the same dagger for myself,</LINE>
+            <LINE>when it shall please my country to need my death.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>Live, Brutus! live, live!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Bring him with triumph home unto his house.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Give him a statue with his ancestors.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Let him be Caesar.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>Caesar's better parts</LINE>
+            <LINE>Shall be crown'd in Brutus.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>We'll bring him to his house</LINE>
+            <LINE>With shouts and clamours.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>My countrymen,--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Peace, silence! Brutus speaks.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Peace, ho!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Good countrymen, let me depart alone,</LINE>
+            <LINE>And, for my sake, stay here with Antony:</LINE>
+            <LINE>Do grace to Caesar's corpse, and grace his speech</LINE>
+            <LINE>Tending to Caesar's glories; which Mark Antony,</LINE>
+            <LINE>By our permission, is allow'd to make.</LINE>
+            <LINE>I do entreat you, not a man depart,</LINE>
+            <LINE>Save I alone, till Antony have spoke.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exit</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Stay, ho! and let us hear Mark Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Let him go up into the public chair;</LINE>
+            <LINE>We'll hear him. Noble Antony, go up.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>For Brutus' sake, I am beholding to you.</LINE>
+        </SPEECH>
+        <STAGEDIR>Goes into the pulpit</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>What does he say of Brutus?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>He says, for Brutus' sake,</LINE>
+            <LINE>He finds himself beholding to us all.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>'Twere best he speak no harm of Brutus here.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>This Caesar was a tyrant.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Nay, that's certain:</LINE>
+            <LINE>We are blest that Rome is rid of him.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Peace! let us hear what Antony can say.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>You gentle Romans,--</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Citizens</SPEAKER>
+            <LINE>Peace, ho! let us hear him.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Friends, Romans, countrymen, lend me your ears;</LINE>
+            <LINE>I come to bury Caesar, not to praise him.</LINE>
+            <LINE>The evil that men do lives after them;</LINE>
+            <LINE>The good is oft interred with their bones;</LINE>
+            <LINE>So let it be with Caesar. The noble Brutus</LINE>
+            <LINE>Hath told you Caesar was ambitious:</LINE>
+            <LINE>If it were so, it was a grievous fault,</LINE>
+            <LINE>And grievously hath Caesar answer'd it.</LINE>
+            <LINE>Here, under leave of Brutus and the rest--</LINE>
+            <LINE>For Brutus is an honourable man;</LINE>
+            <LINE>So are they all, all honourable men--</LINE>
+            <LINE>Come I to speak in Caesar's funeral.</LINE>
+            <LINE>He was my friend, faithful and just to me:</LINE>
+            <LINE>But Brutus says he was ambitious;</LINE>
+            <LINE>And Brutus is an honourable man.</LINE>
+            <LINE>He hath brought many captives home to Rome</LINE>
+            <LINE>Whose ransoms did the general coffers fill:</LINE>
+            <LINE>Did this in Caesar seem ambitious?</LINE>
+            <LINE>When that the poor have cried, Caesar hath wept:</LINE>
+            <LINE>Ambition should be made of sterner stuff:</LINE>
+            <LINE>Yet Brutus says he was ambitious;</LINE>
+            <LINE>And Brutus is an honourable man.</LINE>
+            <LINE>You all did see that on the Lupercal</LINE>
+            <LINE>I thrice presented him a kingly crown,</LINE>
+            <LINE>Which he did thrice refuse: was this ambition?</LINE>
+            <LINE>Yet Brutus says he was ambitious;</LINE>
+            <LINE>And, sure, he is an honourable man.</LINE>
+            <LINE>I speak not to disprove what Brutus spoke,</LINE>
+            <LINE>But here I am to speak what I do know.</LINE>
+            <LINE>You all did love him once, not without cause:</LINE>
+            <LINE>What cause withholds you then, to mourn for him?</LINE>
+            <LINE>O judgment! thou art fled to brutish beasts,</LINE>
+            <LINE>And men have lost their reason. Bear with me;</LINE>
+            <LINE>My heart is in the coffin there with Caesar,</LINE>
+            <LINE>And I must pause till it come back to me.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Methinks there is much reason in his sayings.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>If thou consider rightly of the matter,</LINE>
+            <LINE>Caesar has had great wrong.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Has he, masters?</LINE>
+            <LINE>I fear there will a worse come in his place.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>Mark'd ye his words? He would not take the crown;</LINE>
+            <LINE>Therefore 'tis certain he was not ambitious.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>If it be found so, some will dear abide it.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Poor soul! his eyes are red as fire with weeping.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>There's not a nobler man in Rome than Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>Now mark him, he begins again to speak.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>But yesterday the word of Caesar might</LINE>
+            <LINE>Have stood against the world; now lies he there.</LINE>
+            <LINE>And none so poor to do him reverence.</LINE>
+            <LINE>O masters, if I were disposed to stir</LINE>
+            <LINE>Your hearts and minds to mutiny and rage,</LINE>
+            <LINE>I should do Brutus wrong, and Cassius wrong,</LINE>
+            <LINE>Who, you all know, are honourable men:</LINE>
+            <LINE>I will not do them wrong; I rather choose</LINE>
+            <LINE>To wrong the dead, to wrong myself and you,</LINE>
+            <LINE>Than I will wrong such honourable men.</LINE>
+            <LINE>But here's a parchment with the seal of Caesar;</LINE>
+            <LINE>I found it in his closet, 'tis his will:</LINE>
+            <LINE>Let but the commons hear this testament--</LINE>
+            <LINE>Which, pardon me, I do not mean to read--</LINE>
+            <LINE>And they would go and kiss dead Caesar's wounds</LINE>
+            <LINE>And dip their napkins in his sacred blood,</LINE>
+            <LINE>Yea, beg a hair of him for memory,</LINE>
+            <LINE>And, dying, mention it within their wills,</LINE>
+            <LINE>Bequeathing it as a rich legacy</LINE>
+            <LINE>Unto their issue.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>We'll hear the will: read it, Mark Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>The will, the will! we will hear Caesar's will.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Have patience, gentle friends, I must not read it;</LINE>
+            <LINE>It is not meet you know how Caesar loved you.</LINE>
+            <LINE>You are not wood, you are not stones, but men;</LINE>
+            <LINE>And, being men, bearing the will of Caesar,</LINE>
+            <LINE>It will inflame you, it will make you mad:</LINE>
+            <LINE>'Tis good you know not that you are his heirs;</LINE>
+            <LINE>For, if you should, O, what would come of it!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>Read the will; we'll hear it, Antony;</LINE>
+            <LINE>You shall read us the will, Caesar's will.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Will you be patient? will you stay awhile?</LINE>
+            <LINE>I have o'ershot myself to tell you of it:</LINE>
+            <LINE>I fear I wrong the honourable men</LINE>
+            <LINE>Whose daggers have stabb'd Caesar; I do fear it.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>They were traitors: honourable men!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>The will! the testament!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>They were villains, murderers: the will! read the will.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>You will compel me, then, to read the will?</LINE>
+            <LINE>Then make a ring about the corpse of Caesar,</LINE>
+            <LINE>And let me show you him that made the will.</LINE>
+            <LINE>Shall I descend? and will you give me leave?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Several Citizens</SPEAKER>
+            <LINE>Come down.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Descend.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>You shall have leave.</LINE>
+        </SPEECH>
+        <STAGEDIR>ANTONY comes down</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>A ring; stand round.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Stand from the hearse, stand from the body.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Room for Antony, most noble Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Nay, press not so upon me; stand far off.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Several Citizens</SPEAKER>
+            <LINE>Stand back; room; bear back.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>If you have tears, prepare to shed them now.</LINE>
+            <LINE>You all do know this mantle: I remember</LINE>
+            <LINE>The first time ever Caesar put it on;</LINE>
+            <LINE>'Twas on a summer's evening, in his tent,</LINE>
+            <LINE>That day he overcame the Nervii:</LINE>
+            <LINE>Look, in this place ran Cassius' dagger through:</LINE>
+            <LINE>See what a rent the envious Casca made:</LINE>
+            <LINE>Through this the well-beloved Brutus stabb'd;</LINE>
+            <LINE>And as he pluck'd his cursed steel away,</LINE>
+            <LINE>Mark how the blood of Caesar follow'd it,</LINE>
+            <LINE>As rushing out of doors, to be resolved</LINE>
+            <LINE>If Brutus so unkindly knock'd, or no;</LINE>
+            <LINE>For Brutus, as you know, was Caesar's angel:</LINE>
+            <LINE>Judge, O you gods, how dearly Caesar loved him!</LINE>
+            <LINE>This was the most unkindest cut of all;</LINE>
+            <LINE>For when the noble Caesar saw him stab,</LINE>
+            <LINE>Ingratitude, more strong than traitors' arms,</LINE>
+            <LINE>Quite vanquish'd him: then burst his mighty heart;</LINE>
+            <LINE>And, in his mantle muffling up his face,</LINE>
+            <LINE>Even at the base of Pompey's statua,</LINE>
+            <LINE>Which all the while ran blood, great Caesar fell.</LINE>
+            <LINE>O, what a fall was there, my countrymen!</LINE>
+            <LINE>Then I, and you, and all of us fell down,</LINE>
+            <LINE>Whilst bloody treason flourish'd over us.</LINE>
+            <LINE>O, now you weep; and, I perceive, you feel</LINE>
+            <LINE>The dint of pity: these are gracious drops.</LINE>
+            <LINE>Kind souls, what, weep you when you but behold</LINE>
+            <LINE>Our Caesar's vesture wounded? Look you here,</LINE>
+            <LINE>Here is himself, marr'd, as you see, with traitors.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>O piteous spectacle!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>O noble Caesar!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>O woful day!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>O traitors, villains!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>O most bloody sight!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>We will be revenged.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>Revenge! About! Seek! Burn! Fire! Kill! Slay!</LINE>
+            <LINE>Let not a traitor live!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Stay, countrymen.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Peace there! hear the noble Antony.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>We'll hear him, we'll follow him, we'll die with him.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Good friends, sweet friends, let me not stir you up</LINE>
+            <LINE>To such a sudden flood of mutiny.</LINE>
+            <LINE>They that have done this deed are honourable:</LINE>
+            <LINE>What private griefs they have, alas, I know not,</LINE>
+            <LINE>That made them do it: they are wise and honourable,</LINE>
+            <LINE>And will, no doubt, with reasons answer you.</LINE>
+            <LINE>I come not, friends, to steal away your hearts:</LINE>
+            <LINE>I am no orator, as Brutus is;</LINE>
+            <LINE>But, as you know me all, a plain blunt man,</LINE>
+            <LINE>That love my friend; and that they know full well</LINE>
+            <LINE>That gave me public leave to speak of him:</LINE>
+            <LINE>For I have neither wit, nor words, nor worth,</LINE>
+            <LINE>Action, nor utterance, nor the power of speech,</LINE>
+            <LINE>To stir men's blood: I only speak right on;</LINE>
+            <LINE>I tell you that which you yourselves do know;</LINE>
+            <LINE>Show you sweet Caesar's wounds, poor poor dumb mouths,</LINE>
+            <LINE>And bid them speak for me: but were I Brutus,</LINE>
+            <LINE>And Brutus Antony, there were an Antony</LINE>
+            <LINE>Would ruffle up your spirits and put a tongue</LINE>
+            <LINE>In every wound of Caesar that should move</LINE>
+            <LINE>The stones of Rome to rise and mutiny.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>We'll mutiny.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>We'll burn the house of Brutus.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Away, then! come, seek the conspirators.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Yet hear me, countrymen; yet hear me speak.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>Peace, ho! Hear Antony. Most noble Antony!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Why, friends, you go to do you know not what:</LINE>
+            <LINE>Wherein hath Caesar thus deserved your loves?</LINE>
+            <LINE>Alas, you know not: I must tell you then:</LINE>
+            <LINE>You have forgot the will I told you of.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>Most true. The will! Let's stay and hear the will.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Here is the will, and under Caesar's seal.</LINE>
+            <LINE>To every Roman citizen he gives,</LINE>
+            <LINE>To every several man, seventy-five drachmas.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Most noble Caesar! We'll revenge his death.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>O royal Caesar!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Hear me with patience.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>All</SPEAKER>
+            <LINE>Peace, ho!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Moreover, he hath left you all his walks,</LINE>
+            <LINE>His private arbours and new-planted orchards,</LINE>
+            <LINE>On this side Tiber; he hath left them you,</LINE>
+            <LINE>And to your heirs for ever, common pleasures,</LINE>
+            <LINE>To walk abroad, and recreate yourselves.</LINE>
+            <LINE>Here was a Caesar! when comes such another?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>First Citizen</SPEAKER>
+            <LINE>Never, never. Come, away, away!</LINE>
+            <LINE>We'll burn his body in the holy place,</LINE>
+            <LINE>And with the brands fire the traitors' houses.</LINE>
+            <LINE>Take up the body.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Second Citizen</SPEAKER>
+            <LINE>Go fetch fire.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Third Citizen</SPEAKER>
+            <LINE>Pluck down benches.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Fourth Citizen</SPEAKER>
+            <LINE>Pluck down forms, windows, any thing.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt Citizens with the body</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Now let it work. Mischief, thou art afoot,</LINE>
+            <LINE>Take thou what course thou wilt!</LINE>
+            <STAGEDIR>Enter a Servant</STAGEDIR>
+            <LINE>How now, fellow!</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>Sir, Octavius is already come to Rome.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Where is he?</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>He and Lepidus are at Caesar's house.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>And thither will I straight to visit him:</LINE>
+            <LINE>He comes upon a wish. Fortune is merry,</LINE>
+            <LINE>And in this mood will give us any thing.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>Servant</SPEAKER>
+            <LINE>I heard him say, Brutus and Cassius</LINE>
+            <LINE>Are rid like madmen through the gates of Rome.</LINE>
+        </SPEECH>
+        <SPEECH>
+            <SPEAKER>ANTONY</SPEAKER>
+            <LINE>Belike they had some notice of the people,</LINE>
+            <LINE>How I had moved them. Bring me to Octavius.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt</STAGEDIR>
+    </SCENE>
+</result>
