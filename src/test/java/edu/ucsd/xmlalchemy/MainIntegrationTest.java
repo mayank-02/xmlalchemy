@@ -11,6 +11,13 @@ import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
+import org.xmlunit.builder.DiffBuilder;
+import org.xmlunit.builder.Input;
+import org.xmlunit.diff.Diff;
+import org.xmlunit.diff.DifferenceEvaluators;
+import org.xmlunit.diff.DefaultNodeMatcher;
+import org.xmlunit.diff.ElementSelectors;
+
 class MainIntegrationTest {
 
     private static final String TEST_DATA_DIR = "src/test/resources/milestone1/input";
@@ -24,10 +31,11 @@ class MainIntegrationTest {
         if (inputFiles != null) {
             for (var inputFile : inputFiles) {
                 // Assumes input files are .txt
-                var baseName = inputFile.getName().replace(".txt", ""); 
+                var baseName = inputFile.getName().replace(".txt", "");
 
                 // Evaluate the query
                 var actualNodes = Main.query(inputFile.getAbsolutePath());
+                var actualDocument = Main.transform(actualNodes);
 
                 // Read the expected output
                 try {
@@ -37,7 +45,7 @@ class MainIntegrationTest {
                     var expectedDocument = db.parse(expectedOutputFile);
                     expectedDocument.normalize();
                     Main.trimTextNodes(expectedDocument.getDocumentElement());
-                    assertResult(baseName, expectedDocument, actualNodes);
+                    assertResultXMLUnit(baseName, expectedDocument, actualDocument);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -50,13 +58,31 @@ class MainIntegrationTest {
         }
     }
 
-    public void assertResult(String baseName, Document expectedDocument, List<Node> actualNodes) {
+    public void assertResultXMLUnit(String baseName, Document expectedDocument, Document actualDocument) {
+        Diff diff = DiffBuilder.compare(Input.fromDocument(expectedDocument))
+                .withTest(Input.fromDocument(actualDocument))
+                .ignoreWhitespace()
+                .normalizeWhitespace()
+                .withDifferenceEvaluator(DifferenceEvaluators.Default)
+                .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byNameAndText))
+                .checkForSimilar()
+                .build();
+        Assertions.assertFalse(diff.hasDifferences(), "Difference found: " + baseName);
+    }
+
+    public void assertResult(String baseName, Document expectedDocument, Document actualDocument) {
         var resultNode = expectedDocument.getElementsByTagName("result").item(0);
         var expectedNodeList = resultNode.getChildNodes();
         var expectedNodes =
                 IntStream.range(0, expectedNodeList.getLength()).mapToObj(expectedNodeList::item)
                         .filter(node -> !(node.getNodeType() == Node.TEXT_NODE
                                 && node.getTextContent().trim().isEmpty()))
+                        .collect(Collectors.toList());
+
+        var actualResultNode = actualDocument.getElementsByTagName("result").item(0);
+        var actualNodeList = actualResultNode.getChildNodes();
+        var actualNodes =
+                IntStream.range(0, actualNodeList.getLength()).mapToObj(actualNodeList::item)
                         .collect(Collectors.toList());
 
         Assertions.assertEquals(expectedNodes.size(), actualNodes.size(),

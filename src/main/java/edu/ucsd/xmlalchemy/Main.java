@@ -7,12 +7,15 @@ import edu.ucsd.xmlalchemy.xpath.AbsolutePathDescendant;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.print.Doc;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
+
+import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
 public class Main {
@@ -20,7 +23,8 @@ public class Main {
         String filename = args[0];
         try {
             var nodes = query(filename);
-            output(nodes);
+            var result = transform(nodes);
+            output(result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -75,7 +79,7 @@ public class Main {
         }
     }
 
-    public static void output(List<Node> result) {
+    public static Document transform(List<Node> result) throws Exception {
         try {
             var dbFactory = DocumentBuilderFactory.newInstance();
             var dBuilder = dbFactory.newDocumentBuilder();
@@ -87,14 +91,23 @@ public class Main {
                 parentElement.appendChild(importedNode);
             }
             doc.appendChild(parentElement);
+            return doc;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new Exception("Failed to transform");
+        }
+    }
 
+    public static void output(Document result) {
+        try {
             final var tfFactory = TransformerFactory.newInstance();
             var tf = tfFactory
                     .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
             tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
-            var source = new DOMSource(doc);
+            var source = new DOMSource(result);
             var consoleResult = new StreamResult(System.out);
             tf.transform(source, consoleResult);
         } catch (Exception e) {
