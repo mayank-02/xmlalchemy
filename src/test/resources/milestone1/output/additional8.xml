@@ -1,10 +1,4 @@
 <result>
-    <A x="1"> ABC 
-        <B> 1 </B> DEF 
-        <B> 2 </B> GHI 
-    </A>
-    <A x="2">
-        <B> 3 </B>
-        <B> 4 </B>
-    </A>
+    1
+    2
 </result>

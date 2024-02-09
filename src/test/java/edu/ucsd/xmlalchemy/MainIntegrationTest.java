@@ -34,6 +34,9 @@ class MainIntegrationTest {
                 // Assumes input files are .txt
                 var baseName = inputFile.getName().replace(".txt", "");
 
+                // FIXME: This is a limitation of the current test suite architecture.
+                // All the consecutive text nodes will be parsed as a single text node.
+                // making it impossible to do equality check.
                 Set<String> skippedBaseNames = Set.of("additional3", "additional8");
                 if (skippedBaseNames.contains(baseName)) {
                     continue;

@@ -87,8 +87,16 @@ public class Main {
 
             var parentElement = doc.createElement("result");
             for (var node : result) {
-                var importedNode = doc.importNode(node, true); // true for deep cloning
-                parentElement.appendChild(importedNode);
+                if (node.getNodeType() == Node.TEXT_NODE) {
+                    var textNode = doc.createTextNode(node.getTextContent() + "\n");
+                    parentElement.appendChild(textNode);
+                } else if (node.getNodeType() == Node.ATTRIBUTE_NODE) {
+                    var valueNode = doc.createTextNode(node.getNodeValue() + "\n");
+                    parentElement.appendChild(valueNode);
+                } else {
+                    var importedNode = doc.importNode(node, true); // true for deep cloning
+                    parentElement.appendChild(importedNode);
+                }
             }
             doc.appendChild(parentElement);
             return doc;
