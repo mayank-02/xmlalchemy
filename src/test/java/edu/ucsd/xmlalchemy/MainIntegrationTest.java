@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -49,11 +48,11 @@ class MainIntegrationTest {
                 // Read the expected output
                 try {
                     var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR, baseName + ".xml");
-                    var dbf = DocumentBuilderFactory.newInstance();
+                    var dbf = DocumentBuilderFactory.newDefaultInstance();
                     var db = dbf.newDocumentBuilder();
                     var expectedDocument = db.parse(expectedOutputFile);
                     expectedDocument.normalize();
-                    Main.trimTextNodes(expectedDocument.getDocumentElement());
+                    Utils.trimTextNodes(expectedDocument.getDocumentElement());
                     assertResult(baseName, expectedDocument, actualDocument);
                 } catch (Exception e) {
                     // TODO Auto-generated catch block

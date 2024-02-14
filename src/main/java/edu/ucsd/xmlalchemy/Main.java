@@ -2,12 +2,9 @@ package edu.ucsd.xmlalchemy;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import edu.ucsd.xmlalchemy.xpath.AbsolutePathChild;
-import edu.ucsd.xmlalchemy.xpath.AbsolutePathDescendant;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.print.Doc;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.TransformerFactory;
@@ -40,48 +37,16 @@ public class Main {
 
             var visitor = new Visitor();
             var absolutePathExpr = visitor.visit(tree);
-            
-            File file;
-            if (absolutePathExpr instanceof AbsolutePathChild) {
-                var absolutePath = ((AbsolutePathChild) absolutePathExpr);
-                file = new File(absolutePath.getFileName().replace("\"", ""));
-            } else if (absolutePathExpr instanceof AbsolutePathDescendant) {
-                var absolutePath = ((AbsolutePathDescendant) absolutePathExpr);
-                file = new File(absolutePath.getFileName().replace("\"", ""));
-            } else {
-                throw new Exception("Invalid absolute path expression");
-            }
-
-            var dbf = DocumentBuilderFactory.newInstance();
-            var db = dbf.newDocumentBuilder();
-            var document = db.parse(file);
-            document.normalize();
-            trimTextNodes(document.getDocumentElement());
-
-            var inputNodes = new ArrayList<Node>();
-            inputNodes.add(document);
-
-            return absolutePathExpr.evaluate(inputNodes);
+            return absolutePathExpr.evaluate(new ArrayList<>());
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();
         }
     }
 
-    public static void trimTextNodes(Node node) {
-        if (node.getNodeType() == Node.TEXT_NODE) {
-            node.setTextContent(node.getTextContent().trim());
-        }
-
-        var childNodes = node.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            trimTextNodes(childNodes.item(i));
-        }
-    }
-
     public static Document transform(List<Node> result) throws Exception {
         try {
-            var dbFactory = DocumentBuilderFactory.newInstance();
+            var dbFactory = DocumentBuilderFactory.newDefaultInstance();
             var dBuilder = dbFactory.newDocumentBuilder();
             var doc = dBuilder.newDocument();
 
@@ -109,7 +74,7 @@ public class Main {
 
     public static void output(Document result) {
         try {
-            final var tfFactory = TransformerFactory.newInstance();
+            final var tfFactory = TransformerFactory.newDefaultInstance();
             var tf = tfFactory
                     .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
             tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
