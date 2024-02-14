@@ -1,5 +1,6 @@
 package edu.ucsd.xmlalchemy;
 
+import java.util.ArrayList;
 import edu.ucsd.xmlalchemy.ExprParser.*;
 import edu.ucsd.xmlalchemy.xpath.*;
 import edu.ucsd.xmlalchemy.xquery.QueryAbsolutePath;
@@ -14,6 +15,7 @@ import edu.ucsd.xmlalchemy.xquery.QueryConditionValueEqual;
 import edu.ucsd.xmlalchemy.xquery.QueryDescendant;
 import edu.ucsd.xmlalchemy.xquery.QueryElement;
 import edu.ucsd.xmlalchemy.xquery.StringLiteral;
+import edu.ucsd.xmlalchemy.xquery.Variable;
 
 public class Visitor extends ExprParserBaseVisitor<Expression> {
 
@@ -243,5 +245,21 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     public Expression visitQueryConditionNot(QueryConditionNotContext ctx) {
         var queryCondition = visit(ctx.queryCondition());
         return new QueryConditionNot(queryCondition);
+    }
+
+    @Override
+    public Expression visitVariable(VariableContext ctx) {
+        return new Variable(ctx.var().getText());
+    }
+
+    @Override
+    public Expression visitQueryLetClause(QueryLetClauseContext ctx) {
+        var assignments = new ArrayList<Tuple<String, Expression>>();
+        for (int i = 0; i < ctx.letClause().var().size(); i++) {
+            var variable = ctx.letClause().var(i).getText();
+            var expression = visit(ctx.letClause().query(i));
+            assignments.add(new Tuple<>(variable, expression));
+        }
+        return new QueryLetClause(assignments, visit(ctx.query()));
     }
 }
