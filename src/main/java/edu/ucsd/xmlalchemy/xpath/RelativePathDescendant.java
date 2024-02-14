@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Utils;
 
 public class RelativePathDescendant implements Expression {
     private final Expression leftExpression;
@@ -20,22 +21,11 @@ public class RelativePathDescendant implements Expression {
         var descendantNodes = new ArrayList<Node>();
         for (Node node : leftNodes) {
             if (node.getNodeType() == Node.ELEMENT_NODE || node.getNodeType() == Node.DOCUMENT_NODE) {
-                descendantNodes.addAll(getDescendantNodes(node));
+                descendantNodes.addAll(Utils.getDescendantNodes(node));
             }
         }
         return new ArrayList<>(new LinkedHashSet<>(rightExpression.evaluate(descendantNodes)));
     }
 
-    private List<Node> getDescendantNodes(Node node) {
-        var descendantNodes = new ArrayList<Node>();
-        descendantNodes.add(node);
-        var child = node.getFirstChild();
-        while (child != null) {
-            if (child.getNodeType() == Node.ELEMENT_NODE) {
-                descendantNodes.addAll(getDescendantNodes(child));
-            }
-            child = child.getNextSibling();
-        }
-        return descendantNodes;
-    }
+    
 }

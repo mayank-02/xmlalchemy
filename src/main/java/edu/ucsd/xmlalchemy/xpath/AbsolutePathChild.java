@@ -36,9 +36,4 @@ public class AbsolutePathChild implements Expression {
         // Evaluate the expression
         return expression.evaluate(inputNodes);
     }
-
-    public String getFileName() {
-        return fileName;
-    }
-
 }

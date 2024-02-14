@@ -18,7 +18,7 @@ import org.xmlunit.diff.DifferenceEvaluators;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
 
-class MainIntegrationTest {
+class XPathIntegrationTest {
 
     private static final String TEST_DATA_DIR = "src/test/resources/milestone1/input";
     private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/milestone1/output";
@@ -42,8 +42,8 @@ class MainIntegrationTest {
                 }
 
                 // Evaluate the query
-                var actualNodes = Main.query(inputFile.getAbsolutePath());
-                var actualDocument = Main.transform(actualNodes);
+                var actualNodes = XPath.query(inputFile.getAbsolutePath());
+                var actualDocument = XPath.transform(actualNodes);
 
                 // Read the expected output
                 try {

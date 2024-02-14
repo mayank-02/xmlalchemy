@@ -2,6 +2,18 @@ package edu.ucsd.xmlalchemy;
 
 import edu.ucsd.xmlalchemy.ExprParser.*;
 import edu.ucsd.xmlalchemy.xpath.*;
+import edu.ucsd.xmlalchemy.xquery.QueryAbsolutePath;
+import edu.ucsd.xmlalchemy.xquery.QueryChild;
+import edu.ucsd.xmlalchemy.xquery.QueryConcatenation;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionAnd;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionEmpty;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionIdentityEqual;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionNot;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionOr;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionValueEqual;
+import edu.ucsd.xmlalchemy.xquery.QueryDescendant;
+import edu.ucsd.xmlalchemy.xquery.QueryElement;
+import edu.ucsd.xmlalchemy.xquery.StringLiteral;
 
 public class Visitor extends ExprParserBaseVisitor<Expression> {
 
@@ -145,5 +157,91 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     public Expression visitPathFilterEqualStringLiteral(PathFilterEqualStringLiteralContext ctx) {
         var leftExpression = visit(ctx.relativePath());
         return new PathFilterEqualStringLiteral(leftExpression, ctx.stringLiteral.getText());
+    }
+
+    @Override
+    public Expression visitStringLiteral(StringLiteralContext ctx) {
+        return new StringLiteral(ctx.getText());
+    }
+
+    @Override
+    public Expression visitQueryAbsolutePath(QueryAbsolutePathContext ctx) {
+        return new QueryAbsolutePath(visit(ctx.absolutePath()));
+    }
+
+    @Override
+    public Expression visitQueryParenthesized(QueryParenthesizedContext ctx) {
+        return visit(ctx.query());
+    }
+
+    @Override
+    public Expression visitQueryConcatenation(QueryConcatenationContext ctx) {
+        var leftQuery = visit(ctx.left);
+        var rightQuery = visit(ctx.right);
+        return new QueryConcatenation(leftQuery, rightQuery);
+    }
+
+    @Override
+    public Expression visitQueryChild(QueryChildContext ctx) {
+        var query = visit(ctx.query());
+        var relativePath = visit(ctx.relativePath());
+        return new QueryChild(query, relativePath);
+    }
+
+    @Override
+    public Expression visitQueryDescendant(QueryDescendantContext ctx) {
+        var query = visit(ctx.query());
+        var relativePath = visit(ctx.relativePath());
+        return new QueryDescendant(query, relativePath);
+    }
+
+    @Override
+    public Expression visitQueryElement(QueryElementContext ctx) {
+        return new QueryElement(ctx.openingTag().NAME().getText(), visit(ctx.query()));
+    }
+
+    @Override
+    public Expression visitQueryConditionValueEqual(QueryConditionValueEqualContext ctx) {
+        var leftQuery = visit(ctx.left);
+        var rightQuery = visit(ctx.right);
+        return new QueryConditionValueEqual(leftQuery, rightQuery);
+    }
+
+    @Override
+    public Expression visitQueryConditionIdentityEqual(QueryConditionIdentityEqualContext ctx) {
+        var leftQuery = visit(ctx.left);
+        var rightQuery = visit(ctx.right);
+        return new QueryConditionIdentityEqual(leftQuery, rightQuery);
+    }
+
+    @Override
+    public Expression visitQueryConditionEmpty(QueryConditionEmptyContext ctx) {
+        var query = visit(ctx.query());
+        return new QueryConditionEmpty(query);
+    }
+
+    @Override
+    public Expression visitQueryConditionParenthesized(QueryConditionParenthesizedContext ctx) {
+        return visit(ctx.queryCondition());
+    }
+
+    @Override
+    public Expression visitQueryConditionAnd(QueryConditionAndContext ctx) {
+        var leftQueryCondition = visit(ctx.left);
+        var rightQueryCondition = visit(ctx.right);
+        return new QueryConditionAnd(leftQueryCondition, rightQueryCondition);
+    }
+
+    @Override
+    public Expression visitQueryConditionOr(QueryConditionOrContext ctx) {
+        var leftQueryCondition = visit(ctx.left);
+        var rightQueryCondition = visit(ctx.right);
+        return new QueryConditionOr(leftQueryCondition, rightQueryCondition);
+    }
+
+    @Override
+    public Expression visitQueryConditionNot(QueryConditionNotContext ctx) {
+        var queryCondition = visit(ctx.queryCondition());
+        return new QueryConditionNot(queryCondition);
     }
 }

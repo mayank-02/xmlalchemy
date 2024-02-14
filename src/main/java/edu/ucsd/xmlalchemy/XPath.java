@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-public class Main {
+public class XPath {
     public static void main(String[] args) {
         String filename = args[0];
         try {
@@ -45,31 +45,25 @@ public class Main {
     }
 
     public static Document transform(List<Node> result) throws Exception {
-        try {
-            var dbFactory = DocumentBuilderFactory.newDefaultInstance();
-            var dBuilder = dbFactory.newDocumentBuilder();
-            var doc = dBuilder.newDocument();
+        var dbFactory = DocumentBuilderFactory.newDefaultInstance();
+        var dBuilder = dbFactory.newDocumentBuilder();
+        var doc = dBuilder.newDocument();
 
-            var parentElement = doc.createElement("result");
-            for (var node : result) {
-                if (node.getNodeType() == Node.TEXT_NODE) {
-                    var textNode = doc.createTextNode(node.getTextContent() + "\n");
-                    parentElement.appendChild(textNode);
-                } else if (node.getNodeType() == Node.ATTRIBUTE_NODE) {
-                    var valueNode = doc.createTextNode(node.getNodeValue() + "\n");
-                    parentElement.appendChild(valueNode);
-                } else {
-                    var importedNode = doc.importNode(node, true); // true for deep cloning
-                    parentElement.appendChild(importedNode);
-                }
+        var parentElement = doc.createElement("result");
+        for (var node : result) {
+            if (node.getNodeType() == Node.TEXT_NODE) {
+                var textNode = doc.createTextNode(node.getTextContent() + "\n");
+                parentElement.appendChild(textNode);
+            } else if (node.getNodeType() == Node.ATTRIBUTE_NODE) {
+                var valueNode = doc.createTextNode(node.getNodeValue() + "\n");
+                parentElement.appendChild(valueNode);
+            } else {
+                var importedNode = doc.importNode(node, true); // true for deep cloning
+                parentElement.appendChild(importedNode);
             }
-            doc.appendChild(parentElement);
-            return doc;
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            throw new Exception("Failed to transform");
         }
+        doc.appendChild(parentElement);
+        return doc;
     }
 
     public static void output(Document result) {
