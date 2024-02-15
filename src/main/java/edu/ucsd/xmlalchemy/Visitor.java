@@ -8,12 +8,15 @@ import edu.ucsd.xmlalchemy.xquery.QueryChild;
 import edu.ucsd.xmlalchemy.xquery.QueryConcatenation;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionAnd;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionEmpty;
+import edu.ucsd.xmlalchemy.xquery.QueryConditionExistentialQuantifier;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionIdentityEqual;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionNot;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionOr;
 import edu.ucsd.xmlalchemy.xquery.QueryConditionValueEqual;
 import edu.ucsd.xmlalchemy.xquery.QueryDescendant;
 import edu.ucsd.xmlalchemy.xquery.QueryElement;
+import edu.ucsd.xmlalchemy.xquery.QueryFlworClause;
+import edu.ucsd.xmlalchemy.xquery.QueryLetClause;
 import edu.ucsd.xmlalchemy.xquery.StringLiteral;
 import edu.ucsd.xmlalchemy.xquery.Variable;
 
@@ -261,5 +264,51 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
             assignments.add(new Tuple<>(variable, expression));
         }
         return new QueryLetClause(assignments, visit(ctx.query()));
+    }
+
+    @Override
+    public Expression visitQueryFlwor(QueryFlworContext ctx) {
+        // FOR clause
+        var iterators = new ArrayList<Tuple<String, Expression>>();
+        for (int i = 0; i < ctx.forClause().var().size(); i++) {
+            var variable = ctx.forClause().var(i).getText();
+            var expression = visit(ctx.forClause().query(i));
+            iterators.add(new Tuple<>(variable, expression));
+        }
+
+        // LET clause
+        var assignments = new ArrayList<Tuple<String, Expression>>();
+        if (ctx.letClause() != null) {
+            for (int i = 0; i < ctx.letClause().var().size(); i++) {
+                var variable = ctx.letClause().var(i).getText();
+                var expression = visit(ctx.letClause().query(i));
+                assignments.add(new Tuple<>(variable, expression));
+            }
+        }
+
+        // WHERE clause
+        Expression condition = null;
+        if (ctx.whereClause() != null) {
+            condition = visit(ctx.whereClause().queryCondition());
+        }
+
+        // RETURN clause
+        var returnExpression = visit(ctx.returnClause().query());
+        
+        return new QueryFlworClause(iterators, assignments, condition, returnExpression);
+    }
+
+    @Override
+    public Expression visitQueryConditionExistentialQuantifier(QueryConditionExistentialQuantifierContext ctx) {
+        var iterators = new ArrayList<Tuple<String, Expression>>();
+        for (int i = 0; i < ctx.var().size(); i++) {
+            var variable = ctx.var(i).getText();
+            var expression = visit(ctx.query(i));
+            iterators.add(new Tuple<>(variable, expression));
+        }
+
+        var condition = visit(ctx.queryCondition());
+
+        return new QueryConditionExistentialQuantifier(iterators, condition);
     }
 }

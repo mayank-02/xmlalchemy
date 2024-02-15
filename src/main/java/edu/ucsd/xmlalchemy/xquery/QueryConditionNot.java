@@ -14,7 +14,7 @@ public class QueryConditionNot implements Expression {
 
     @Override
     public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        var filteredOutNodes = queryCondition.evaluate(nodes);
+        var filteredOutNodes = queryCondition.evaluate(ctx, nodes);
         var filteredOutNodesHashSet = filteredOutNodes.stream().collect(Collectors.toSet());
         return nodes.stream().filter(node -> !filteredOutNodesHashSet.contains(node)).toList();
     }

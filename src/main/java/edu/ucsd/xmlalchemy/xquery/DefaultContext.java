@@ -51,6 +51,12 @@ public class DefaultContext implements Context {
 
     @Override
     public void setVar(String varName, List<Node> nodes) {
+        if (variables.containsKey(varName)) {
+            stack.push(new Tuple<>(varName, variables.get(varName)));
+        }
+        else {
+            stack.push(new Tuple<>(varName, null));
+        }
         variables.put(varName, nodes);
     }
 

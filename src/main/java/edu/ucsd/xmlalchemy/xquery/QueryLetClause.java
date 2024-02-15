@@ -1,9 +1,9 @@
-package edu.ucsd.xmlalchemy;
+package edu.ucsd.xmlalchemy.xquery;
 
 import java.util.List;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Tuple;
 import edu.ucsd.xmlalchemy.xpath.Expression;
-import edu.ucsd.xmlalchemy.xquery.Context;
 
 public class QueryLetClause implements Expression {
     private final List<Tuple<String, Expression>> assignments;
