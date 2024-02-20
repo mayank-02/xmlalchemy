@@ -5,23 +5,15 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-import org.xmlunit.builder.DiffBuilder;
-import org.xmlunit.builder.Input;
-import org.xmlunit.diff.Diff;
-import org.xmlunit.diff.DifferenceEvaluators;
-import org.xmlunit.diff.DefaultNodeMatcher;
-import org.xmlunit.diff.ElementSelectors;
+class XQueryIntegrationTest {
 
-class XPathIntegrationTest {
-
-    private static final String TEST_DATA_DIR = "src/test/resources/milestone1/input";
-    private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/milestone1/output";
+    private static final String TEST_DATA_DIR = "src/test/resources/milestone2/input";
+    private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/milestone2/output";
 
     @Test
     void testAppWithMultipleInputFiles() throws Exception {
@@ -33,17 +25,9 @@ class XPathIntegrationTest {
                 // Assumes input files are .txt
                 var baseName = inputFile.getName().replace(".txt", "");
 
-                // FIXME: This is a limitation of the current test suite architecture.
-                // All the consecutive text nodes will be parsed as a single text node.
-                // making it impossible to do equality check.
-                Set<String> skippedBaseNames = Set.of("additional3", "additional8");
-                if (skippedBaseNames.contains(baseName)) {
-                    continue;
-                }
-
                 // Evaluate the query
-                var actualNodes = XPath.query(inputFile.getAbsolutePath());
-                var actualDocument = XPath.transform(actualNodes);
+                var actualNodes = XQuery.query(inputFile.getAbsolutePath());
+                var actualDocument = XQuery.transform(actualNodes);
 
                 // Read the expected output
                 var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR, baseName + ".xml");
@@ -55,28 +39,13 @@ class XPathIntegrationTest {
                 assertResult(baseName, expectedDocument, actualDocument);
             }
         } else {
-            Assertions.fail("No input files found in testData directory.");
+            Assertions
+                    .fail("No input files found in src/test/resources/milestone2/input directory.");
         }
     }
 
-    // FIXME: This method still does not work with the re-ordering of elements
-    // when the tree is deep enough and ElementSelectors.byNameAndText is not sufficient
-    // Check testcase rule20
-    // Reference: https://github.com/xmlunit/xmlunit/issues/123
-    public void assertResultXMLUnit(String baseName, Document expectedDocument, Document actualDocument) {
-        Diff diff = DiffBuilder.compare(Input.fromDocument(expectedDocument))
-                .withTest(Input.fromDocument(actualDocument))
-                .ignoreWhitespace()
-                .normalizeWhitespace()
-                .withDifferenceEvaluator(DifferenceEvaluators.Default)
-                .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byNameAndText))
-                .checkForSimilar()
-                .build();
-        Assertions.assertFalse(diff.hasDifferences(), "Difference found: " + baseName);
-    }
-
     public void assertResult(String baseName, Document expectedDocument, Document actualDocument) {
-        var resultNode = expectedDocument.getElementsByTagName("result").item(0);
+        var resultNode = expectedDocument.getChildNodes().item(0);
         var expectedNodeList = resultNode.getChildNodes();
         var expectedNodes =
                 IntStream.range(0, expectedNodeList.getLength()).mapToObj(expectedNodeList::item)
@@ -84,10 +53,12 @@ class XPathIntegrationTest {
                                 && node.getTextContent().trim().isEmpty()))
                         .collect(Collectors.toList());
 
-        var actualResultNode = actualDocument.getElementsByTagName("result").item(0);
+        var actualResultNode = expectedDocument.getChildNodes().item(0);
         var actualNodeList = actualResultNode.getChildNodes();
         var actualNodes =
                 IntStream.range(0, actualNodeList.getLength()).mapToObj(actualNodeList::item)
+                        .filter(node -> !(node.getNodeType() == Node.TEXT_NODE
+                                && node.getTextContent().trim().isEmpty()))
                         .collect(Collectors.toList());
 
         Assertions.assertEquals(expectedNodes.size(), actualNodes.size(),

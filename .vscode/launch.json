@@ -1,0 +1,24 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "XPath",
+            "request": "launch",
+            "mainClass": "edu.ucsd.xmlalchemy.XPath",
+            "projectName": "xmlalchemy",
+            "args": ["query.txt", "-cp target/classes:antlr-4.13.1-complete.jar"],
+        },
+        {
+            "type": "java",
+            "name": "XQuery",
+            "request": "launch",
+            "mainClass": "edu.ucsd.xmlalchemy.XQuery",
+            "projectName": "xmlalchemy",
+            "args": ["query.txt", "-cp target/classes:antlr-4.13.1-complete.jar"],
+        }
+    ]
+}

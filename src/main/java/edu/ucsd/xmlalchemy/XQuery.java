@@ -11,6 +11,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xquery.DefaultContext;
 
@@ -61,5 +62,29 @@ public class XQuery {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public static Document transform(List<Node> result) throws Exception {
+        var dbFactory = DocumentBuilderFactory.newDefaultInstance();
+        var dBuilder = dbFactory.newDocumentBuilder();
+        var doc = dBuilder.newDocument();
+
+        var parentElement = doc.createElement(result.get(0).getNodeName());
+        var children = result.get(0).getChildNodes();
+        for (int i = 0; i < children.getLength(); i++) {
+            var node = children.item(i);
+            if (node.getNodeType() == Node.TEXT_NODE) {
+                var textNode = doc.createTextNode(node.getTextContent() + "\n");
+                parentElement.appendChild(textNode);
+            } else if (node.getNodeType() == Node.ATTRIBUTE_NODE) {
+                var valueNode = doc.createTextNode(node.getNodeValue() + "\n");
+                parentElement.appendChild(valueNode);
+            } else {
+                var importedNode = doc.importNode(node, true); // true for deep cloning
+                parentElement.appendChild(importedNode);
+            }
+        }
+        doc.appendChild(parentElement);
+        return doc;
     }
 }
