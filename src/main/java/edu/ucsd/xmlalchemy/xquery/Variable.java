@@ -14,7 +14,8 @@ public class Variable implements Expression {
 
     @Override
     public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        // FIXME: Understand why we can't just return the variable (ctx.getVar(name)) here
+        // NOTE: getVar returns a List but not necessarily an ArrayList.
+        // Always construct a new ArrayList
         return new ArrayList<>(ctx.getVar(name));
     }
 }

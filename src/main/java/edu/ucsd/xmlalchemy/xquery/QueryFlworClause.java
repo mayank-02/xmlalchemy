@@ -37,7 +37,6 @@ public class QueryFlworClause implements Expression {
         var iterator = iterators.get(depth);
         var intermediateValues = iterator.second.evaluate(ctx, nodes);
         for (var intermediateValue : intermediateValues) {
-            // ctx.setVar(iterator.first, new ArrayList<>(Arrays.asList(intermediateValue)));
             ctx.setVar(iterator.first, List.of(intermediateValue));
             evaluateIterators(ctx, nodes, depth + 1);
             ctx.unwind(1);

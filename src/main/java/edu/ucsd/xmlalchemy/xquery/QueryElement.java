@@ -18,6 +18,6 @@ public class QueryElement implements Expression {
     @Override
     public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
         var queryNodes = query.evaluate(ctx, nodes);
-        return new ArrayList<>(Arrays.asList(ctx.makeElementNode(tagName, queryNodes)));
+        return new ArrayList<>(List.of(ctx.makeElementNode(tagName, queryNodes)));
     }
 }
