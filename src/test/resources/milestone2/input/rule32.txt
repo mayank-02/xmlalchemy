@@ -1,0 +1,5 @@
+<result>{
+    for $scene in doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT[TITLE/text() = "ACT I"]/SCENE
+    where empty($scene//SPEAKER[text()="CAESAR"])
+    return <scene>{$scene/TITLE/text()}</scene>
+}</result>

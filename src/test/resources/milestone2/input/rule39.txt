@@ -1,0 +1,8 @@
+<result>{
+    for $scene in doc("src/test/resources/milestone2/document/j_caesar.xml")//SCENE
+    let $speeches := $scene//SPEECH
+    where $speeches/SPEAKER/text() = "CAESAR"
+    return <scene>{
+        <title>{$scene/TITLE/text()}</title>
+    }</scene>
+}</result>

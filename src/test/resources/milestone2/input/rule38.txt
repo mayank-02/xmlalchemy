@@ -1,0 +1,6 @@
+<result>{
+    let $a := "A", $b := "B", $c := "C"
+    $a, $b, $c,
+    let $a := $b, $b := $c, $c := $a
+    $a, $b, $c
+}</result>

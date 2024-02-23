@@ -1,0 +1,9 @@
+<result>{
+    for $scene1 in doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT[TITLE/text() = "ACT I"]/SCENE,
+        $scene2 in doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT[TITLE/text() = "ACT I"]/SCENE
+    where $scene1//SPEAKER = $scene2//SPEAKER or (not $scene1//SPEAKER = $scene2//SPEAKER)
+    return <pair>{
+        <first>{$scene1/TITLE}</first>,
+        <second>{$scene2/TITLE}</second>
+    }</pair>
+}</result>

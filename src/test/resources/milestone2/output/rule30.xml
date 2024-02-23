@@ -1,0 +1,22 @@
+<result>
+    <pair>
+        <first>SCENE I.  Rome. A street.</first>
+        <second>SCENE I.  Rome. A street.</second>
+    </pair>
+    <pair>
+        <first>SCENE II.  A public place.</first>
+        <second>SCENE II.  A public place.</second>
+    </pair>
+    <pair>
+        <first>SCENE II.  A public place.</first>
+        <second>SCENE III.  The same. A street.</second>
+    </pair>
+    <pair>
+        <first>SCENE III.  The same. A street.</first>
+        <second>SCENE II.  A public place.</second>
+    </pair>
+    <pair>
+        <first>SCENE III.  The same. A street.</first>
+        <second>SCENE III.  The same. A street.</second>
+    </pair>
+</result>

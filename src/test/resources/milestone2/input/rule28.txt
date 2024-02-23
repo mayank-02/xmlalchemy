@@ -1,0 +1,6 @@
+<result>{
+    (
+        doc("src/test/resources/milestone2/document/j_caesar.xml")/PLAY/PERSONAE,
+        doc("src/test/resources/milestone2/document/j_caesar.xml")/PLAY/ACT
+    )//TITLE
+}</result>
