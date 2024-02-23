@@ -13,8 +13,8 @@ public class QueryConditionNot implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        var filteredOutNodes = queryCondition.evaluate(ctx, nodes);
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+        var filteredOutNodes = queryCondition.evaluateQuery(ctx, nodes);
         var filteredOutNodesHashSet = filteredOutNodes.stream().collect(Collectors.toSet());
         return nodes.stream().filter(node -> !filteredOutNodesHashSet.contains(node)).toList();
     }

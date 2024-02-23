@@ -23,7 +23,7 @@ public class QueryFlworClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
         result.clear();
         evaluateIterators(ctx, nodes, 0);
         return result;
@@ -35,7 +35,7 @@ public class QueryFlworClause implements Expression {
             return;
         }
         var iterator = iterators.get(depth);
-        var intermediateValues = iterator.second.evaluate(ctx, nodes);
+        var intermediateValues = iterator.second.evaluateQuery(ctx, nodes);
         for (var intermediateValue : intermediateValues) {
             ctx.setVar(iterator.first, List.of(intermediateValue));
             evaluateIterators(ctx, nodes, depth + 1);
@@ -45,12 +45,12 @@ public class QueryFlworClause implements Expression {
 
     private void evaluateAssignments(Context ctx, List<Node> nodes) throws Exception {
         for (var assignment : assignments) {
-            ctx.setVar(assignment.first, assignment.second.evaluate(ctx, nodes));
+            ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx, nodes));
         }
 
-        var allNodes = returnExpression.evaluate(ctx, nodes);
+        var allNodes = returnExpression.evaluateQuery(ctx, nodes);
         if (condition != null) {
-            allNodes = condition.evaluate(ctx, allNodes);
+            allNodes = condition.evaluateQuery(ctx, allNodes);
         }
 
         result.addAll(allNodes);

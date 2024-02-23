@@ -19,7 +19,7 @@ public class QueryConditionExistentialQuantifier implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
         result.clear();
         evaluateIterators(ctx, nodes, 0);
         return new ArrayList<>(result);
@@ -31,7 +31,7 @@ public class QueryConditionExistentialQuantifier implements Expression {
             return;
         }
         var iterator = iterators.get(depth);
-        var intermediateValues = iterator.second.evaluate(ctx, nodes);
+        var intermediateValues = iterator.second.evaluateQuery(ctx, nodes);
         for (var intermediateValue : intermediateValues) {
             ctx.setVar(iterator.first, List.of(intermediateValue));
             evaluateIterators(ctx, nodes, depth + 1);
@@ -40,6 +40,6 @@ public class QueryConditionExistentialQuantifier implements Expression {
     }
 
     private void evaluateCondition(Context ctx, List<Node> nodes) throws Exception {
-        result.addAll(condition.evaluate(ctx, nodes));
+        result.addAll(condition.evaluateQuery(ctx, nodes));
     }
 }

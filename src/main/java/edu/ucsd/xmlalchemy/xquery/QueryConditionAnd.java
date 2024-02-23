@@ -14,9 +14,9 @@ public class QueryConditionAnd implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        var leftNodes = leftQueryCondition.evaluate(ctx, nodes);
-        var rightNodes = rightExpression.evaluate(ctx, nodes);
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+        var leftNodes = leftQueryCondition.evaluateQuery(ctx, nodes);
+        var rightNodes = rightExpression.evaluateQuery(ctx, nodes);
         leftNodes.retainAll(rightNodes);
         return leftNodes;
     }

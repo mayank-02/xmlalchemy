@@ -2,7 +2,6 @@ package edu.ucsd.xmlalchemy.xquery;
 
 import edu.ucsd.xmlalchemy.xpath.Expression;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import org.w3c.dom.Node;
 
@@ -16,8 +15,8 @@ public class QueryElement implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        var queryNodes = query.evaluate(ctx, nodes);
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+        var queryNodes = query.evaluateQuery(ctx, nodes);
         return new ArrayList<>(List.of(ctx.makeElementNode(tagName, queryNodes)));
     }
 }

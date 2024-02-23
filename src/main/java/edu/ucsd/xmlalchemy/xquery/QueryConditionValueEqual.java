@@ -15,11 +15,11 @@ public class QueryConditionValueEqual implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
         var result = new ArrayList<Node>();
         for (Node node : nodes) {
-            var leftNodes = leftQuery.evaluate(ctx, List.of(node));
-            var rightNodes = rightQuery.evaluate(ctx, List.of(node));
+            var leftNodes = leftQuery.evaluateQuery(ctx, List.of(node));
+            var rightNodes = rightQuery.evaluateQuery(ctx, List.of(node));
             var foundEqualNode = false;
             for (var leftNode : leftNodes) {
                 for (var rightNode : rightNodes) {

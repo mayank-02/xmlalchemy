@@ -15,10 +15,10 @@ public class QueryLetClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
         for (var assignment : assignments) {
-            ctx.setVar(assignment.first, assignment.second.evaluate(ctx, nodes));
+            ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx, nodes));
         }
-        return query.evaluate(ctx, nodes);
+        return query.evaluateQuery(ctx, nodes);
     }
 }
