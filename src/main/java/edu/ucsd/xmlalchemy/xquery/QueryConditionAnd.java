@@ -6,19 +6,15 @@ import edu.ucsd.xmlalchemy.xpath.Expression;
 
 public class QueryConditionAnd implements Expression {
     private final Expression leftQueryCondition;
-    private final Expression rightExpression;
+    private final Expression rightQueryCondition;
 
-    public QueryConditionAnd(Expression leftQueryCondition, Expression rightExpression) {
+    public QueryConditionAnd(Expression leftQueryCondition, Expression rightQueryCondition) {
         this.leftQueryCondition = leftQueryCondition;
-        this.rightExpression = rightExpression;
+        this.rightQueryCondition = rightQueryCondition;
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        var leftNodes = leftQueryCondition.evaluateQuery(ctx, nodes);
-        var rightNodes = rightExpression.evaluateQuery(ctx, nodes);
-        leftNodes.retainAll(rightNodes);
-        return leftNodes;
+    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+        return leftQueryCondition.evaluateQueryCondition(ctx) && rightQueryCondition.evaluateQueryCondition(ctx);
     }
-
 }

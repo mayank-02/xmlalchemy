@@ -13,14 +13,7 @@ public class QueryConditionEmpty implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        var result = new ArrayList<Node>();
-        for (var node : nodes) {
-            var queryResult = query.evaluateQuery(ctx, List.of(node));
-            if (queryResult.isEmpty()) {
-                result.add(node);
-            }
-        }
-        return result;
+    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+        return query.evaluateQuery(ctx, new ArrayList<>()).isEmpty();
     }
 }

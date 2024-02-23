@@ -11,7 +11,6 @@ import edu.ucsd.xmlalchemy.xpath.Expression;
 public class QueryConditionExistentialQuantifier implements Expression {
     private final List<Tuple<String, Expression>> iterators;
     private final Expression condition;
-    private final HashSet<Node> result = new LinkedHashSet<>();
 
     public QueryConditionExistentialQuantifier(List<Tuple<String, Expression>> iterators, Expression condition) {
         this.iterators = iterators;
@@ -19,27 +18,24 @@ public class QueryConditionExistentialQuantifier implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        result.clear();
-        evaluateIterators(ctx, nodes, 0);
-        return new ArrayList<>(result);
+    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+        return evaluateIterators(ctx, 0);
     }
 
-    private void evaluateIterators(Context ctx, List<Node> nodes, int depth) throws Exception {
+    private boolean evaluateIterators(Context ctx, int depth) throws Exception {
         if (depth == iterators.size()) {
-            evaluateCondition(ctx, nodes);
-            return;
+            return condition.evaluateQueryCondition(ctx);
         }
         var iterator = iterators.get(depth);
-        var intermediateValues = iterator.second.evaluateQuery(ctx, nodes);
+        var intermediateValues = iterator.second.evaluateQuery(ctx, new ArrayList<>());
         for (var intermediateValue : intermediateValues) {
             ctx.setVar(iterator.first, List.of(intermediateValue));
-            evaluateIterators(ctx, nodes, depth + 1);
+            // NOTE: immediately break the backtracking process when one true value is found.
+            if (evaluateIterators(ctx, depth + 1)) {
+                return true;
+            };
             ctx.unwind(1);
         }
-    }
-
-    private void evaluateCondition(Context ctx, List<Node> nodes) throws Exception {
-        result.addAll(condition.evaluateQuery(ctx, nodes));
+        return false;
     }
 }

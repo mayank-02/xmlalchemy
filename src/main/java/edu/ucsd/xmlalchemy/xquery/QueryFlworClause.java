@@ -48,11 +48,11 @@ public class QueryFlworClause implements Expression {
             ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx, nodes));
         }
 
-        var allNodes = returnExpression.evaluateQuery(ctx, nodes);
-        if (condition != null) {
-            allNodes = condition.evaluateQuery(ctx, allNodes);
+        if (condition != null && !condition.evaluateQueryCondition(ctx)) {
+            return;
         }
 
+        var allNodes = returnExpression.evaluateQuery(ctx, nodes);
         result.addAll(allNodes);
         ctx.unwind(assignments.size());
     }

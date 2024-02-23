@@ -12,4 +12,8 @@ public interface Expression {
     default List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
         throw new UnsupportedOperationException();
     }
+
+    default boolean evaluateQueryCondition(Context ctx) throws Exception {
+        throw new UnsupportedOperationException();
+    }
 }

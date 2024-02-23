@@ -16,14 +16,7 @@ public class QueryConditionOr implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        var leftNodes = leftQueryCondition.evaluateQuery(ctx, nodes);
-        var rightNodes = rightQueryCondition.evaluateQuery(ctx, nodes);
-        
-        // Remove duplicates using a LinkedHashSet
-        leftNodes.addAll(rightNodes);
-        var uniqueNodes = new LinkedHashSet<>(leftNodes);
-
-        return new ArrayList<>(uniqueNodes);
+    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+        return leftQueryCondition.evaluateQueryCondition(ctx) || rightQueryCondition.evaluateQueryCondition(ctx);
     }
 }

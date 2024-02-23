@@ -15,25 +15,16 @@ public class QueryConditionIdentityEqual implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        List<Node> result = new ArrayList<>();
-        for (Node node : nodes) {
-            var leftNodes = leftQuery.evaluateQuery(ctx, List.of(node));
-            var rightNodes = rightQuery.evaluateQuery(ctx, List.of(node));
-            var foundEqualNode = false;
-            for (var leftNode : leftNodes) {
-                for (var rightNode : rightNodes) {
-                    if (leftNode.isSameNode(rightNode)) {
-                        foundEqualNode = true;
-                        break;
-                    }
-                }
-                if (foundEqualNode) {
-                    result.add(node);
-                    break;
+    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+        var leftNodes = leftQuery.evaluateQuery(ctx, new ArrayList<>());
+        var rightNodes = rightQuery.evaluateQuery(ctx, new ArrayList<>());
+        for (var leftNode : leftNodes) {
+            for (var rightNode : rightNodes) {
+                if (leftNode.isSameNode(rightNode)) {
+                    return true;
                 }
             }
         }
-        return result;
+        return false;
     }
 }
