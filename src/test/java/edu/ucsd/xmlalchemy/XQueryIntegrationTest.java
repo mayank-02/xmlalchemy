@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -25,10 +26,6 @@ class XQueryIntegrationTest {
                 // Assumes input files are .txt
                 var baseName = inputFile.getName().replace(".txt", "");
 
-                // Evaluate the query
-                var actualNodes = XQuery.query(inputFile.getAbsolutePath());
-                var actualDocument = XQuery.transform(actualNodes);
-
                 // Read the expected output
                 var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR, baseName + ".xml");
                 var dbf = DocumentBuilderFactory.newDefaultInstance();
@@ -36,7 +33,23 @@ class XQueryIntegrationTest {
                 var expectedDocument = db.parse(expectedOutputFile);
                 expectedDocument.normalize();
                 Utils.trimTextNodes(expectedDocument.getDocumentElement());
-                assertResult(baseName, expectedDocument, actualDocument);
+
+                // FIXME: This is a very quick implementation to support expecting error during evaluation.
+                // While this is a good thing to test, the implementation must be improved.
+                var errorExpected = expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
+
+                // Evaluate the query
+                try {
+                    var actualNodes = XQuery.query(inputFile.getAbsolutePath());
+                    if (!errorExpected) {
+                        var actualDocument = XQuery.transform(actualNodes);
+                        assertResult(baseName, expectedDocument, actualDocument);
+                    }
+                } catch (IllegalStateException e) {
+                    if (!errorExpected) {
+                        throw e;
+                    }
+                }
             }
         } else {
             Assertions

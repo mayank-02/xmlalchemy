@@ -1,0 +1,40 @@
+<result>
+    <SCENE>
+        <TITLE>SCENE III.  A street near the Capitol.</TITLE>
+        <STAGEDIR>Enter ARTEMIDORUS, reading a paper</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>ARTEMIDORUS</SPEAKER>
+            <LINE>'Caesar, beware of Brutus; take heed of Cassius;</LINE>
+            <LINE>come not near Casca; have an eye to Cinna, trust not</LINE>
+            <LINE>Trebonius: mark well Metellus Cimber: Decius Brutus</LINE>
+            <LINE>loves thee not: thou hast wronged Caius Ligarius.</LINE>
+            <LINE>There is but one mind in all these men, and it is</LINE>
+            <LINE>bent against Caesar. If thou beest not immortal,</LINE>
+            <LINE>look about you: security gives way to conspiracy.</LINE>
+            <LINE>The mighty gods defend thee! Thy lover,</LINE>
+            <LINE>'ARTEMIDORUS.'</LINE>
+            <LINE>Here will I stand till Caesar pass along,</LINE>
+            <LINE>And as a suitor will I give him this.</LINE>
+            <LINE>My heart laments that virtue cannot live</LINE>
+            <LINE>Out of the teeth of emulation.</LINE>
+            <LINE>If thou read this, O Caesar, thou mayst live;</LINE>
+            <LINE>If not, the Fates with traitors do contrive.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exit</STAGEDIR>
+    </SCENE>
+    <SCENE>
+        <TITLE>SCENE II.  The same. The field of battle.</TITLE>
+        <STAGEDIR>Alarum. Enter BRUTUS and MESSALA</STAGEDIR>
+        <SPEECH>
+            <SPEAKER>BRUTUS</SPEAKER>
+            <LINE>Ride, ride, Messala, ride, and give these bills</LINE>
+            <LINE>Unto the legions on the other side.</LINE>
+            <STAGEDIR>Loud alarum</STAGEDIR>
+            <LINE>Let them set on at once; for I perceive</LINE>
+            <LINE>But cold demeanor in Octavius' wing,</LINE>
+            <LINE>And sudden push gives them the overthrow.</LINE>
+            <LINE>Ride, ride, Messala: let them all come down.</LINE>
+        </SPEECH>
+        <STAGEDIR>Exeunt</STAGEDIR>
+    </SCENE>
+</result>

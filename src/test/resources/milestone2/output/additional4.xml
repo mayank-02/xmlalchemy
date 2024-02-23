@@ -1,0 +1,18 @@
+<result>
+	<scene>
+		<title>SCENE IV.  Another part of the same street, before the house of BRUTUS.</title>
+		<suspects>
+			<servant>
+				<name>LUCIUS</name>
+				<lines>
+					<line>To know my errand, madam.</line>
+					<line>Madam, what should I do?</line>
+					<line>Run to the Capitol, and nothing else?</line>
+					<line>And so return to you, and nothing else?</line>
+					<line>I hear none, madam.</line>
+					<line>Sooth, madam, I hear nothing.</line>
+				</lines>
+			</servant>
+		</suspects>
+	</scene>
+</result>

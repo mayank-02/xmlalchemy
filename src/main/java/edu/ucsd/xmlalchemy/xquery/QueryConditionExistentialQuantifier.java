@@ -29,6 +29,7 @@ public class QueryConditionExistentialQuantifier implements Expression {
             ctx.setVar(iterator.first, List.of(intermediateValue));
             // NOTE: immediately break the backtracking process when one true value is found.
             if (evaluateIterators(ctx, depth + 1)) {
+                ctx.unwind(1);
                 return true;
             };
             ctx.unwind(1);

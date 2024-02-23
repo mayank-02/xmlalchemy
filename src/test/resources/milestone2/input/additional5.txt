@@ -1,0 +1,36 @@
+let $brutus := "BRUTUS"
+let $servants := doc("src/test/resources/milestone2/document/j_caesar.xml")//PGROUP[GRPDESCR/text() = "servants to Brutus."]/PERSONA/text()
+let $brutus_and_servants := ($brutus, $servants)
+
+let $suspicious_scenes := (
+    for $scene in doc("src/test/resources/milestone2/document/j_caesar.xml")//SCENE
+    let $speakers := $scene//SPEAKER/text()
+    where
+        some
+            $servant in $servants,
+            $outsider in $speakers
+        satisfies
+            (not $brutus = $speakers) and
+            ($servant = $speakers) and
+            (not $outsider = $brutus_and_servants)
+    return $scene
+)
+
+<result>{
+    for $scene in $suspicious_scenes
+    return <scene>{
+        <title>{$scene/TITLE/text()}</title>,
+        <suspects>{
+            for $servant in $servants
+            where $servant = $scene//SPEAKER/text()
+            return <servant>{
+                <name>{$servant}</name>,
+                <lines>{
+                    for $line in $scene//LINE
+                    where $line/../SPEAKER/text() = $servant
+                    return <line>{$line/text()}</line>
+                }</lines>
+            }</servant>
+        }</suspects>
+    }</scene>
+}</result>

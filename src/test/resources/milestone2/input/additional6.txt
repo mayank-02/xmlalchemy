@@ -1,0 +1,15 @@
+<result>{
+    for $scene in doc("src/test/resources/milestone2/document/j_caesar.xml")//SCENE
+    let $speakers := $scene//SPEAKER/text()
+    where
+        not some
+            $speaker1 in $speakers,
+            $speaker2 in $speakers,
+            $speaker3 in $speakers
+        satisfies (
+            (not $speaker1 = $speaker2) and
+            (not $speaker2 = $speaker3) and
+            (not $speaker3 = $speaker1)
+        )
+    return $scene
+}</result>

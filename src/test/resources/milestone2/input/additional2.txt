@@ -1,0 +1,12 @@
+<result>{
+    for $speech in doc("src/test/resources/milestone2/document/j_caesar.xml")//SPEECH
+    let $speakers := $speech/SPEAKER
+    where not empty(
+        for $speaker1 in $speakers,
+            $speaker2 in $speakers
+        where
+            not $speaker1 is $speaker2
+        return $speaker1
+    )
+    return $speech
+}</result>
