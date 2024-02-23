@@ -9,7 +9,7 @@ public interface Expression {
         throw new UnsupportedOperationException();
     }
 
-    default List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+    default List<Node> evaluateQuery(Context ctx) throws Exception {
         throw new UnsupportedOperationException();
     }
 

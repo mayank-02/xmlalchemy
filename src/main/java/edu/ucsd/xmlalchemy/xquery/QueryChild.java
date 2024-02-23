@@ -16,8 +16,8 @@ public class QueryChild implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
-        List<Node> queryNodes = query.evaluateQuery(ctx, nodes);
+    public List<Node> evaluateQuery(Context ctx) throws Exception {
+        List<Node> queryNodes = query.evaluateQuery(ctx);
         List<Node> result = relativePath.evaluate(queryNodes);
 
         // Remove duplicates using a LinkedHashSet

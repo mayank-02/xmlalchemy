@@ -1,8 +1,5 @@
 package edu.ucsd.xmlalchemy.xquery;
 
-import java.util.ArrayList;
-import java.util.List;
-import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xpath.Expression;
 
 public class QueryConditionIdentityEqual implements Expression {
@@ -16,8 +13,8 @@ public class QueryConditionIdentityEqual implements Expression {
 
     @Override
     public boolean evaluateQueryCondition(Context ctx) throws Exception {
-        var leftNodes = leftQuery.evaluateQuery(ctx, new ArrayList<>());
-        var rightNodes = rightQuery.evaluateQuery(ctx, new ArrayList<>());
+        var leftNodes = leftQuery.evaluateQuery(ctx);
+        var rightNodes = rightQuery.evaluateQuery(ctx);
         for (var leftNode : leftNodes) {
             for (var rightNode : rightNodes) {
                 if (leftNode.isSameNode(rightNode)) {

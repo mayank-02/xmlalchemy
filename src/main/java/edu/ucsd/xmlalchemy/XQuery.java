@@ -38,7 +38,7 @@ public class XQuery {
             var ctx = new DefaultContext();
             ctx.setDocument(
                     DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
-            return query.evaluateQuery(ctx, new ArrayList<>());
+            return query.evaluateQuery(ctx);
         } catch (Exception e) {
             e.printStackTrace();
             return new ArrayList<>();

@@ -1,10 +1,7 @@
 package edu.ucsd.xmlalchemy.xquery;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
-import org.w3c.dom.Node;
+
 import edu.ucsd.xmlalchemy.Tuple;
 import edu.ucsd.xmlalchemy.xpath.Expression;
 
@@ -27,7 +24,7 @@ public class QueryConditionExistentialQuantifier implements Expression {
             return condition.evaluateQueryCondition(ctx);
         }
         var iterator = iterators.get(depth);
-        var intermediateValues = iterator.second.evaluateQuery(ctx, new ArrayList<>());
+        var intermediateValues = iterator.second.evaluateQuery(ctx);
         for (var intermediateValue : intermediateValues) {
             ctx.setVar(iterator.first, List.of(intermediateValue));
             // NOTE: immediately break the backtracking process when one true value is found.

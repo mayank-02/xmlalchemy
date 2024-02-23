@@ -13,7 +13,7 @@ public class Variable implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) throws Exception {
         // NOTE: getVar returns a List but not necessarily an ArrayList.
         // Always construct a new ArrayList
         return new ArrayList<>(ctx.getVar(name));

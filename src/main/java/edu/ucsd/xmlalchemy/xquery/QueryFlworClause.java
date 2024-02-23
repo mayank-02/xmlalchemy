@@ -23,36 +23,36 @@ public class QueryFlworClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx, List<Node> nodes) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) throws Exception {
         result.clear();
-        evaluateIterators(ctx, nodes, 0);
+        evaluateIterators(ctx, 0);
         return result;
     }
 
-    private void evaluateIterators(Context ctx, List<Node> nodes, int depth) throws Exception {
+    private void evaluateIterators(Context ctx, int depth) throws Exception {
         if (depth == iterators.size()) {
-            evaluateAssignments(ctx, nodes);
+            evaluateAssignments(ctx);
             return;
         }
         var iterator = iterators.get(depth);
-        var intermediateValues = iterator.second.evaluateQuery(ctx, nodes);
+        var intermediateValues = iterator.second.evaluateQuery(ctx);
         for (var intermediateValue : intermediateValues) {
             ctx.setVar(iterator.first, List.of(intermediateValue));
-            evaluateIterators(ctx, nodes, depth + 1);
+            evaluateIterators(ctx, depth + 1);
             ctx.unwind(1);
         }
     }
 
-    private void evaluateAssignments(Context ctx, List<Node> nodes) throws Exception {
+    private void evaluateAssignments(Context ctx) throws Exception {
         for (var assignment : assignments) {
-            ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx, nodes));
+            ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx));
         }
 
         if (condition != null && !condition.evaluateQueryCondition(ctx)) {
             return;
         }
 
-        var allNodes = returnExpression.evaluateQuery(ctx, nodes);
+        var allNodes = returnExpression.evaluateQuery(ctx);
         result.addAll(allNodes);
         ctx.unwind(assignments.size());
     }
