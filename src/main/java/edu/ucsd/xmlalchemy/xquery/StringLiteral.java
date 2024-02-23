@@ -1,5 +1,6 @@
 package edu.ucsd.xmlalchemy.xquery;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xpath.Expression;
@@ -13,6 +14,6 @@ public class StringLiteral implements Expression {
 
     @Override
     public List<Node> evaluate(Context ctx, List<Node> nodes) throws Exception {
-        return List.of(ctx.makeTextNode(value));
+        return new ArrayList<>(List.of(ctx.makeTextNode(value)));
     }
 }
