@@ -26,41 +26,31 @@ public class XQuery {
         }
     }
 
-    public static List<Node> query(String filename) {
-        try {
-            var charStream = CharStreams.fromFileName(filename);
-            var lexer = new ExprLexer(charStream);
-            var tokens = new CommonTokenStream(lexer);
-            var parser = new ExprParser(tokens);
-            var tree = parser.query();
-            var visitor = new Visitor();
-            var query = visitor.visit(tree);
-            var ctx = new DefaultContext();
-            ctx.setDocument(
-                    DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
-            return query.evaluateQuery(ctx);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
+    public static List<Node> query(String filename) throws Exception {
+        var charStream = CharStreams.fromFileName(filename);
+        var lexer = new ExprLexer(charStream);
+        var tokens = new CommonTokenStream(lexer);
+        var parser = new ExprParser(tokens);
+        var tree = parser.query();
+        var visitor = new Visitor();
+        var query = visitor.visit(tree);
+        var ctx = new DefaultContext();
+        ctx.setDocument(
+                DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
+        return query.evaluateQuery(ctx);
     }
 
-    public static void output(List<Node> nodes) {
-        try {
-            final var tfFactory = TransformerFactory.newDefaultInstance();
-            var tf = tfFactory
-                    .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
-            tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+    public static void output(List<Node> nodes) throws Exception {
+        final var tfFactory = TransformerFactory.newDefaultInstance();
+        var tf = tfFactory
+                .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
+        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
-            for (var node : nodes) {
-                var source = new DOMSource(node);
-                var consoleResult = new StreamResult(System.out);
-                tf.transform(source, consoleResult);
-            }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        for (var node : nodes) {
+            var source = new DOMSource(node);
+            var consoleResult = new StreamResult(System.out);
+            tf.transform(source, consoleResult);
         }
     }
 
