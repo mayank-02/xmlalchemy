@@ -47,16 +47,14 @@ relativePath
     ;
 
 pathFilter
-    : relativePath                                                           # pathFilterRelativePath
-    | left = relativePath VALUE_EQUALITY_OPERATOR right = relativePath       # pathFilterValueEqualOperator
-    | left = relativePath VALUE_EQUALITY_KEYWORD right = relativePath        # pathFilterValueEqualKeyword
-    | left = relativePath IDENTITY_EQUALITY_OPERATOR right = relativePath    # pathFilterIdentityEqualOperator
-    | left = relativePath IDENTITY_EQUALITY_KEYWORD right = relativePath     # pathFilterIdentityEqualKeyword
-    | relativePath VALUE_EQUALITY_OPERATOR stringLiteral = STRING            # pathFilterEqualStringLiteral
-    | LEFT_PAREN pathFilter RIGHT_PAREN                                      # pathFilterParenthesized
-    | left = pathFilter LOGICAL_AND right = pathFilter                       # pathFilterAnd
-    | left = pathFilter LOGICAL_OR right = pathFilter                        # pathFilterOr
-    | LOGICAL_NOT pathFilter                                                 # pathFilterNot
+    : relativePath                                                                                          # pathFilterRelativePath
+    | left = relativePath (VALUE_EQUALITY_OPERATOR | VALUE_EQUALITY_KEYWORD) right = relativePath           # pathFilterValueEqual
+    | left = relativePath (IDENTITY_EQUALITY_OPERATOR | IDENTITY_EQUALITY_KEYWORD)  right = relativePath    # pathFilterIdentityEqual
+    | relativePath VALUE_EQUALITY_OPERATOR stringLiteral = STRING                                           # pathFilterEqualStringLiteral
+    | LEFT_PAREN pathFilter RIGHT_PAREN                                                                     # pathFilterParenthesized
+    | left = pathFilter LOGICAL_AND right = pathFilter                                                      # pathFilterAnd
+    | left = pathFilter LOGICAL_OR right = pathFilter                                                       # pathFilterOr
+    | LOGICAL_NOT pathFilter                                                                                # pathFilterNot
     ;
 
 openingTag

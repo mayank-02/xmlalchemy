@@ -91,30 +91,15 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     }
 
     @Override
-    public Expression visitPathFilterValueEqualKeyword(PathFilterValueEqualKeywordContext ctx) {
+    public Expression visitPathFilterValueEqual(PathFilterValueEqualContext ctx) {
         var leftExpression = visit(ctx.left);
         var rightExpression = visit(ctx.right);
         return new PathFilterValueEqual(leftExpression, rightExpression);
     }
 
     @Override
-    public Expression visitPathFilterValueEqualOperator(PathFilterValueEqualOperatorContext ctx) {
-        var leftExpression = visit(ctx.left);
-        var rightExpression = visit(ctx.right);
-        return new PathFilterValueEqual(leftExpression, rightExpression);
-    }
-
-    @Override
-    public Expression visitPathFilterIdentityEqualKeyword(
-            PathFilterIdentityEqualKeywordContext ctx) {
-        var leftExpression = visit(ctx.left);
-        var rightExpression = visit(ctx.right);
-        return new PathFilterIdentityEqual(leftExpression, rightExpression);
-    }
-
-    @Override
-    public Expression visitPathFilterIdentityEqualOperator(
-            PathFilterIdentityEqualOperatorContext ctx) {
+    public Expression visitPathFilterIdentityEqual(
+            PathFilterIdentityEqualContext ctx) {
         var leftExpression = visit(ctx.left);
         var rightExpression = visit(ctx.right);
         return new PathFilterIdentityEqual(leftExpression, rightExpression);
