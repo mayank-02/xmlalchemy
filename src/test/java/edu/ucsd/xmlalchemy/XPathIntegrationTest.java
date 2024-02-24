@@ -36,7 +36,7 @@ class XPathIntegrationTest {
                 // FIXME: This is a limitation of the current test suite architecture.
                 // All the consecutive text nodes will be parsed as a single text node.
                 // making it impossible to do equality check.
-                Set<String> skippedBaseNames = Set.of("additional3", "additional8");
+                var skippedBaseNames = Set.of("additional3", "additional8");
                 if (skippedBaseNames.contains(baseName)) {
                     continue;
                 }
@@ -64,7 +64,7 @@ class XPathIntegrationTest {
     // Check testcase rule20
     // Reference: https://github.com/xmlunit/xmlunit/issues/123
     public void assertResultXMLUnit(String baseName, Document expectedDocument, Document actualDocument) {
-        Diff diff = DiffBuilder.compare(Input.fromDocument(expectedDocument))
+        var diff = DiffBuilder.compare(Input.fromDocument(expectedDocument))
                 .withTest(Input.fromDocument(actualDocument))
                 .ignoreWhitespace()
                 .normalizeWhitespace()
