@@ -237,14 +237,14 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitVariable(VariableContext ctx) {
-        return new Variable(ctx.var().getText());
+        return new Variable(ctx.var().NAME().getText());
     }
 
     @Override
     public Expression visitQueryLetClause(QueryLetClauseContext ctx) {
         var assignments = new ArrayList<Tuple<String, Expression>>();
         for (int i = 0; i < ctx.letClause().var().size(); i++) {
-            var variable = ctx.letClause().var(i).getText();
+            var variable = ctx.letClause().var(i).NAME().getText();
             var expression = visit(ctx.letClause().query(i));
             assignments.add(new Tuple<>(variable, expression));
         }
@@ -256,7 +256,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
         // FOR clause
         var iterators = new ArrayList<Tuple<String, Expression>>();
         for (int i = 0; i < ctx.forClause().var().size(); i++) {
-            var variable = ctx.forClause().var(i).getText();
+            var variable = ctx.forClause().var(i).NAME().getText();
             var expression = visit(ctx.forClause().query(i));
             iterators.add(new Tuple<>(variable, expression));
         }
@@ -265,7 +265,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
         var assignments = new ArrayList<Tuple<String, Expression>>();
         if (ctx.letClause() != null) {
             for (int i = 0; i < ctx.letClause().var().size(); i++) {
-                var variable = ctx.letClause().var(i).getText();
+                var variable = ctx.letClause().var(i).NAME().getText();
                 var expression = visit(ctx.letClause().query(i));
                 assignments.add(new Tuple<>(variable, expression));
             }
@@ -287,7 +287,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     public Expression visitQueryConditionExistentialQuantifier(QueryConditionExistentialQuantifierContext ctx) {
         var iterators = new ArrayList<Tuple<String, Expression>>();
         for (int i = 0; i < ctx.var().size(); i++) {
-            var variable = ctx.var(i).getText();
+            var variable = ctx.var(i).NAME().getText();
             var expression = visit(ctx.query(i));
             iterators.add(new Tuple<>(variable, expression));
         }
