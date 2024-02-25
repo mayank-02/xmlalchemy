@@ -3,6 +3,7 @@ package edu.ucsd.xmlalchemy;
 import java.util.ArrayList;
 import edu.ucsd.xmlalchemy.ExprParser.*;
 import edu.ucsd.xmlalchemy.xpath.*;
+import edu.ucsd.xmlalchemy.xquery.JoinClause;
 import edu.ucsd.xmlalchemy.xquery.QueryAbsolutePath;
 import edu.ucsd.xmlalchemy.xquery.QueryChild;
 import edu.ucsd.xmlalchemy.xquery.QueryConcatenation;
@@ -98,8 +99,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
     }
 
     @Override
-    public Expression visitPathFilterIdentityEqual(
-            PathFilterIdentityEqualContext ctx) {
+    public Expression visitPathFilterIdentityEqual(PathFilterIdentityEqualContext ctx) {
         var leftExpression = visit(ctx.left);
         var rightExpression = visit(ctx.right);
         return new PathFilterIdentityEqual(leftExpression, rightExpression);
@@ -279,12 +279,13 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
         // RETURN clause
         var returnExpression = visit(ctx.returnClause().query());
-        
+
         return new QueryFlworClause(iterators, assignments, condition, returnExpression);
     }
 
     @Override
-    public Expression visitQueryConditionExistentialQuantifier(QueryConditionExistentialQuantifierContext ctx) {
+    public Expression visitQueryConditionExistentialQuantifier(
+            QueryConditionExistentialQuantifierContext ctx) {
         var iterators = new ArrayList<Tuple<String, Expression>>();
         for (int i = 0; i < ctx.var().size(); i++) {
             var variable = ctx.var(i).NAME().getText();
@@ -295,5 +296,78 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
         var condition = visit(ctx.queryCondition());
 
         return new QueryConditionExistentialQuantifier(iterators, condition);
+    }
+
+    @Override
+    public Expression visitQueryJoinClause(QueryJoinClauseContext ctx) {
+        return visit(ctx.joinClause());
+    }
+
+    @Override
+    public Expression visitJoinClause(JoinClauseContext ctx) {
+        var leftQuery = visit(ctx.left);
+        var rightQuery = visit(ctx.right);
+        var leftCondition = ctx.condition.left;
+        var rightCondition = ctx.condition.right;
+
+        var leftAttributes = new ArrayList<String>();
+        if (leftCondition.NAME() != null) {
+            for (int i = 0; i < leftCondition.NAME().size(); i++) {
+                leftAttributes.add(leftCondition.NAME(i).getText());
+            }
+        }
+
+        var rightAttributes = new ArrayList<String>();
+        if (rightCondition.NAME() != null) {
+            for (int i = 0; i < rightCondition.NAME().size(); i++) {
+                rightAttributes.add(rightCondition.NAME(i).getText());
+            }
+        }
+
+        return new JoinClause(leftQuery, rightQuery, leftAttributes, rightAttributes);
+    }
+
+    @Override
+    public Expression visitJoinFlworClause(JoinFlworClauseContext ctx) {
+        if (ctx.joinClause() != null) {
+            return visit(ctx.joinClause());
+        }
+
+        // FOR clause
+        var iterators = new ArrayList<Tuple<String, Expression>>();
+        for (int i = 0; i < ctx.forClause().var().size(); i++) {
+            var variable = ctx.forClause().var(i).NAME().getText();
+            var expression = visit(ctx.forClause().query(i));
+            iterators.add(new Tuple<>(variable, expression));
+        }
+
+        // WHERE clause
+        Expression condition = null;
+        if (ctx.whereClause() != null) {
+            condition = visit(ctx.whereClause().queryCondition());
+        }
+
+        // RETURN clause
+        var returnExpression = visit(ctx.joinReturnClause());
+        var emptyAssignments = new ArrayList<Tuple<String, Expression>>();
+        return new QueryFlworClause(iterators, emptyAssignments, condition, returnExpression);
+    }
+
+    @Override
+    public Expression visitJoinReturnClause(JoinReturnClauseContext ctx) {
+        var tupleElement = visit(ctx.tupleElement(0));
+        for (int i = 1; i < ctx.tupleElement().size(); i++) {
+            var nextTupleElement = visit(ctx.tupleElement(i));
+            tupleElement = new QueryConcatenation(tupleElement, nextTupleElement);
+        }
+        return new QueryElement("tuple", tupleElement);
+    }
+
+    @Override
+    public Expression visitTupleElement(TupleElementContext ctx) {
+        // if (!ctx.openingTag().NAME().getText().equals(ctx.closingTag().NAME().getText())) {
+        //     throw new ValidationException("Opening and closing tags do not match");
+        // }
+        return new QueryElement(ctx.openingTag().NAME().getText(), new Variable(ctx.var().NAME().getText()));
     }
 }

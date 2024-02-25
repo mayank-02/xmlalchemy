@@ -90,7 +90,7 @@ documentName
     ;
 
 joinClause
-    : JOIN LEFT_PAREN joinFlworClause COMMA joinFlworClause COMMA joinConditionClause RIGHT_PAREN
+    : JOIN LEFT_PAREN left = joinFlworClause COMMA right = joinFlworClause COMMA condition = joinConditionClause RIGHT_PAREN
     ;
 
 joinAttributeList
@@ -111,5 +111,6 @@ tupleElement
     ;
 
 joinFlworClause
-    : joinClause | (forClause whereClause? joinReturnClause)
+    : joinClause
+    | (forClause whereClause? joinReturnClause)
     ;

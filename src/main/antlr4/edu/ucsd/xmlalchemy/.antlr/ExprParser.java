@@ -1765,22 +1765,25 @@ public class ExprParser extends Parser {
 
 	@SuppressWarnings("CheckReturnValue")
 	public static class JoinClauseContext extends ParserRuleContext {
+		public JoinFlworClauseContext left;
+		public JoinFlworClauseContext right;
+		public JoinConditionClauseContext condition;
 		public TerminalNode JOIN() { return getToken(ExprParser.JOIN, 0); }
 		public TerminalNode LEFT_PAREN() { return getToken(ExprParser.LEFT_PAREN, 0); }
+		public List<TerminalNode> COMMA() { return getTokens(ExprParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(ExprParser.COMMA, i);
+		}
+		public TerminalNode RIGHT_PAREN() { return getToken(ExprParser.RIGHT_PAREN, 0); }
 		public List<JoinFlworClauseContext> joinFlworClause() {
 			return getRuleContexts(JoinFlworClauseContext.class);
 		}
 		public JoinFlworClauseContext joinFlworClause(int i) {
 			return getRuleContext(JoinFlworClauseContext.class,i);
 		}
-		public List<TerminalNode> COMMA() { return getTokens(ExprParser.COMMA); }
-		public TerminalNode COMMA(int i) {
-			return getToken(ExprParser.COMMA, i);
-		}
 		public JoinConditionClauseContext joinConditionClause() {
 			return getRuleContext(JoinConditionClauseContext.class,0);
 		}
-		public TerminalNode RIGHT_PAREN() { return getToken(ExprParser.RIGHT_PAREN, 0); }
 		public JoinClauseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -1798,15 +1801,15 @@ public class ExprParser extends Parser {
 			setState(259);
 			match(LEFT_PAREN);
 			setState(260);
-			joinFlworClause();
+			((JoinClauseContext)_localctx).left = joinFlworClause();
 			setState(261);
 			match(COMMA);
 			setState(262);
-			joinFlworClause();
+			((JoinClauseContext)_localctx).right = joinFlworClause();
 			setState(263);
 			match(COMMA);
 			setState(264);
-			joinConditionClause();
+			((JoinClauseContext)_localctx).condition = joinConditionClause();
 			setState(265);
 			match(RIGHT_PAREN);
 			}
