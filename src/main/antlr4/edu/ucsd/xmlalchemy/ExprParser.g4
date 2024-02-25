@@ -14,6 +14,7 @@ query
     | openingTag LEFT_CURLY_BRACKET query RIGHT_CURLY_BRACKET closingTag    # queryElement
     | forClause letClause? whereClause? returnClause                        # queryFlwor
     | letClause query                                                       # queryLetClause
+    | joinClause                                                            # queryJoinClause
     ;
 
 queryCondition
@@ -86,4 +87,29 @@ var
 
 documentName
     : DOCUMENT LEFT_PAREN filename = STRING RIGHT_PAREN
+    ;
+
+joinClause
+    : JOIN LEFT_PAREN joinFlworClause COMMA joinFlworClause COMMA joinConditionClause RIGHT_PAREN
+    ;
+
+joinAttributeList
+    : LEFT_SQUARE_BRACKET RIGHT_SQUARE_BRACKET
+    | LEFT_SQUARE_BRACKET NAME (COMMA NAME)* RIGHT_SQUARE_BRACKET
+    ;
+
+joinConditionClause
+    : left = joinAttributeList COMMA right = joinAttributeList
+    ;
+
+joinReturnClause
+    : RETURN OPENING_TUPLE_TAG LEFT_CURLY_BRACKET tupleElement (COMMA tupleElement)* RIGHT_CURLY_BRACKET CLOSING_TUPLE_TAG
+    ;
+
+tupleElement
+    : openingTag LEFT_CURLY_BRACKET var RIGHT_CURLY_BRACKET closingTag
+    ;
+
+joinFlworClause
+    : joinClause | (forClause whereClause? joinReturnClause)
     ;
