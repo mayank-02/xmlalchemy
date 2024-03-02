@@ -59,7 +59,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitRelativePathParenthesized(RelativePathParenthesizedContext ctx) {
-        return visit(ctx.relativePath());
+        return new RelativePathParenthesized(visit(ctx.relativePath()));
     }
 
     @Override
@@ -111,7 +111,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitPathFilterParenthesized(PathFilterParenthesizedContext ctx) {
-        return visit(ctx.pathFilter());
+        return new PathFilterParenthesized(visit(ctx.pathFilter()));
     }
 
     @Override
@@ -145,7 +145,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitQueryParenthesized(QueryParenthesizedContext ctx) {
-        return visit(ctx.query());
+        return new QueryParenthesized(visit(ctx.query()));
     }
 
     @Override
@@ -196,7 +196,7 @@ public class Visitor extends ExprParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitQueryConditionParenthesized(QueryConditionParenthesizedContext ctx) {
-        return visit(ctx.queryCondition());
+        return new QueryConditionParenthesized(visit(ctx.queryCondition()));
     }
 
     @Override
