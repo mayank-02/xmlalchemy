@@ -3,23 +3,7 @@ package edu.ucsd.xmlalchemy;
 import java.util.ArrayList;
 import edu.ucsd.xmlalchemy.ExprParser.*;
 import edu.ucsd.xmlalchemy.xpath.*;
-import edu.ucsd.xmlalchemy.xquery.JoinClause;
-import edu.ucsd.xmlalchemy.xquery.QueryAbsolutePath;
-import edu.ucsd.xmlalchemy.xquery.QueryChild;
-import edu.ucsd.xmlalchemy.xquery.QueryConcatenation;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionAnd;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionEmpty;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionExistentialQuantifier;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionIdentityEqual;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionNot;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionOr;
-import edu.ucsd.xmlalchemy.xquery.QueryConditionValueEqual;
-import edu.ucsd.xmlalchemy.xquery.QueryDescendant;
-import edu.ucsd.xmlalchemy.xquery.QueryElement;
-import edu.ucsd.xmlalchemy.xquery.QueryFlworClause;
-import edu.ucsd.xmlalchemy.xquery.QueryLetClause;
-import edu.ucsd.xmlalchemy.xquery.StringLiteral;
-import edu.ucsd.xmlalchemy.xquery.Variable;
+import edu.ucsd.xmlalchemy.xquery.*;
 
 public class Visitor extends ExprParserBaseVisitor<Expression> {
 
