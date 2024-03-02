@@ -21,4 +21,8 @@ public class RelativePathConcatenation implements Expression {
         return leftNodes;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%s,%s", leftExpression.toString(), rightExpression.toString());
+    }
 }

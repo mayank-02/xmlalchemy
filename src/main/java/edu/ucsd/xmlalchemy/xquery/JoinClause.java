@@ -47,7 +47,7 @@ public class JoinClause implements Expression {
             var hashedKey = this.hash(rightTuple, rightAttributes);
             if (hashMap.containsKey(hashedKey)) {
                 var matchingTuples = hashMap.get(hashedKey);
-                for (var matchingTuple: matchingTuples) {
+                for (var matchingTuple : matchingTuples) {
                     var mergedValues = new ArrayList<Node>();
                     var leftValues = matchingTuple.getChildNodes();
                     for (int i = 0; i < leftValues.getLength(); i++) {
@@ -77,5 +77,12 @@ public class JoinClause implements Expression {
         }
 
         return String.join("###", result);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("join (%s, %s, [%s], [%s])", leftQuery.toString(),
+                rightQuery.toString(), String.join(", ", leftAttributes),
+                String.join(", ", rightAttributes));
     }
 }

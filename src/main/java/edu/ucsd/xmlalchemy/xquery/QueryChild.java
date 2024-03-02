@@ -25,4 +25,9 @@ public class QueryChild implements Expression {
 
         return new ArrayList<>(uniqueNodes);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s/%s", query.toString(), relativePath.toString());
+    }
 }

@@ -19,4 +19,9 @@ public class Text implements Expression {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "text()";
+    }
 }

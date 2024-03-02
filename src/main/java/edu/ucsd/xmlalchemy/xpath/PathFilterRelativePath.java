@@ -25,4 +25,9 @@ public class PathFilterRelativePath implements Expression {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return relativePath.toString();
+    }
 }

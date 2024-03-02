@@ -27,5 +27,8 @@ public class RelativePathDescendant implements Expression {
         return new ArrayList<>(new LinkedHashSet<>(rightExpression.evaluate(descendantNodes)));
     }
 
-    
+    @Override
+    public String toString() {
+        return String.format("%s//%s", leftExpression.toString(), rightExpression.toString());
+    }
 }

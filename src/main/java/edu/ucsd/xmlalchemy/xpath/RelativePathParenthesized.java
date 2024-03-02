@@ -14,4 +14,9 @@ public class RelativePathParenthesized implements Expression {
     public List<Node> evaluate(List<Node> nodes) throws Exception {
         return expression.evaluate(nodes);
     }
+    
+    @Override
+    public String toString() {
+        return String.format("(%s)", expression.toString());
+    }
 }

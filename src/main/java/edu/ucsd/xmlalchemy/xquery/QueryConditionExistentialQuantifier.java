@@ -31,9 +31,24 @@ public class QueryConditionExistentialQuantifier implements Expression {
             if (evaluateIterators(ctx, depth + 1)) {
                 ctx.unwind(1);
                 return true;
-            };
+            }
             ctx.unwind(1);
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("some ");
+        for (int i = 0; i < iterators.size(); i++) {
+            var iterator = iterators.get(i);
+            sb.append(String.format("$%s in %s", iterator.first, iterator.second.toString()));
+            if (i != iterators.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append(String.format(" satisfies %s", condition.toString()));
+        return sb.toString();
     }
 }

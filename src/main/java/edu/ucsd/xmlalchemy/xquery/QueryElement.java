@@ -19,4 +19,9 @@ public class QueryElement implements Expression {
         var queryNodes = query.evaluateQuery(ctx);
         return new ArrayList<>(List.of(ctx.makeElementNode(tagName, queryNodes)));
     }
+
+    @Override
+    public String toString() {
+        return String.format("<%s>{%s}</%s>", tagName, query.toString(), tagName);
+    }
 }

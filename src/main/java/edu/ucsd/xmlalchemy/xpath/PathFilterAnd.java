@@ -19,4 +19,9 @@ public class PathFilterAnd implements Expression {
         leftNodes.retainAll(rightNodes);
         return leftNodes;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s and %s", leftExpression.toString(), rightExpression.toString());
+    }
 }

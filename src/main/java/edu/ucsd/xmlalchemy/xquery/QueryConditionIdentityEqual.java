@@ -24,4 +24,9 @@ public class QueryConditionIdentityEqual implements Expression {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s is %s", leftQuery.toString(), rightQuery.toString());
+    }
 }

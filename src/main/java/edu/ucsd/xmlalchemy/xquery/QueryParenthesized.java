@@ -15,4 +15,9 @@ public class QueryParenthesized implements Expression {
     public List<Node> evaluateQuery(Context ctx) throws Exception {
         return query.evaluateQuery(ctx);
     }
+
+    @Override
+    public String toString() {
+        return String.format("(%s)", query.toString());
+    }
 }

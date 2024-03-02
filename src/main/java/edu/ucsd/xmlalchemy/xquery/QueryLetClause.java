@@ -21,4 +21,20 @@ public class QueryLetClause implements Expression {
         }
         return query.evaluateQuery(ctx);
     }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("let ");
+        for (int i = 0; i < assignments.size(); i++) {
+            var assignment = assignments.get(i);
+            sb.append(String.format("$%s := %s", assignment.first, assignment.second.toString()));
+            if (i != assignments.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append(" ");
+        sb.append(query.toString());
+        return sb.toString();
+    }
 }

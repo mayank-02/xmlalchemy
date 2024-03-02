@@ -28,4 +28,8 @@ public class TagName implements Expression {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return tag;
+    }
 }

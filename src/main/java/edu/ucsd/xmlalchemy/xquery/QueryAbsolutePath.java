@@ -16,4 +16,9 @@ public class QueryAbsolutePath implements Expression {
     public List<Node> evaluateQuery(Context ctx) throws Exception {
         return absolutePath.evaluate(new ArrayList<>());
     }
+
+    @Override
+    public String toString() {
+        return absolutePath.toString();
+    }
 }

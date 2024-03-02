@@ -1,5 +1,7 @@
 package edu.ucsd.xmlalchemy;
 
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -10,10 +12,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import org.xmlunit.builder.DiffBuilder;
 import org.xmlunit.builder.Input;
-import org.xmlunit.diff.Diff;
 import org.xmlunit.diff.DifferenceEvaluators;
 import org.xmlunit.diff.DefaultNodeMatcher;
 import org.xmlunit.diff.ElementSelectors;
@@ -63,15 +66,13 @@ class XPathIntegrationTest {
     // when the tree is deep enough and ElementSelectors.byNameAndText is not sufficient
     // Check testcase rule20
     // Reference: https://github.com/xmlunit/xmlunit/issues/123
-    public void assertResultXMLUnit(String baseName, Document expectedDocument, Document actualDocument) {
+    public void assertResultXMLUnit(String baseName, Document expectedDocument,
+            Document actualDocument) {
         var diff = DiffBuilder.compare(Input.fromDocument(expectedDocument))
-                .withTest(Input.fromDocument(actualDocument))
-                .ignoreWhitespace()
-                .normalizeWhitespace()
-                .withDifferenceEvaluator(DifferenceEvaluators.Default)
+                .withTest(Input.fromDocument(actualDocument)).ignoreWhitespace()
+                .normalizeWhitespace().withDifferenceEvaluator(DifferenceEvaluators.Default)
                 .withNodeMatcher(new DefaultNodeMatcher(ElementSelectors.byNameAndText))
-                .checkForSimilar()
-                .build();
+                .checkForSimilar().build();
         Assertions.assertFalse(diff.hasDifferences(), "Difference found: " + baseName);
     }
 
@@ -86,9 +87,8 @@ class XPathIntegrationTest {
 
         var actualResultNode = actualDocument.getElementsByTagName("result").item(0);
         var actualNodeList = actualResultNode.getChildNodes();
-        var actualNodes =
-                IntStream.range(0, actualNodeList.getLength()).mapToObj(actualNodeList::item)
-                        .collect(Collectors.toList());
+        var actualNodes = IntStream.range(0, actualNodeList.getLength())
+                .mapToObj(actualNodeList::item).collect(Collectors.toList());
 
         Assertions.assertEquals(expectedNodes.size(), actualNodes.size(),
                 "Mismatch in result size for test case: " + baseName);
@@ -112,5 +112,30 @@ class XPathIntegrationTest {
                         expectedNode -> actualNodes.stream().anyMatch(expectedNode::isEqualNode)),
                 "Some nodes in the expected output are not present in the actual output for test case: "
                         + baseName);
+    }
+
+    @Test
+    void testStringify() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR);
+        var inputFiles = testDataDir.listFiles();
+
+        if (inputFiles != null) {
+            for (var inputFile : inputFiles) {
+                var filename = inputFile.getAbsolutePath();
+                var charStream = CharStreams.fromFileName(filename);
+                var lexer = new ExprLexer(charStream);
+                var tokens = new CommonTokenStream(lexer);
+                var parser = new ExprParser(tokens);
+                var tree = parser.absolutePath();
+                var visitor = new Visitor();
+                var absolutePathExpr = visitor.visit(tree);
+                var actualString = absolutePathExpr.toString();
+                var expectedString = Files.readString(Paths.get(filename)).replace("\r", "")
+                        .replace("\n", "").replace("==", "is").replace(" eq ", " = ");
+                Assertions.assertEquals(expectedString, actualString);
+            }
+        } else {
+            Assertions.fail("No input files found in testData directory.");
+        }
     }
 }

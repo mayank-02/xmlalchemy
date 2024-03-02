@@ -16,4 +16,9 @@ public class Parent implements Expression {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "..";
+    }
 }

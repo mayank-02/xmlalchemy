@@ -8,4 +8,9 @@ public class Current implements Expression {
     public List<Node> evaluate(List<Node> nodes) throws Exception {
         return nodes;
     }
+
+    @Override
+    public String toString() {
+        return ".";
+    }
 }

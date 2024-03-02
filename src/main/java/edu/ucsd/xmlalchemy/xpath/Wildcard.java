@@ -21,4 +21,9 @@ public class Wildcard implements Expression {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "*";
+    }
 }

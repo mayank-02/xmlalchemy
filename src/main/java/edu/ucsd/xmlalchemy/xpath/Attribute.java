@@ -22,4 +22,8 @@ public class Attribute implements Expression{
         return result;
     }
 
+    @Override
+    public String toString() {
+        return String.format("@%s", name);
+    }
 }

@@ -1,7 +1,6 @@
 let $brutus := "BRUTUS"
 let $servants := doc("src/test/resources/milestone2/document/j_caesar.xml")//PGROUP[GRPDESCR/text() = "servants to Brutus."]/PERSONA/text()
 let $brutus_and_servants := ($brutus, $servants)
-
 let $suspicious_scenes := (
     for $scene in doc("src/test/resources/milestone2/document/j_caesar.xml")//SCENE
     let $speakers := $scene//SPEAKER/text()
@@ -15,7 +14,6 @@ let $suspicious_scenes := (
             (not $outsider = $brutus_and_servants)
     return $scene
 )
-
 <result>{
     for $scene in $suspicious_scenes
     return <scene>{

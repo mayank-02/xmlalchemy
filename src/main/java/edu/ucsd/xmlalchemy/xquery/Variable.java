@@ -18,4 +18,9 @@ public class Variable implements Expression {
         // Always construct a new ArrayList
         return new ArrayList<>(ctx.getVar(name));
     }
+
+    @Override
+    public String toString() {
+        return String.format("$%s", name);
+    }
 }

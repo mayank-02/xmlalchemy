@@ -16,4 +16,9 @@ public class StringLiteral implements Expression {
     public List<Node> evaluateQuery(Context ctx) throws Exception {
         return new ArrayList<>(List.of(ctx.makeTextNode(value)));
     }
+
+    @Override
+    public String toString() {
+        return String.format("\"%s\"", value);
+    }
 }

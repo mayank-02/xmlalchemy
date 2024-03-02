@@ -35,4 +35,9 @@ public class PathFilterValueEqual implements Expression {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s = %s", leftExpression.toString(), rightExpression.toString());
+    }
 }

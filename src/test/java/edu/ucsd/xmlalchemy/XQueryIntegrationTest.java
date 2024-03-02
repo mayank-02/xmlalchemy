@@ -1,5 +1,7 @@
 package edu.ucsd.xmlalchemy;
 
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -9,6 +11,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 class XQueryIntegrationTest {
 
@@ -33,9 +37,11 @@ class XQueryIntegrationTest {
                 expectedDocument.normalize();
                 Utils.trimTextNodes(expectedDocument.getDocumentElement());
 
-                // FIXME: This is a very quick implementation to support expecting error during evaluation.
+                // FIXME: This is a very quick implementation to support expecting error during
+                // evaluation.
                 // While this is a good thing to test, the implementation must be improved.
-                var errorExpected = expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
+                var errorExpected =
+                        expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
 
                 // Evaluate the query
                 try {
@@ -95,5 +101,33 @@ class XQueryIntegrationTest {
                         expectedNode -> actualNodes.stream().anyMatch(expectedNode::isEqualNode)),
                 "Some nodes in the expected output are not present in the actual output for test case: "
                         + baseName);
+    }
+
+    @Test
+    void testStringify() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR);
+        var inputFiles = testDataDir.listFiles();
+
+        if (inputFiles != null) {
+            for (var inputFile : inputFiles) {
+                var filename = inputFile.getAbsolutePath();
+                var charStream = CharStreams.fromFileName(filename);
+                var lexer = new ExprLexer(charStream);
+                var tokens = new CommonTokenStream(lexer);
+                var parser = new ExprParser(tokens);
+                var tree = parser.query();
+                var visitor = new Visitor();
+                var queryExpression = visitor.visit(tree);
+                var actualString = queryExpression.toString();
+                // TODO: Document this magic
+                var expectedString = Files.readString(Paths.get(filename))
+                        .replaceAll("\s*\\n\s*", " ").replace("{ ", "{").replace(" }", "}")
+                        .replace("( ", "(").replace(" )", ")").replace("==", "is")
+                        .replace(" eq ", " = ").trim();
+                Assertions.assertEquals(expectedString, actualString);
+            }
+        } else {
+            Assertions.fail("No input files found in testData directory.");
+        }
     }
 }

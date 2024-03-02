@@ -13,4 +13,9 @@ public class QueryConditionNot implements Expression {
     public boolean evaluateQueryCondition(Context ctx) throws Exception {
         return !queryCondition.evaluateQueryCondition(ctx);
     }
+
+    @Override
+    public String toString() {
+        return String.format("not %s", queryCondition.toString());
+    }
 }

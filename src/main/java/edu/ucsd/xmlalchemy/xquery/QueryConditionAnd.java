@@ -15,4 +15,9 @@ public class QueryConditionAnd implements Expression {
     public boolean evaluateQueryCondition(Context ctx) throws Exception {
         return leftQueryCondition.evaluateQueryCondition(ctx) && rightQueryCondition.evaluateQueryCondition(ctx);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s and %s", leftQueryCondition.toString(), rightQueryCondition.toString());
+    }
 }

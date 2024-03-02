@@ -42,4 +42,9 @@ public class AbsolutePathDescendant implements Expression {
         }
         return new ArrayList<>(new LinkedHashSet<>(expression.evaluate(descendantNodes)));
     }
+
+    @Override
+    public String toString() {
+        return String.format("doc(%s)//%s", fileName, expression.toString());
+    }
 }

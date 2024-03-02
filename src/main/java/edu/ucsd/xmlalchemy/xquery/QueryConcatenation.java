@@ -20,4 +20,9 @@ public class QueryConcatenation implements Expression {
         leftNodes.addAll(rightNodes);
         return leftNodes;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s, %s", leftQuery.toString(), rightQuery.toString());
+    }
 }

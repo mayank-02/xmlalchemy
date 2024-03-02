@@ -27,4 +27,9 @@ public class QueryDescendant implements Expression {
         }
         return new ArrayList<>(new LinkedHashSet<>(relativePath.evaluate(descendantNodes)));
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s//%s", query.toString(), relativePath.toString());
+    }
 }

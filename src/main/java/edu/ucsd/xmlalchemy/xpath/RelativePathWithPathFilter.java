@@ -17,4 +17,9 @@ public class RelativePathWithPathFilter implements Expression {
         var relativePathNodes = relativePath.evaluate(nodes);
         return pathFilter.evaluate(relativePathNodes);
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s[%s]", relativePath.toString(), pathFilter.toString());
+    }
 }

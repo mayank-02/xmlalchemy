@@ -36,4 +36,9 @@ public class AbsolutePathChild implements Expression {
         // Evaluate the expression
         return expression.evaluate(inputNodes);
     }
+
+    @Override
+    public String toString() {
+        return String.format("doc(%s)/%s", fileName, expression.toString());
+    }
 }

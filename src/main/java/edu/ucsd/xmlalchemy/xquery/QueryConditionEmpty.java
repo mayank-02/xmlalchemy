@@ -13,4 +13,9 @@ public class QueryConditionEmpty implements Expression {
     public boolean evaluateQueryCondition(Context ctx) throws Exception {
         return query.evaluateQuery(ctx).isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return String.format("empty(%s)", query.toString());
+    }
 }

@@ -24,4 +24,9 @@ public class QueryConditionValueEqual implements Expression {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s = %s", leftQuery.toString(), rightQuery.toString());
+    }
 }

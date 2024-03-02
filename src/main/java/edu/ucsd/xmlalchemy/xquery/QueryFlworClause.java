@@ -56,4 +56,32 @@ public class QueryFlworClause implements Expression {
         result.addAll(allNodes);
         ctx.unwind(assignments.size());
     }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("for ");
+        for (int i = 0; i < iterators.size(); i++) {
+            var iterator = iterators.get(i);
+            sb.append(String.format("$%s in %s", iterator.first, iterator.second.toString()));
+            if (i != iterators.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        if (!assignments.isEmpty()) {
+            sb.append(" let ");
+            for (int i = 0; i < assignments.size(); i++) {
+                var assignment = assignments.get(i);
+                sb.append(String.format("$%s := %s", assignment.first, assignment.second.toString()));
+                if (i != assignments.size() - 1) {
+                    sb.append(", ");
+                }
+            }
+        }
+        if (condition != null) {
+            sb.append(String.format(" where %s", condition.toString()));
+        }
+        sb.append(String.format(" return %s", returnExpression.toString()));
+        return sb.toString();
+    }
 }

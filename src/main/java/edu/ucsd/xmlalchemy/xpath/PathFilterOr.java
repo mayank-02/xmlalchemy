@@ -25,4 +25,9 @@ public class PathFilterOr implements Expression {
 
         return new ArrayList<>(uniqueNodes);
     }
+    
+    @Override
+    public String toString() {
+        return String.format("%s or %s", leftExpression.toString(), rightExpression.toString());
+    }
 }

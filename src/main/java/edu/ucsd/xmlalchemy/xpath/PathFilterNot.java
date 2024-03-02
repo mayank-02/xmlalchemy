@@ -17,4 +17,10 @@ public class PathFilterNot implements Expression {
         var filteredOutNodesHashSet = filteredOutNodes.stream().collect(Collectors.toSet());
         return nodes.stream().filter(node -> !filteredOutNodesHashSet.contains(node)).toList();
     }
+
+    @Override
+    public String toString() {
+        return String.format("not %s", expression.toString());
+    }
+
 }
