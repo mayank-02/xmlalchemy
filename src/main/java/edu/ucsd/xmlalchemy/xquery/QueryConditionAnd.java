@@ -20,4 +20,12 @@ public class QueryConditionAnd implements Expression {
     public String toString() {
         return String.format("%s and %s", leftQueryCondition.toString(), rightQueryCondition.toString());
     }
+
+    public Expression getLeftQueryCondition() {
+        return leftQueryCondition;
+    }
+
+    public Expression getRightQueryCondition() {
+        return rightQueryCondition;
+    }
 }

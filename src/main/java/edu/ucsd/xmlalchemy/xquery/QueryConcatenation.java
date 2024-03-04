@@ -25,4 +25,12 @@ public class QueryConcatenation implements Expression {
     public String toString() {
         return String.format("%s, %s", leftQuery.toString(), rightQuery.toString());
     }
+
+    public Expression getLeftQuery() {
+        return leftQuery;
+    }
+
+    public Expression getRightQuery() {
+        return rightQuery;
+    }
 }

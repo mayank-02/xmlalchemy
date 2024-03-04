@@ -1,6 +1,7 @@
 package edu.ucsd.xmlalchemy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.w3c.dom.Node;
 
@@ -32,5 +33,9 @@ public class Utils {
             child = child.getNextSibling();
         }
         return descendantNodes;
+    }
+
+    public static boolean isTypeOf(Object obj, Class<?>... types) {
+        return Arrays.stream(types).anyMatch(type -> type.isInstance(obj));
     }
 }

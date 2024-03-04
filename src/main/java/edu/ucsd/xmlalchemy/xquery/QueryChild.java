@@ -30,4 +30,12 @@ public class QueryChild implements Expression {
     public String toString() {
         return String.format("%s/%s", query.toString(), relativePath.toString());
     }
+
+    public Expression getQuery() {
+        return query;
+    }
+
+    public Expression getRelativePath() {
+        return relativePath;
+    }
 }

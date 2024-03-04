@@ -24,4 +24,12 @@ public class QueryElement implements Expression {
     public String toString() {
         return String.format("<%s>{%s}</%s>", tagName, query.toString(), tagName);
     }
+
+    public String getTagName() {
+        return tagName;
+    }
+
+    public Expression getQuery() {
+        return query;
+    }
 }

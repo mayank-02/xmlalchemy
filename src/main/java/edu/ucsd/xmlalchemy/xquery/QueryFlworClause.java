@@ -84,4 +84,20 @@ public class QueryFlworClause implements Expression {
         sb.append(String.format(" return %s", returnExpression.toString()));
         return sb.toString();
     }
+
+    public List<Tuple<String, Expression>> getIterators() {
+        return iterators;
+    }
+
+    public List<Tuple<String, Expression>> getAssignments() {
+        return assignments;
+    }
+
+    public Expression getCondition() {
+        return condition;
+    }
+
+    public Expression getReturnExpression() {
+        return returnExpression;
+    }
 }

@@ -34,8 +34,9 @@ public class XQuery {
         var visitor = new Visitor();
         var query = visitor.visit(tree);
         var ctx = new DefaultContext();
-        ctx.setDocument(
-                DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
+        ctx.setDocument(DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
+        query = Optimizer.optimize(query);
+        System.out.println(query);
         return query.evaluateQuery(ctx);
     }
 

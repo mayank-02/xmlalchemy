@@ -6,7 +6,7 @@ import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xpath.Expression;
 
 public class Variable implements Expression {
-    private String name;
+    private final String name;
 
     public Variable(String name) {
         this.name = name;
@@ -22,5 +22,9 @@ public class Variable implements Expression {
     @Override
     public String toString() {
         return String.format("$%s", name);
+    }
+
+    public String getName() {
+        return name;
     }
 }
