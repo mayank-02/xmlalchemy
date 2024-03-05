@@ -39,7 +39,10 @@ public class XQuery {
                 System.out.println("Optimized query:\n" + expression);
             }
 
+            long startTime = System.currentTimeMillis();
             var nodes = evaluateExpression(expression);
+            long endTime = System.currentTimeMillis();
+            System.out.println("Evaluation time: " + (endTime - startTime) + "ms");
 
             var stream = new StreamResult(System.out);
             if (cmd.hasOption("o")) {
@@ -47,6 +50,7 @@ public class XQuery {
             }
 
             output(nodes, stream);
+
         } catch (ParseException e) {
             System.err.println("Error parsing command-line arguments: " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
