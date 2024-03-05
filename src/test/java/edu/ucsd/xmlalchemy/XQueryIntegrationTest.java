@@ -45,7 +45,8 @@ class XQueryIntegrationTest {
 
                 // Evaluate the query
                 try {
-                    var actualNodes = XQuery.query(inputFile.getAbsolutePath());
+                    var expression = XQuery.parseExpressionFromFile(inputFile.getAbsolutePath());
+                    var actualNodes = XQuery.evaluateExpression(expression);
                     if (!errorExpected) {
                         var actualDocument = XQuery.transform(actualNodes);
                         assertResult(baseName, expectedDocument, actualDocument);
@@ -110,17 +111,11 @@ class XQueryIntegrationTest {
 
         if (inputFiles != null) {
             for (var inputFile : inputFiles) {
-                var filename = inputFile.getAbsolutePath();
-                var charStream = CharStreams.fromFileName(filename);
-                var lexer = new ExprLexer(charStream);
-                var tokens = new CommonTokenStream(lexer);
-                var parser = new ExprParser(tokens);
-                var tree = parser.query();
-                var visitor = new Visitor();
-                var queryExpression = visitor.visit(tree);
-                var actualString = queryExpression.toString();
+                var inputFilename = inputFile.getAbsolutePath();
+                var expression = XQuery.parseExpressionFromFile(inputFilename);
+                var actualString = expression.toString();
                 // TODO: Document this magic
-                var expectedString = Files.readString(Paths.get(filename))
+                var expectedString = Files.readString(Paths.get(inputFilename))
                         .replaceAll("\s*\\n\s*", " ").replace("{ ", "{").replace(" }", "}")
                         .replace("( ", "(").replace(" )", ")").replace("==", "is")
                         .replace(" eq ", " = ").trim();

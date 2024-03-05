@@ -10,47 +10,78 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.xpath.Expression;
 import edu.ucsd.xmlalchemy.xquery.DefaultContext;
 
 public class XQuery {
     public static void main(String[] args) {
-        String filename = args[0];
+        Options options = new Options();
+        options.addOption("h", "help", false, "Print this help message");
+        options.addOption(Option.builder("o").longOpt("output").hasArg().argName("file")
+                .desc("Output file name").build());
+        options.addOption(Option.builder().longOpt("optimize").desc("Optimize the query").build());
+
         try {
-            var nodes = query(filename);
-            output(nodes);
+            var parser = new DefaultParser();
+            var cmd = parser.parse(options, args);
+            if (cmd.hasOption("h")) {
+                HelpFormatter formatter = new HelpFormatter();
+                formatter.printHelp("XQuery", options);
+                return;
+            }
+
+            var expression = parseExpressionFromFile(cmd.getArgs()[0]);
+            if (cmd.hasOption("optimize")) {
+                expression = Optimizer.optimize(expression);
+                System.out.println("Optimized query:\n" + expression);
+            }
+
+            var nodes = evaluateExpression(expression);
+
+            var stream = new StreamResult(System.out);
+            if (cmd.hasOption("o")) {
+                stream = new StreamResult(new File(cmd.getOptionValue("o")));
+            }
+
+            output(nodes, stream);
+        } catch (ParseException e) {
+            System.err.println("Error parsing command-line arguments: " + e.getMessage());
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp("XQuery", options);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static List<Node> query(String filename) throws Exception {
+    public static Expression parseExpressionFromFile(String filename) throws Exception {
         var charStream = CharStreams.fromFileName(filename);
         var lexer = new ExprLexer(charStream);
         var tokens = new CommonTokenStream(lexer);
         var parser = new ExprParser(tokens);
         var tree = parser.query();
         var visitor = new Visitor();
-        var query = visitor.visit(tree);
-        var ctx = new DefaultContext();
-        ctx.setDocument(DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
-        query = Optimizer.optimize(query);
-        System.out.println(query);
-        return query.evaluateQuery(ctx);
+        return visitor.visit(tree);
     }
 
-    public static void output(List<Node> nodes) throws Exception {
-        final var tfFactory = TransformerFactory.newDefaultInstance();
+    public static List<Node> evaluateExpression(Expression expression) throws Exception {
+        var ctx = new DefaultContext();
+        ctx.setDocument(
+                DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
+        return expression.evaluateQuery(ctx);
+    }
+
+    public static void output(List<Node> nodes, StreamResult stream) throws Exception {
+        TransformerFactory tfFactory = TransformerFactory.newDefaultInstance();
         var tf = tfFactory
-                .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
+                .newTransformer(new StreamSource(new File("src/main/resources/style.xslt")));
         tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
         tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
-
         for (var node : nodes) {
             var source = new DOMSource(node);
-            var consoleResult = new StreamResult(System.out);
-            tf.transform(source, consoleResult);
+            tf.transform(source, stream);
         }
     }
 
