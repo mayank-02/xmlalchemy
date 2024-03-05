@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import org.w3c.dom.Node;
-import edu.ucsd.xmlalchemy.xpath.Expression;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class JoinClause implements Expression {
     private Expression leftQuery;

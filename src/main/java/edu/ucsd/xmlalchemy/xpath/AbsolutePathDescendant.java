@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Expression;
 import edu.ucsd.xmlalchemy.Utils;
 
 public class AbsolutePathDescendant implements Expression {

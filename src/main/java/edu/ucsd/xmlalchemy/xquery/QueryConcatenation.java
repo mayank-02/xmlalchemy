@@ -2,7 +2,7 @@ package edu.ucsd.xmlalchemy.xquery;
 
 import java.util.List;
 import org.w3c.dom.Node;
-import edu.ucsd.xmlalchemy.xpath.Expression;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class QueryConcatenation implements Expression {
     private final Expression leftQuery;

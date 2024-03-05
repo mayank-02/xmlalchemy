@@ -13,7 +13,6 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.cli.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import edu.ucsd.xmlalchemy.xpath.Expression;
 import edu.ucsd.xmlalchemy.xquery.DefaultContext;
 
 public class XQuery {

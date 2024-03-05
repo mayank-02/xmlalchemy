@@ -3,7 +3,7 @@ package edu.ucsd.xmlalchemy.xquery;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Node;
-import edu.ucsd.xmlalchemy.xpath.Expression;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class QueryAbsolutePath implements Expression {
     private final Expression absolutePath;

@@ -1,4 +1,4 @@
-package edu.ucsd.xmlalchemy.xpath;
+package edu.ucsd.xmlalchemy;
 
 import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xquery.Context;

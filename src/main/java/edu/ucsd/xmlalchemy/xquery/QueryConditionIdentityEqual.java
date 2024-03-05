@@ -1,6 +1,6 @@
 package edu.ucsd.xmlalchemy.xquery;
 
-import edu.ucsd.xmlalchemy.xpath.Expression;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class QueryConditionIdentityEqual implements Expression {
     private final Expression leftQuery;

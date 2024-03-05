@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Expression;
 import edu.ucsd.xmlalchemy.Utils;
-import edu.ucsd.xmlalchemy.xpath.Expression;
 
 public class QueryDescendant implements Expression {
     private final Expression query;

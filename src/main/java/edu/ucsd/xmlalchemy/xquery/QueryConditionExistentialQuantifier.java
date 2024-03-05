@@ -1,9 +1,8 @@
 package edu.ucsd.xmlalchemy.xquery;
 
 import java.util.List;
-
+import edu.ucsd.xmlalchemy.Expression;
 import edu.ucsd.xmlalchemy.Tuple;
-import edu.ucsd.xmlalchemy.xpath.Expression;
 
 public class QueryConditionExistentialQuantifier implements Expression {
     private final List<Tuple<String, Expression>> iterators;

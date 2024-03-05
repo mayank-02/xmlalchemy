@@ -3,6 +3,7 @@ package edu.ucsd.xmlalchemy.xpath;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class PathFilterNot implements Expression {
     private final Expression expression;

@@ -3,6 +3,7 @@ package edu.ucsd.xmlalchemy.xpath;
 import java.util.ArrayList;
 import java.util.List;
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class PathFilterIdentityEqual implements Expression {
     private final Expression leftExpression;

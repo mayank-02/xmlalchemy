@@ -1,6 +1,7 @@
 package edu.ucsd.xmlalchemy.xpath;
 
 import org.w3c.dom.Node;
+import edu.ucsd.xmlalchemy.Expression;
 import edu.ucsd.xmlalchemy.Utils;
 import java.io.File;
 import java.util.ArrayList;

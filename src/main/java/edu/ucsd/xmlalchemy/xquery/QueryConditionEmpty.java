@@ -1,6 +1,6 @@
 package edu.ucsd.xmlalchemy.xquery;
 
-import edu.ucsd.xmlalchemy.xpath.Expression;
+import edu.ucsd.xmlalchemy.Expression;
 
 public class QueryConditionEmpty implements Expression {
     private final Expression query;
