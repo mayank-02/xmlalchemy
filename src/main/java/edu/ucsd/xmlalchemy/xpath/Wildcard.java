@@ -14,10 +14,11 @@ public class Wildcard implements Expression {
             var children = node.getChildNodes();
             for (int i = 0; i < children.getLength(); i++) {
                 var child = children.item(i);
-                // Confirm if we're only supposed to return ELEMENT_NODEs
-                if (child.getNodeType() == Node.ELEMENT_NODE) {
-                    result.add(child);
-                }
+                // Wildcard selects element nodes only as per XPath specification.
+                // https://www.oreilly.com/library/view/xslt-2nd-edition/9780596527211/ch03s02s05.html
+                // However, since milestone 1 specification does not make this distinction, we
+                // select all nodes.
+                result.add(child);
             }
         }
         return result;

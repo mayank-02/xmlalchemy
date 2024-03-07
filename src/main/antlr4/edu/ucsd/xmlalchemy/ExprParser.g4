@@ -103,7 +103,7 @@ joinConditionClause
     ;
 
 joinReturnClause
-    : RETURN OPENING_TUPLE_TAG LEFT_CURLY_BRACKET tupleElement (COMMA tupleElement)* RIGHT_CURLY_BRACKET CLOSING_TUPLE_TAG
+    : RETURN openingTag LEFT_CURLY_BRACKET tupleElement (COMMA tupleElement)* RIGHT_CURLY_BRACKET closingTag
     ;
 
 tupleElement

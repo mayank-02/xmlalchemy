@@ -1,6 +1,8 @@
 package edu.ucsd.xmlalchemy;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import edu.ucsd.xmlalchemy.xpath.*;
 import edu.ucsd.xmlalchemy.xquery.*;
 
@@ -56,26 +58,39 @@ public class Optimizer {
 
         var rewrittenReturn = rewriteReturnExpression(flwor.getReturnExpression());
 
-        // List.of(new Tuple("tuple", joinClause)),
         return new QueryFlworClause(List.of(new Tuple<String, Expression>("tuple", joinClause)),
                 new ArrayList<>(), null, rewrittenReturn);
     }
 
     private static Expression rewriteReturnExpression(Expression expression) {
-        if (expression instanceof QueryElement) {
-            var element = (QueryElement) expression;
+        if (expression instanceof QueryElement element) {
             return new QueryElement(element.getTagName(),
                     rewriteReturnExpression(element.getQuery()));
-        } else if (expression instanceof QueryConcatenation) {
-            var concatenation = (QueryConcatenation) expression;
+        } else if (expression instanceof QueryConcatenation concatenation) {
             return new QueryConcatenation(rewriteReturnExpression(concatenation.getLeftQuery()),
                     rewriteReturnExpression(concatenation.getRightQuery()));
-        } else if (expression instanceof Variable) {
+        } else if (expression instanceof Variable variable) {
             // $tuple/a1/*
-            return new QueryChild(new Variable("tuple"), new RelativePathChild(
-                    new TagName(((Variable) expression).getName()), new Wildcard()));
+            return new QueryChild(new Variable("tuple"),
+                    new RelativePathChild(new TagName(variable.getName()), new Wildcard()));
         }
-        return expression;
+        return rewriteVariableInPath(expression);
+    }
+
+    private static Expression rewriteVariableInPath(Expression expression) {
+        if (expression instanceof QueryAbsolutePath) {
+            return expression;
+        } else if (expression instanceof QueryChild queryChild) {
+            return new QueryChild(rewriteVariableInPath(queryChild.getQuery()),
+                    queryChild.getRelativePath());
+        } else if (expression instanceof QueryDescendant queryDescendant) {
+            return new QueryDescendant(rewriteVariableInPath(queryDescendant.getQuery()),
+                    queryDescendant.getRelativePath());
+        } else if (expression instanceof Variable variable) {
+            return new QueryChild(new Variable("tuple"),
+                    new RelativePathChild(new TagName(variable.getName()), new Wildcard()));
+        }
+        return null;
     }
 
     private static JoinClause constructJoinClause(List<String> joinOrder,
@@ -117,9 +132,6 @@ public class Optimizer {
             leftAttrs = new ArrayList<String>();
             rightAttrs = new ArrayList<String>();
             for (int j = 0; j < i; j++) {
-                // This assumes that the graph is a tree
-                // 0 ──> 1 ──> 2 ──> 3
-                // └───> 4
                 if (joinConditions.containsKey(new Tuple<>(joinOrder.get(j), joinOrder.get(i)))) {
                     for (var condition : joinConditions
                             .get(new Tuple<>(joinOrder.get(j), joinOrder.get(i)))) {
@@ -133,7 +145,6 @@ public class Optimizer {
 
         return joinClause;
     }
-
 
 
     private static List<QueryFlworClause> constructJoinFlworClauses(QueryFlworClause flwor,
@@ -207,6 +218,7 @@ public class Optimizer {
                 adjacencyList.put(entry.getKey(), new HashSet<>());
             }
         }
+
         for (var condition : conditions) {
             if (condition.getLeftQuery() instanceof StringLiteral) {
                 startNode = varDeps.get(((Variable) condition.getRightQuery()).getName());
@@ -220,20 +232,25 @@ public class Optimizer {
                             .add(varDeps.get(right));
                     adjacencyList.computeIfAbsent(varDeps.get(right), k -> new HashSet<>())
                             .add(varDeps.get(left));
-                    // adjacencyList.computeIfAbsent(right, k -> new ArrayList<>()).add(left);
                 }
             }
         }
+
+        if (startNode.isEmpty()) {
+            startNode = varDeps.values().stream().findFirst().get();
+        }
+
         var joinOrder = new ArrayList<String>();
         var visited = new HashSet<>();
         var queue = new ArrayDeque<String>();
         queue.add(startNode);
+        visited.add(startNode);
         while (!queue.isEmpty()) {
             var node = queue.removeFirst();
-            visited.add(node);
             joinOrder.add(node);
             for (var neighbor : adjacencyList.get(node)) {
                 if (!visited.contains(neighbor)) {
+                    visited.add(neighbor);
                     queue.add(neighbor);
                 }
             }
@@ -245,11 +262,11 @@ public class Optimizer {
     private static List<QueryConditionValueEqual> getEqualityConditions(Expression queryCondition) {
         if (queryCondition instanceof QueryConditionValueEqual) {
             return new ArrayList<>(Arrays.asList((QueryConditionValueEqual) queryCondition));
-        } else if (queryCondition instanceof QueryConditionAnd) {
-            var and = (QueryConditionAnd) queryCondition;
-            var result = getEqualityConditions(and.getLeftQueryCondition());
-            result.addAll(getEqualityConditions(and.getRightQueryCondition()));
-            return result;
+        } else if (queryCondition instanceof QueryConditionAnd and) {
+            return Stream
+                    .concat(getEqualityConditions(and.getLeftQueryCondition()).stream(),
+                            getEqualityConditions(and.getRightQueryCondition()).stream())
+                    .collect(Collectors.toList());
         }
         throw new IllegalArgumentException("Optimizer only supports AND and EQ query conditions");
     }
@@ -272,12 +289,12 @@ public class Optimizer {
     private static String getVariableFromPath(Expression expression) {
         if (expression instanceof QueryAbsolutePath) {
             return null;
-        } else if (expression instanceof QueryChild) {
-            return getVariableFromPath(((QueryChild) expression).getQuery());
-        } else if (expression instanceof QueryDescendant) {
-            return getVariableFromPath(((QueryDescendant) expression).getQuery());
-        } else if (expression instanceof Variable) {
-            return ((Variable) expression).getName();
+        } else if (expression instanceof QueryChild child) {
+            return getVariableFromPath(child.getQuery());
+        } else if (expression instanceof QueryDescendant descendant) {
+            return getVariableFromPath(descendant.getQuery());
+        } else if (expression instanceof Variable variable) {
+            return variable.getName();
         }
         return null;
     }
@@ -294,12 +311,10 @@ public class Optimizer {
     private static boolean validateWhereClause(Expression expression) {
         // Cond ::= (Var|Constant) 'eq' (Var|Constant)
         // | Cond 'and' Cond
-        if (expression instanceof QueryConditionAnd) {
-            var and = (QueryConditionAnd) expression;
+        if (expression instanceof QueryConditionAnd and) {
             return validateWhereClause(and.getLeftQueryCondition())
                     && validateWhereClause(and.getRightQueryCondition());
-        } else if (expression instanceof QueryConditionValueEqual) {
-            var equal = (QueryConditionValueEqual) expression;
+        } else if (expression instanceof QueryConditionValueEqual equal) {
             return (Utils.isTypeOf(equal.getLeftQuery(), Variable.class, StringLiteral.class)
                     && Utils.isTypeOf(equal.getRightQuery(), Variable.class, StringLiteral.class));
         }
@@ -314,12 +329,10 @@ public class Optimizer {
         // | Path
         if (expression instanceof Variable) {
             return true;
-        } else if (expression instanceof QueryConcatenation) {
-            var concatenation = (QueryConcatenation) expression;
+        } else if (expression instanceof QueryConcatenation concatenation) {
             return validateReturnClause(concatenation.getLeftQuery())
                     && validateReturnClause(concatenation.getRightQuery());
-        } else if (expression instanceof QueryElement) {
-            var element = (QueryElement) expression;
+        } else if (expression instanceof QueryElement element) {
             return validateReturnClause(element.getQuery());
         }
         return validatePath(expression);
@@ -334,14 +347,12 @@ public class Optimizer {
         }
 
         // Sep ::= '/' | '//'
-        if (expression instanceof QueryChild) {
-            var queryChild = (QueryChild) expression;
+        if (expression instanceof QueryChild queryChild) {
             if (!validatePath(queryChild.getQuery())) {
                 return false;
             }
         }
-        if (expression instanceof QueryDescendant) {
-            var queryDescendant = (QueryDescendant) expression;
+        if (expression instanceof QueryDescendant queryDescendant) {
             if (!validatePath(queryDescendant.getQuery())) {
                 return false;
             }

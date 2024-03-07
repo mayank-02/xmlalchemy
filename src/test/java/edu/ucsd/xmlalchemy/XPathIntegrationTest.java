@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.xmlunit.builder.DiffBuilder;
@@ -55,6 +54,7 @@ class XPathIntegrationTest {
                 var expectedDocument = db.parse(expectedOutputFile);
                 expectedDocument.normalize();
                 Utils.trimTextNodes(expectedDocument.getDocumentElement());
+                Utils.trimTextNodes(actualDocument.getDocumentElement());
                 assertResult(baseName, expectedDocument, actualDocument);
             }
         } else {
@@ -88,7 +88,8 @@ class XPathIntegrationTest {
         var actualResultNode = actualDocument.getElementsByTagName("result").item(0);
         var actualNodeList = actualResultNode.getChildNodes();
         var actualNodes = IntStream.range(0, actualNodeList.getLength())
-                .mapToObj(actualNodeList::item).collect(Collectors.toList());
+                .mapToObj(actualNodeList::item).filter(node -> !(node.getNodeType() == Node.TEXT_NODE
+                && node.getTextContent().trim().isEmpty())).collect(Collectors.toList());
 
         Assertions.assertEquals(expectedNodes.size(), actualNodes.size(),
                 "Mismatch in result size for test case: " + baseName);

@@ -1,6 +1,7 @@
 package edu.ucsd.xmlalchemy;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -35,7 +36,7 @@ public class XQuery {
             var expression = parseExpressionFromFile(cmd.getArgs()[0]);
             if (cmd.hasOption("optimize")) {
                 expression = Optimizer.optimize(expression);
-                System.out.println("Optimized query:\n" + expression);
+                System.out.println(Formatter.format(expression.toString()));
             }
 
             long startTime = System.currentTimeMillis();
@@ -45,7 +46,8 @@ public class XQuery {
 
             var stream = new StreamResult(System.out);
             if (cmd.hasOption("o")) {
-                stream = new StreamResult(new File(cmd.getOptionValue("o")));
+                System.out.println("Output file: " + cmd.getOptionValue("o"));
+                stream = new StreamResult(new FileOutputStream(cmd.getOptionValue("o")));
             }
 
             output(nodes, stream);
@@ -106,6 +108,7 @@ public class XQuery {
             } else {
                 var importedNode = doc.importNode(node, true); // true for deep cloning
                 parentElement.appendChild(importedNode);
+                // parentElement.appendChild(node.cloneNode(true));
             }
         }
         doc.appendChild(parentElement);

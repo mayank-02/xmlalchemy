@@ -1,7 +1,5 @@
 package edu.ucsd.xmlalchemy;
 
-import org.antlr.v4.runtime.CharStreams;
-import org.antlr.v4.runtime.CommonTokenStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
@@ -16,50 +14,142 @@ import java.nio.file.Paths;
 
 class XQueryIntegrationTest {
 
-    private static final String TEST_DATA_DIR = "src/test/resources/milestone2/input";
-    private static final String EXPECTED_OUTPUT_DIR = "src/test/resources/milestone2/output";
+    private static final String TEST_DATA_DIR_M2 = "src/test/resources/milestone2/input";
+    private static final String EXPECTED_OUTPUT_DIR_M2 = "src/test/resources/milestone2/output";
+    private static final String TEST_DATA_DIR_M3 = "src/test/resources/milestone3/input";
+    private static final String EXPECTED_OUTPUT_DIR_M3 = "src/test/resources/milestone3/output";
 
     @Test
-    void testAppWithMultipleInputFiles() throws Exception {
-        var testDataDir = new File(TEST_DATA_DIR);
+    void testMilestone2Queries() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR_M2);
         var inputFiles = testDataDir.listFiles();
 
-        if (inputFiles != null) {
-            for (var inputFile : inputFiles) {
-                // Assumes input files are .txt
-                var baseName = inputFile.getName().replace(".txt", "");
+        if (inputFiles == null) {
+            Assertions.fail("No input files found in testData directory.");
+        }
+        for (var inputFile : inputFiles) {
+            // Assumes input files are .txt
+            var baseName = inputFile.getName().replace(".txt", "");
 
-                // Read the expected output
-                var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR, baseName + ".xml");
-                var dbf = DocumentBuilderFactory.newDefaultInstance();
-                var db = dbf.newDocumentBuilder();
-                var expectedDocument = db.parse(expectedOutputFile);
-                expectedDocument.normalize();
-                Utils.trimTextNodes(expectedDocument.getDocumentElement());
+            // Read the expected output
+            var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR_M2, baseName + ".xml");
+            var dbf = DocumentBuilderFactory.newDefaultInstance();
+            var db = dbf.newDocumentBuilder();
+            var expectedDocument = db.parse(expectedOutputFile);
+            expectedDocument.normalize();
+            Utils.trimTextNodes(expectedDocument.getDocumentElement());
 
-                // FIXME: This is a very quick implementation to support expecting error during
-                // evaluation.
-                // While this is a good thing to test, the implementation must be improved.
-                var errorExpected =
-                        expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
+            // FIXME: This is a very quick implementation to support expecting error during
+            // evaluation.
+            // While this is a good thing to test, the implementation must be improved.
+            var errorExpected =
+                    expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
 
-                // Evaluate the query
-                try {
-                    var expression = XQuery.parseExpressionFromFile(inputFile.getAbsolutePath());
-                    var actualNodes = XQuery.evaluateExpression(expression);
-                    if (!errorExpected) {
-                        var actualDocument = XQuery.transform(actualNodes);
-                        assertResult(baseName, expectedDocument, actualDocument);
-                    }
-                } catch (IllegalStateException e) {
-                    if (!errorExpected) {
-                        throw e;
-                    }
+            // Evaluate the query
+            try {
+                var expression = XQuery.parseExpressionFromFile(inputFile.getAbsolutePath());
+                var actualNodes = XQuery.evaluateExpression(expression);
+                if (!errorExpected) {
+                    var actualDocument = XQuery.transform(actualNodes);
+                    assertResult(baseName, expectedDocument, actualDocument);
+                }
+            } catch (IllegalStateException e) {
+                if (!errorExpected) {
+                    throw e;
                 }
             }
-        } else {
-            Assertions
-                    .fail("No input files found in src/test/resources/milestone2/input directory.");
+        }
+    }
+
+    @Test
+    void testStringify() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR_M2);
+        var inputFiles = testDataDir.listFiles();
+
+        if (inputFiles == null) {
+            Assertions.fail("No input files found in testData directory.");
+        }
+
+        for (var inputFile : inputFiles) {
+            var inputFilename = inputFile.getAbsolutePath();
+            var expression = XQuery.parseExpressionFromFile(inputFilename);
+            var actualString = expression.toString();
+            // TODO: Document this magic
+            var expectedString =
+                    Files.readString(Paths.get(inputFilename)).replaceAll("\s*\\n\s*", " ")
+                            .replace("{ ", "{").replace(" }", "}").replace("( ", "(")
+                            .replace(" )", ")").replace("==", "is").replace(" eq ", " = ").trim();
+            Assertions.assertEquals(expectedString, actualString);
+        }
+    }
+
+    @Test
+    void testRewrite() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR_M3);
+        var inputFiles = testDataDir.listFiles();
+        if (inputFiles == null) {
+            Assertions.fail("No input files found in testData directory.");
+        }
+
+        for (var inputFile : inputFiles) {
+            var expression = XQuery.parseExpressionFromFile(inputFile.getAbsolutePath());
+            var optimizedExpression = Optimizer.optimize(expression);
+            var actualString = optimizedExpression.toString();
+
+            var baseName = inputFile.getName().replace("query", "rewrite");
+            var expectedOutputFile =
+                    new File(EXPECTED_OUTPUT_DIR_M3, baseName.replace("query", "rewrite"));
+            var expectedString =
+                    new String(Files.readAllBytes(Paths.get(expectedOutputFile.getAbsolutePath())))
+                            .replaceAll("\\s*\\n\\s*", " ").replace("{ ", "{").replace(" }", "}")
+                            .replace("( ", "(").replace(" )", ")").replace("==", "is")
+                            .replace(" eq ", " = ").trim();
+            Assertions.assertEquals(expectedString, actualString,
+                    "Mismatch in rewritten query for test case: " + inputFile);
+        }
+    }
+
+    @Test
+    void testMilestone3Queries() throws Exception {
+        var testDataDir = new File(TEST_DATA_DIR_M3);
+        var inputFiles = testDataDir.listFiles();
+
+        if (inputFiles == null) {
+            Assertions.fail("No input files found in testData directory.");
+        }
+
+        for (var inputFile : inputFiles) {
+            // Assumes input files are .txt
+            var baseName = inputFile.getName().replace(".txt", "");
+
+            // Read the expected output
+            var expectedOutputFile = new File(EXPECTED_OUTPUT_DIR_M3, baseName + ".xml");
+            var dbf = DocumentBuilderFactory.newDefaultInstance();
+            var db = dbf.newDocumentBuilder();
+            var expectedDocument = db.parse(expectedOutputFile);
+            expectedDocument.normalize();
+            Utils.trimTextNodes(expectedDocument.getDocumentElement());
+
+            // FIXME: This is a very quick implementation to support expecting error during
+            // evaluation.
+            // While this is a good thing to test, the implementation must be improved.
+            var errorExpected =
+                    expectedDocument.getChildNodes().item(0).getNodeName().equals("error");
+
+            // Evaluate the query
+            try {
+                var expression = XQuery.parseExpressionFromFile(inputFile.getAbsolutePath());
+                var optimizedExpression = Optimizer.optimize(expression);
+                var actualNodes = XQuery.evaluateExpression(optimizedExpression);
+                if (!errorExpected) {
+                    var actualDocument = XQuery.transform(actualNodes);
+                    assertResult(baseName, expectedDocument, actualDocument);
+                }
+            } catch (IllegalStateException e) {
+                if (!errorExpected) {
+                    throw e;
+                }
+            }
         }
     }
 
@@ -102,27 +192,5 @@ class XQueryIntegrationTest {
                         expectedNode -> actualNodes.stream().anyMatch(expectedNode::isEqualNode)),
                 "Some nodes in the expected output are not present in the actual output for test case: "
                         + baseName);
-    }
-
-    @Test
-    void testStringify() throws Exception {
-        var testDataDir = new File(TEST_DATA_DIR);
-        var inputFiles = testDataDir.listFiles();
-
-        if (inputFiles != null) {
-            for (var inputFile : inputFiles) {
-                var inputFilename = inputFile.getAbsolutePath();
-                var expression = XQuery.parseExpressionFromFile(inputFilename);
-                var actualString = expression.toString();
-                // TODO: Document this magic
-                var expectedString = Files.readString(Paths.get(inputFilename))
-                        .replaceAll("\s*\\n\s*", " ").replace("{ ", "{").replace(" }", "}")
-                        .replace("( ", "(").replace(" )", ")").replace("==", "is")
-                        .replace(" eq ", " = ").trim();
-                Assertions.assertEquals(expectedString, actualString);
-            }
-        } else {
-            Assertions.fail("No input files found in testData directory.");
-        }
     }
 }

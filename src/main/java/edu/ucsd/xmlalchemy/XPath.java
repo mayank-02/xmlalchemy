@@ -60,6 +60,7 @@ public class XPath {
             } else {
                 var importedNode = doc.importNode(node, true); // true for deep cloning
                 parentElement.appendChild(importedNode);
+                // parentElement.appendChild(node.cloneNode(true));
             }
         }
         doc.appendChild(parentElement);
