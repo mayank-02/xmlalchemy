@@ -1,5 +1,5 @@
 for $tuple in join (
-    for $s in doc("j_caesar.xml")//SPEAKER,
+    for $s in doc("src/test/resources/milestone3/document/j_caesar.xml")//SPEAKER,
         $stxt in $s/text()
     where $stxt eq "CAESAR"
     return <tuple>{
@@ -7,7 +7,7 @@ for $tuple in join (
         <stxt>{$stxt}</stxt>
     }</tuple>,
 
-    for $a in doc("j_caesar.xml")//ACT,
+    for $a in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
         $sp in $a//SPEAKER
     return <tuple>{
         <a>{$a}</a>,

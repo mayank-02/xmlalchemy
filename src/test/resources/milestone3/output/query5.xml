@@ -1,0 +1,42 @@
+<result>
+    <tuple>
+        <t1>
+            <TITLE>ACT I</TITLE>
+        </t1>
+        <t2>
+            <TITLE>ACT I</TITLE>
+        </t2>
+    </tuple>
+    <tuple>
+        <t1>
+            <TITLE>ACT II</TITLE>
+        </t1>
+        <t2>
+            <TITLE>ACT II</TITLE>
+        </t2>
+    </tuple>
+    <tuple>
+        <t1>
+            <TITLE>ACT III</TITLE>
+        </t1>
+        <t2>
+            <TITLE>ACT III</TITLE>
+        </t2>
+    </tuple>
+    <tuple>
+        <t1>
+            <TITLE>ACT IV</TITLE>
+        </t1>
+        <t2>
+            <TITLE>ACT IV</TITLE>
+        </t2>
+    </tuple>
+    <tuple>
+        <t1>
+            <TITLE>ACT V</TITLE>
+        </t1>
+        <t2>
+            <TITLE>ACT V</TITLE>
+        </t2>
+    </tuple>
+</result>

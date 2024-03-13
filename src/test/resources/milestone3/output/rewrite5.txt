@@ -1,0 +1,32 @@
+for $tuple in join (
+    join (
+        for $a1 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+            $t1 in $a1/TITLE 
+        return <tuple>{
+            <a1>{$a1}</a1>,
+            <t1>{$t1}</t1>
+        }</tuple>,
+
+        for $a2 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+            $t2 in $a2/TITLE 
+        return <tuple>{
+            <a2>{$a2}</a2>,
+            <t2>{$t2}</t2>
+        }</tuple>,
+
+        [t1], [t2]
+    ),
+
+    for $a3 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+        $t3 in $a3/TITLE 
+    return <tuple>{
+        <a3>{$a3}</a3>,
+        <t3>{$t3}</t3>
+    }</tuple>,
+
+    [t1, t2], [t3, t3]
+)
+return <tuple>{
+    <t1>{$tuple/t1/*}</t1>,
+    <t2>{$tuple/t2/*}</t2>
+}</tuple>

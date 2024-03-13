@@ -1,0 +1,11 @@
+for $a1 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+    $a2 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+    $a3 in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
+    $t1 in $a1/TITLE,
+    $t2 in $a2/TITLE,
+    $t3 in $a3/TITLE
+where $t1 = $t2 and $t2 = $t3 and $t3 = $t1
+return <tuple>{
+    <t1>{$t1}</t1>,
+    <t2>{$t2}</t2>
+}</tuple>

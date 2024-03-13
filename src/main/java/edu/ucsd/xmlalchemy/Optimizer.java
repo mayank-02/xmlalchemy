@@ -42,6 +42,7 @@ public class Optimizer {
 
         var varDeps = createVariableDependencies(flwor);
 
+        // If all iterators depend on a single variable, there is nothing to optimize
         if (varDeps.values().stream().distinct().count() == 1) {
             return expression;
         }
