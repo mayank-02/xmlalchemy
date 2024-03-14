@@ -124,9 +124,9 @@ class XPathIntegrationTest {
             for (var inputFile : inputFiles) {
                 var filename = inputFile.getAbsolutePath();
                 var charStream = CharStreams.fromFileName(filename);
-                var lexer = new ExprLexer(charStream);
+                var lexer = new ExpressionLexer(charStream);
                 var tokens = new CommonTokenStream(lexer);
-                var parser = new ExprParser(tokens);
+                var parser = new ExpressionParser(tokens);
                 var tree = parser.absolutePath();
                 var visitor = new Visitor();
                 var absolutePathExpr = visitor.visit(tree);

@@ -73,9 +73,9 @@ public class XQuery {
 
     public static Expression parseExpressionFromFile(String filename) throws IOException {
         var charStream = CharStreams.fromFileName(filename);
-        var lexer = new ExprLexer(charStream);
+        var lexer = new ExpressionLexer(charStream);
         var tokens = new CommonTokenStream(lexer);
-        var parser = new ExprParser(tokens);
+        var parser = new ExpressionParser(tokens);
         var tree = parser.query();
         var visitor = new Visitor();
         return visitor.visit(tree);

@@ -1,11 +1,11 @@
 package edu.ucsd.xmlalchemy;
 
 import java.util.ArrayList;
-import edu.ucsd.xmlalchemy.ExprParser.*;
+import edu.ucsd.xmlalchemy.ExpressionParser.*;
 import edu.ucsd.xmlalchemy.xpath.*;
 import edu.ucsd.xmlalchemy.xquery.*;
 
-public class Visitor extends ExprParserBaseVisitor<Expression> {
+public class Visitor extends ExpressionParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitAbsolutePathChild(AbsolutePathChildContext ctx) {

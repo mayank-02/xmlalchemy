@@ -33,9 +33,9 @@ public class XPath {
     public static List<Node> query(String filename) {
         try {
             var charStream = CharStreams.fromFileName(filename);
-            var lexer = new ExprLexer(charStream);
+            var lexer = new ExpressionLexer(charStream);
             var tokens = new CommonTokenStream(lexer);
-            var parser = new ExprParser(tokens);
+            var parser = new ExpressionParser(tokens);
             var tree = parser.absolutePath();
 
             var visitor = new Visitor();

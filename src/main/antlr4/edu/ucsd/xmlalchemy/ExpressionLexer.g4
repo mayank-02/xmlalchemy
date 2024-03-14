@@ -1,4 +1,4 @@
-lexer grammar ExprLexer;
+lexer grammar ExpressionLexer;
 
 SLASH: '/';
 DOUBLE_SLASH: '//';

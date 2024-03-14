@@ -1,6 +1,6 @@
-parser grammar ExprParser;
+parser grammar ExpressionParser;
 options {
-    tokenVocab = ExprLexer;
+    tokenVocab = ExpressionLexer;
 }
 
 query
