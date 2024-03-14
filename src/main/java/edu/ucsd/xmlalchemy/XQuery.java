@@ -20,6 +20,16 @@ import org.w3c.dom.Node;
 import edu.ucsd.xmlalchemy.xquery.DefaultContext;
 
 public class XQuery {
+    /**
+     * Main method for the XQuery command-line tool
+     * 
+     * Supports the following options:
+     * -h, --help: Print the help message
+     * -o, --output: Output file name
+     * --optimize: Optimize the query
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         Options options = new Options();
         options.addOption("h", "help", false, "Print this help message");
@@ -32,7 +42,7 @@ public class XQuery {
             var cmd = parser.parse(options, args);
             if (cmd.hasOption("h")) {
                 HelpFormatter formatter = new HelpFormatter();
-                formatter.printHelp("XQuery", options);
+                formatter.printHelp("XQuery [OPTION]... QUERY_FILE", options);
                 return;
             }
 
@@ -68,6 +78,13 @@ public class XQuery {
         }
     }
 
+    /**
+     * Parse an XQuery expression from a file
+     * 
+     * @param filename The file to parse
+     * @return The parsed expression
+     * @throws IOException If an error occurs reading the file
+     */
     public static Expression parseExpressionFromFile(String filename) throws IOException {
         var charStream = CharStreams.fromFileName(filename);
         var lexer = new ExpressionLexer(charStream);
@@ -78,6 +95,13 @@ public class XQuery {
         return visitor.visit(tree);
     }
 
+    /**
+     * Evaluate an XQuery expression
+     * 
+     * @param expression The expression to evaluate
+     * @return The result of the expression
+     * @throws ParserConfigurationException If an error occurs parsing the expression
+     */
     public static List<Node> evaluateExpression(Expression expression)
             throws ParserConfigurationException {
         var ctx = new DefaultContext();
@@ -86,6 +110,13 @@ public class XQuery {
         return expression.evaluateQuery(ctx);
     }
 
+    /**
+     * Output a list of nodes to a stream
+     * 
+     * @param nodes The nodes to output
+     * @param stream The stream to output to
+     * @throws TransformerException If an error occurs transforming the nodes
+     */
     public static void output(List<Node> nodes, StreamResult stream) throws TransformerException {
         TransformerFactory tfFactory = TransformerFactory.newDefaultInstance();
         var tf = tfFactory
@@ -98,6 +129,15 @@ public class XQuery {
         }
     }
 
+    /**
+     * Transform a list of nodes into a {@link Document}
+     * 
+     * We need to transform the nodes into a {@link Document} so that we
+     * can use it in the integration test where we do document equality check.
+     * There is an assumption here that the result is not empty.
+     * 
+     * @param result The nodes to transform
+     */
     public static Document transform(List<Node> result) throws ParserConfigurationException {
         var dbFactory = DocumentBuilderFactory.newDefaultInstance();
         var dBuilder = dbFactory.newDocumentBuilder();
