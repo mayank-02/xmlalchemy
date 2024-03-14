@@ -349,9 +349,7 @@ public class Visitor extends ExpressionParserBaseVisitor<Expression> {
 
     @Override
     public Expression visitTupleElement(TupleElementContext ctx) {
-        // if (!ctx.openingTag().NAME().getText().equals(ctx.closingTag().NAME().getText())) {
-        //     throw new ValidationException("Opening and closing tags do not match");
-        // }
-        return new QueryElement(ctx.openingTag().NAME().getText(), new Variable(ctx.var().NAME().getText()));
+        return new QueryElement(ctx.openingTag().NAME().getText(),
+                new Variable(ctx.var().NAME().getText()));
     }
 }

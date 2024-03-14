@@ -4,10 +4,8 @@ import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 import edu.ucsd.xmlalchemy.DocumentCache;
 import edu.ucsd.xmlalchemy.Expression;
-import edu.ucsd.xmlalchemy.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 
