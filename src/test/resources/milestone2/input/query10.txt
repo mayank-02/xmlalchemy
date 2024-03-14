@@ -1,5 +1,5 @@
 <acts>{ 
-    let $a := doc("j_caesar.xml")//ACT 
+    let $a := doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT 
     for $b in $a/SCENE 
     where $b/SPEECH/SPEAKER/text() = "MARULLUS" 
     return <act>{$b}</act> 

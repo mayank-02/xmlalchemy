@@ -1,5 +1,5 @@
 <result>{
-    for $a in (for $s in doc("j_caesar.xml")//ACT return $s),
+    for $a in (for $s in doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT return $s),
         $sc in (for $t in $a/SCENE return $t),
         $sp in (for $d in $sc/SPEECH return $d)
     where $sp/LINE/text() = "Et tu, Brute! Then fall, Caesar."

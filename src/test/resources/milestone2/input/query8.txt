@@ -1,5 +1,5 @@
 <result>{ 
-    for $a in doc("j_caesar.xml")//PERSONAE,
+    for $a in doc("src/test/resources/milestone2/document/j_caesar.xml")//PERSONAE,
         $b in $a/PERSONA 
     where ($b/text() = "JULIUS CAESAR") or ($b/text() = "Another Poet") 
     return $b 

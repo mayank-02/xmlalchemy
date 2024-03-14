@@ -1,5 +1,5 @@
 <acts>{ 
-    for $a in doc("j_caesar.xml")//ACT 
+    for $a in doc("src/test/resources/milestone2/document/j_caesar.xml")//ACT 
     where empty(
         for $sp in $a/SCENE/SPEECH/SPEAKER 
         where $sp/text() = "CASCA"
