@@ -15,7 +15,7 @@ public class QueryLetClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         for (var assignment : assignments) {
             ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx));
         }

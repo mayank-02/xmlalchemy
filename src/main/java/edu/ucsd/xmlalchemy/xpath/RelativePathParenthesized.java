@@ -12,7 +12,7 @@ public class RelativePathParenthesized implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         return expression.evaluate(nodes);
     }
     

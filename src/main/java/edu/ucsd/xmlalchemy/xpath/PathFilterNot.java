@@ -13,7 +13,7 @@ public class PathFilterNot implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         var filteredOutNodes = expression.evaluate(nodes);
         var filteredOutNodesHashSet = filteredOutNodes.stream().collect(Collectors.toSet());
         return nodes.stream().filter(node -> !filteredOutNodesHashSet.contains(node)).toList();

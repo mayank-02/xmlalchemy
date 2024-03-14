@@ -15,7 +15,7 @@ public class PathFilterEqualStringLiteral implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         var result = new ArrayList<Node>();
         for (Node node : nodes) {
             if (expression.evaluate(List.of(node)).stream()

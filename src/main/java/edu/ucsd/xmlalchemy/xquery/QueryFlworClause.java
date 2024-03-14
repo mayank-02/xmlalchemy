@@ -23,13 +23,13 @@ public class QueryFlworClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         result.clear();
         evaluateIterators(ctx, 0);
         return result;
     }
 
-    private void evaluateIterators(Context ctx, int depth) throws Exception {
+    private void evaluateIterators(Context ctx, int depth) {
         if (depth == iterators.size()) {
             evaluateAssignments(ctx);
             return;
@@ -43,7 +43,7 @@ public class QueryFlworClause implements Expression {
         }
     }
 
-    private void evaluateAssignments(Context ctx) throws Exception {
+    private void evaluateAssignments(Context ctx) {
         for (var assignment : assignments) {
             ctx.setVar(assignment.first, assignment.second.evaluateQuery(ctx));
         }

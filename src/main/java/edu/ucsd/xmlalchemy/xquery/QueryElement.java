@@ -15,7 +15,7 @@ public class QueryElement implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         var queryNodes = query.evaluateQuery(ctx);
         return new ArrayList<>(List.of(ctx.makeElementNode(tagName, queryNodes)));
     }

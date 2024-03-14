@@ -15,7 +15,7 @@ public class PathFilterValueEqual implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         List<Node> result = new ArrayList<>();
         for (Node node : nodes) {
             var leftNodes = leftExpression.evaluate(List.of(node));

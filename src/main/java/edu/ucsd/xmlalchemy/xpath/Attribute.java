@@ -14,7 +14,7 @@ public class Attribute implements Expression{
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         List<Node> result = new ArrayList<>();
         for (Node node : nodes) {
             var children = node.getAttributes();

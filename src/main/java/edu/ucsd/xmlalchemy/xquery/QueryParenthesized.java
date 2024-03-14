@@ -12,7 +12,7 @@ public class QueryParenthesized implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         return query.evaluateQuery(ctx);
     }
 

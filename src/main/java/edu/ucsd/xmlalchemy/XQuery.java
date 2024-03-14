@@ -1,10 +1,16 @@
 package edu.ucsd.xmlalchemy;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -56,12 +62,16 @@ public class XQuery {
             System.err.println("Error parsing command-line arguments: " + e.getMessage());
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("XQuery", options);
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (TransformerException e) {
+            System.err.println("Error transforming result: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        } catch (ParserConfigurationException e) {
+            System.err.println("Error parsing query: " + e.getMessage());
         }
     }
 
-    public static Expression parseExpressionFromFile(String filename) throws Exception {
+    public static Expression parseExpressionFromFile(String filename) throws IOException {
         var charStream = CharStreams.fromFileName(filename);
         var lexer = new ExprLexer(charStream);
         var tokens = new CommonTokenStream(lexer);
@@ -71,14 +81,15 @@ public class XQuery {
         return visitor.visit(tree);
     }
 
-    public static List<Node> evaluateExpression(Expression expression) throws Exception {
+    public static List<Node> evaluateExpression(Expression expression)
+            throws ParserConfigurationException {
         var ctx = new DefaultContext();
         ctx.setDocument(
                 DocumentBuilderFactory.newDefaultInstance().newDocumentBuilder().newDocument());
         return expression.evaluateQuery(ctx);
     }
 
-    public static void output(List<Node> nodes, StreamResult stream) throws Exception {
+    public static void output(List<Node> nodes, StreamResult stream) throws TransformerException {
         TransformerFactory tfFactory = TransformerFactory.newDefaultInstance();
         var tf = tfFactory
                 .newTransformer(new StreamSource(new File("src/main/resources/style.xslt")));
@@ -90,7 +101,7 @@ public class XQuery {
         }
     }
 
-    public static Document transform(List<Node> result) throws Exception {
+    public static Document transform(List<Node> result) throws ParserConfigurationException {
         var dbFactory = DocumentBuilderFactory.newDefaultInstance();
         var dBuilder = dbFactory.newDocumentBuilder();
         var doc = dBuilder.newDocument();
@@ -109,9 +120,8 @@ public class XQuery {
                 var valueNode = doc.createTextNode(node.getNodeValue() + "\n");
                 parentElement.appendChild(valueNode);
             } else {
-                var importedNode = doc.importNode(node, true); // true for deep cloning
+                var importedNode = doc.importNode(node, true);
                 parentElement.appendChild(importedNode);
-                // parentElement.appendChild(node.cloneNode(true));
             }
         }
         doc.appendChild(parentElement);

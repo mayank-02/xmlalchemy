@@ -10,7 +10,7 @@ public class QueryConditionParenthesized implements Expression {
     }
 
     @Override
-    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+    public boolean evaluateQueryCondition(Context ctx) {
         return queryCondition.evaluateQueryCondition(ctx);
     }
 

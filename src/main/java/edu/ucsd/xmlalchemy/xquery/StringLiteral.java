@@ -13,7 +13,7 @@ public class StringLiteral implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         return new ArrayList<>(List.of(ctx.makeTextNode(value)));
     }
 

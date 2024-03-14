@@ -17,7 +17,7 @@ public class QueryDescendant implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         var queryNodes = query.evaluateQuery(ctx);
         var descendantNodes = new ArrayList<Node>();
         for (Node node : queryNodes) {

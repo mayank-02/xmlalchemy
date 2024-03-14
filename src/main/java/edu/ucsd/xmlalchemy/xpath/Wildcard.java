@@ -7,8 +7,7 @@ import edu.ucsd.xmlalchemy.Expression;
 
 public class Wildcard implements Expression {
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
-        // FIXME: Similar to TagName.java
+    public List<Node> evaluate(List<Node> nodes) {
         var result = new ArrayList<Node>();
         for (Node node : nodes) {
             var children = node.getChildNodes();

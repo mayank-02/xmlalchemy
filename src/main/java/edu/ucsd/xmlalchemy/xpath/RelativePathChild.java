@@ -17,7 +17,7 @@ public class RelativePathChild implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         List<Node> leftNodes = leftExpression.evaluate(nodes);
         List<Node> rightNodes = rightExpression.evaluate(leftNodes);
 

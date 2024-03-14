@@ -14,11 +14,11 @@ public class QueryConditionExistentialQuantifier implements Expression {
     }
 
     @Override
-    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+    public boolean evaluateQueryCondition(Context ctx) {
         return evaluateIterators(ctx, 0);
     }
 
-    private boolean evaluateIterators(Context ctx, int depth) throws Exception {
+    private boolean evaluateIterators(Context ctx, int depth) {
         if (depth == iterators.size()) {
             return condition.evaluateQueryCondition(ctx);
         }

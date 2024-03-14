@@ -12,7 +12,7 @@ public class QueryConditionValueEqual implements Expression {
     }
 
     @Override
-    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+    public boolean evaluateQueryCondition(Context ctx) {
         var leftNodes = leftQuery.evaluateQuery(ctx);
         var rightNodes = rightQuery.evaluateQuery(ctx);
         for (var leftNode : leftNodes) {

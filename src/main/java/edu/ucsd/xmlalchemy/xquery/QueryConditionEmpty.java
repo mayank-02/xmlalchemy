@@ -10,7 +10,7 @@ public class QueryConditionEmpty implements Expression {
     }
 
     @Override
-    public boolean evaluateQueryCondition(Context ctx) throws Exception {
+    public boolean evaluateQueryCondition(Context ctx) {
         return query.evaluateQuery(ctx).isEmpty();
     }
 

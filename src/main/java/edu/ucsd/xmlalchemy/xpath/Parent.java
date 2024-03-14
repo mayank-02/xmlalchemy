@@ -7,7 +7,7 @@ import edu.ucsd.xmlalchemy.Expression;
 
 public class Parent implements Expression {
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         List<Node> result = new ArrayList<>();
         for (Node node : nodes) {
             var parent = node.getParentNode();

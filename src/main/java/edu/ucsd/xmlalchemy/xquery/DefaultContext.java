@@ -34,7 +34,6 @@ public class DefaultContext implements Context {
 
         var node = document.createElement(tagName);
         for (var child : children) {
-            // TODO: !Objects.isNull(n)?
             node.appendChild(document.importNode(child, true));
             // node.appendChild(child.cloneNode(true));
         }

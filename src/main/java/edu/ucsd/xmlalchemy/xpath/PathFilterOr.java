@@ -16,7 +16,7 @@ public class PathFilterOr implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         var leftNodes = leftExpression.evaluate(nodes);
         var rightNodes = rightExpression.evaluate(nodes);
         

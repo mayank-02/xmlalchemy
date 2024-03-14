@@ -16,7 +16,7 @@ public class QueryChild implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         List<Node> queryNodes = query.evaluateQuery(ctx);
         List<Node> result = relativePath.evaluate(queryNodes);
 

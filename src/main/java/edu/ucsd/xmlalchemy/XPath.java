@@ -5,8 +5,11 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import javax.xml.crypto.dsig.TransformException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -67,20 +70,15 @@ public class XPath {
         return doc;
     }
 
-    public static void output(Document result) {
-        try {
-            final var tfFactory = TransformerFactory.newDefaultInstance();
-            var tf = tfFactory
-                    .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
-            tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
-            tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+    public static void output(Document result) throws TransformerException {
+        final var tfFactory = TransformerFactory.newDefaultInstance();
+        var tf = tfFactory
+                .newTransformer((new StreamSource(new File("src/main/resources/style.xslt"))));
+        tf.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+        tf.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
-            var source = new DOMSource(result);
-            var consoleResult = new StreamResult(System.out);
-            tf.transform(source, consoleResult);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        var source = new DOMSource(result);
+        var consoleResult = new StreamResult(System.out);
+        tf.transform(source, consoleResult);
     }
 }

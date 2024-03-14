@@ -14,7 +14,7 @@ public class QueryConcatenation implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         var leftNodes = leftQuery.evaluateQuery(ctx);
         var rightNodes = rightQuery.evaluateQuery(ctx);
         leftNodes.addAll(rightNodes);

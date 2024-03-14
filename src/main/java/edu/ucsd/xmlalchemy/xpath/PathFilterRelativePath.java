@@ -13,7 +13,7 @@ public class PathFilterRelativePath implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         // /ROOT/A[X] => Filter A nodes that have a child X
         // For each node in nodes, evaluate relativePath 
         // and return the nodes that satisfy the predicate

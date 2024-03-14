@@ -14,7 +14,7 @@ public class RelativePathWithPathFilter implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         var relativePathNodes = relativePath.evaluate(nodes);
         return pathFilter.evaluate(relativePathNodes);
     }

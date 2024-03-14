@@ -21,7 +21,7 @@ public class JoinClause implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         var leftTuples = leftQuery.evaluateQuery(ctx);
         var rightTuples = rightQuery.evaluateQuery(ctx);
 

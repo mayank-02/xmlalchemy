@@ -6,7 +6,7 @@ import edu.ucsd.xmlalchemy.Expression;
 
 public class Current implements Expression {
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         return nodes;
     }
 

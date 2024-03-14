@@ -14,7 +14,7 @@ public class TagName implements Expression {
     }
 
     @Override
-    public List<Node> evaluate(List<Node> nodes) throws Exception {
+    public List<Node> evaluate(List<Node> nodes) {
         List<Node> result = new ArrayList<>();
         for (Node node : nodes) {
             // Get node list of all children with the given tag name

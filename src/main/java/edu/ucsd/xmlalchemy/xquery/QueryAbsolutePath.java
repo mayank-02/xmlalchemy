@@ -13,7 +13,7 @@ public class QueryAbsolutePath implements Expression {
     }
 
     @Override
-    public List<Node> evaluateQuery(Context ctx) throws Exception {
+    public List<Node> evaluateQuery(Context ctx) {
         return absolutePath.evaluate(new ArrayList<>());
     }
 
