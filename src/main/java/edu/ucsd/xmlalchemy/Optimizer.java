@@ -50,7 +50,6 @@ public class Optimizer {
         var equalityConditions = getEqualityConditions(flwor.getCondition());
 
         var joinOrder = WongYoussefiAlgorithm(varDeps, equalityConditions);
-
         var joinFlworClauses =
                 constructJoinFlworClauses(flwor, varDeps, equalityConditions, joinOrder);
 
@@ -120,8 +119,8 @@ public class Optimizer {
 
         var leftAttrs = new ArrayList<String>();
         var rightAttrs = new ArrayList<String>();
-
-        for (var condition : joinConditions.get(new Tuple<>(joinOrder.get(0), joinOrder.get(1)))) {
+        for (var condition : joinConditions
+                .getOrDefault(new Tuple<>(joinOrder.get(0), joinOrder.get(1)), List.of())) {
             leftAttrs.add(condition.first);
             rightAttrs.add(condition.second);
         }
@@ -244,15 +243,23 @@ public class Optimizer {
         var joinOrder = new ArrayList<String>();
         var visited = new HashSet<>();
         var queue = new ArrayDeque<String>();
-        queue.add(startNode);
-        visited.add(startNode);
-        while (!queue.isEmpty()) {
-            var node = queue.removeFirst();
-            joinOrder.add(node);
-            for (var neighbor : adjacencyList.get(node)) {
-                if (!visited.contains(neighbor)) {
-                    visited.add(neighbor);
-                    queue.add(neighbor);
+        var searchStartNodes = new ArrayList<>(varDeps.values());
+        searchStartNodes.remove(startNode);
+        searchStartNodes.add(0, startNode);
+        for (var searchStart : searchStartNodes) {
+            if (visited.contains(searchStart)) {
+                continue;
+            }
+            queue.add(searchStart);
+            visited.add(searchStart);
+            while (!queue.isEmpty()) {
+                var node = queue.removeFirst();
+                joinOrder.add(node);
+                for (var neighbor : adjacencyList.get(node)) {
+                    if (!visited.contains(neighbor)) {
+                        visited.add(neighbor);
+                        queue.add(neighbor);
+                    }
                 }
             }
         }
@@ -319,7 +326,6 @@ public class Optimizer {
             return (Utils.isTypeOf(equal.getLeftQuery(), Variable.class, StringLiteral.class)
                     && Utils.isTypeOf(equal.getRightQuery(), Variable.class, StringLiteral.class));
         }
-
         return false;
     }
 

@@ -1,4 +1,4 @@
 for $a in doc("src/test/resources/milestone3/document/j_caesar.xml")//ACT,
-    $b in $a//TITLE
-where $b/text() eq "ACT II"
+    $b in $a//TITLE/text()
+where $b eq "ACT II"
 return <b>{$b}</b>
