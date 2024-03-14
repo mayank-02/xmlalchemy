@@ -48,6 +48,19 @@ public class Optimizer {
         }
 
         var equalityConditions = getEqualityConditions(flwor.getCondition());
+        equalityConditions
+                .removeIf(condition -> (condition.getLeftQuery() instanceof StringLiteral left
+                        && condition.getRightQuery() instanceof StringLiteral right
+                        && left.equals(right)));
+
+        for (var condition : equalityConditions) {
+            if (condition.getLeftQuery() instanceof StringLiteral left
+                    && condition.getRightQuery() instanceof StringLiteral right
+                    && !left.equals(right)) {
+                return Utils.EmptyExpression;
+            }
+        }
+
 
         var joinOrder = WongYoussefiAlgorithm(varDeps, equalityConditions);
         var joinFlworClauses =

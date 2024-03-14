@@ -94,6 +94,9 @@ public class XQuery {
         var dbFactory = DocumentBuilderFactory.newDefaultInstance();
         var dBuilder = dbFactory.newDocumentBuilder();
         var doc = dBuilder.newDocument();
+        if (result.isEmpty()) {
+            return doc;
+        }
 
         var parentElement = doc.createElement(result.get(0).getNodeName());
         var children = result.get(0).getChildNodes();

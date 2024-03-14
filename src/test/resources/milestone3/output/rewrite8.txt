@@ -1,0 +1,19 @@
+for $tuple in join (
+    for $b in doc("src/test/resources/milestone3/document/j_caesar.xml")//LINE,
+        $c in $b/text() 
+    where $c = "May we do so?" 
+    return <tuple>{
+        <b>{$b}</b>,
+        <c>{$c}</c>
+    }</tuple>,
+    
+    for $a in doc("src/test/resources/milestone3/document/j_caesar.xml")//LINE 
+    return <tuple>{
+        <a>{$a}</a>
+    }</tuple>,
+    
+    [], []
+)
+return <line>{
+    $tuple/c/*
+}</line>

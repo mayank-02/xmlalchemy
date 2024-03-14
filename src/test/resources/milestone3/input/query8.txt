@@ -1,0 +1,5 @@
+for $a in doc("src/test/resources/milestone3/document/j_caesar.xml")//LINE,
+    $b in doc("src/test/resources/milestone3/document/j_caesar.xml")//LINE,
+    $c in $b/text()
+where $c = "May we do so?" and "1" = "1"
+return <line>{ $c }</line> 
