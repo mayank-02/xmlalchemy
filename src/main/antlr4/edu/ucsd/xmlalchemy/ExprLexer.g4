@@ -35,7 +35,7 @@ DOUBLE_DOT: '..';
 TEXT: 'text()';
 AT_SYMBOL: '@';
 DOLLAR: '$';
-NAME: [a-zA-Z_][a-zA-Z_0-9]*;
+NAME: [a-zA-Z_-][a-zA-Z_0-9-]*;
 STRING : '"' (ASCII_CHAR | ESCAPE_SEQ)* '"' ;
 fragment ASCII_CHAR : '\u0020'..'\u0021' | '\u0023'..'\u005B' | '\u005D'..'\u007E' ;
 fragment ESCAPE_SEQ : '\\' ( '"' | '\\' ) ;

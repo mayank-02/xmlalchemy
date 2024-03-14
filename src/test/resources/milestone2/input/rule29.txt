@@ -1,5 +1,5 @@
 <result>{
-    <body>{
+    <body-2-dashes>{
         "HELLO"
-    }</body>
+    }</body-2-dashes>
 }</result>
